@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="300dp">
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/img_custom_dialog_bkg" />
+
+    <ImageView
+        android:id="@+id/btn_dialog_custom_ok"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:src="@mipmap/img_custom_dialog_button" />
+
+</FrameLayout>

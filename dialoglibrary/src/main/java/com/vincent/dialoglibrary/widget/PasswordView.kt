@@ -15,10 +15,11 @@ import android.view.View
  * <p>版本号：1<p>
  *
  */
+// 密码总个数
+val PASSWORD_COUNT = 6
 class PasswordView : View {
 
-    // 密码总个数
-    val PASSWORD_COUNT = 6
+
 
     // 已经输入的密码个数，也就是需要显示的小黑点个数
     private var mCurrentIndex = 0

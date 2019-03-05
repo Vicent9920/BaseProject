@@ -31,5 +31,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
-    implementation project(':baselibrary')
+//    implementation project(':baselibrary')
+    compile project(path: ':dialoglibrary')
+    implementation 'com.github.yjfnypeu:EasyAndroid:1.2.5'
 }

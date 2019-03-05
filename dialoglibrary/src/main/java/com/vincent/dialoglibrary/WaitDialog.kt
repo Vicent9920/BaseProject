@@ -17,39 +17,37 @@ import com.vincent.dialoglibrary.widget.ProgressView
  * <p>版本号：1<p>
  *
  */
-class WaitDialog {
-    companion object {
-        class Builder(activity: FragmentActivity, themeResId: Int) :
-            BaseDialogFragment.Builder<Builder>(activity, themeResId) {
-            private lateinit var mMessageView: TextView
-            private lateinit var mProgressView: ProgressView
+object WaitDialog {
+    class Builder(activity: FragmentActivity, themeResId: Int = -1) :
+        BaseDialogFragment.Builder<Builder>(activity, themeResId) {
+        private lateinit var mMessageView: TextView
+        private lateinit var mProgressView: ProgressView
 
-            init {
-                setContentView(R.layout.dialog_wait);
-                setGravity(Gravity.CENTER);
-                mAnimations = BaseDialog.AnimStyle.TOAST
-                mCancelable = false
-                mMessageView = findViewById(R.id.tv_dialog_wait_message);
-                mProgressView = findViewById(R.id.pv_dialog_wait_progress);
-            }
+        init {
+            setContentView(R.layout.dialog_wait)
+            setGravity(Gravity.CENTER)
+            mAnimations = BaseDialog.AnimStyle.TOAST
+            mCancelable = false
+            mMessageView = findViewById(R.id.tv_dialog_wait_message)
+            mProgressView = findViewById(R.id.pv_dialog_wait_progress)
+        }
 
-            fun setMessage(resId: Int): Builder {
-                return setMessage(mContext.getText(resId))
-            }
+        fun setMessage(resId: Int): Builder {
+            return setMessage(mContext.getText(resId))
+        }
 
-            fun setMessage(text: CharSequence?): Builder {
-                mMessageView.text = text
-                mMessageView.visibility = if (text == null) View.GONE else View.VISIBLE
-                return this
-            }
+        fun setMessage(text: CharSequence?): Builder {
+            mMessageView.text = text
+            mMessageView.visibility = if (text == null) View.GONE else View.VISIBLE
+            return this
+        }
 
-            override fun show(): BaseDialog {
-                // 如果内容为空就设置隐藏
-                if ("" == mMessageView.text.toString()) {
-                    mMessageView.visibility = View.GONE
-                }
-                return super.show()
+        override fun show(): BaseDialog {
+            // 如果内容为空就设置隐藏
+            if ("" == mMessageView.text.toString()) {
+                mMessageView.visibility = View.GONE
             }
+            return super.show()
         }
     }
 }

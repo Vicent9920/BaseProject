@@ -68,7 +68,7 @@ class BaseDialogFragment : DialogFragment() {
 
     }
 
-    open class Builder<B : BaseDialog.Builder<B>> constructor(val activity: FragmentActivity, themeResId: Int = -1) :
+    open class Builder<B : BaseDialog.Builder<B>> (val activity: FragmentActivity, themeResId: Int = -1) :
         BaseDialog.Builder<B>(activity, themeResId) {
 
         private lateinit var mDialogFragment: BaseDialogFragment

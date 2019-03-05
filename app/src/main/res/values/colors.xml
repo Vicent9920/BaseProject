@@ -3,4 +3,11 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <!-- 按钮按压时的颜色 -->
+    <color name="colorButtonPressed">#1976d2</color>
+    <!-- 按钮禁用时的颜色 -->
+    <color name="colorButtonDisable">#DDDDDD</color>
+    <!-- 分割线的颜色 -->
+    <color name="colorLine">#ECECEC</color>
 </resources>

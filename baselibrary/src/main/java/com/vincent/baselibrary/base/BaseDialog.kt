@@ -44,11 +44,11 @@ class BaseDialog(context: Context?, val themeResId: Int = R.style.BaseDialogStyl
         lateinit var mContentView: View
 
         // Dialog Cancel 监听
-        private val mOnCancelListener: DialogInterface.OnCancelListener? = null
+         var mOnCancelListener: DialogInterface.OnCancelListener? = null
         // Dialog Dismiss 监听
-        private val mOnDismissListener: DialogInterface.OnDismissListener? = null
+         var mOnDismissListener: DialogInterface.OnDismissListener? = null
         // Dialog Key 监听
-        private val mOnKeyListener: DialogInterface.OnKeyListener? = null
+         var mOnKeyListener: DialogInterface.OnKeyListener? = null
 
         // 点击空白是否能够取消  默认点击阴影可以取消
         var mCancelable = true
