@@ -1,14 +1,16 @@
-package com.vincent.baseproject.ui
+package com.vincent.baseproject.ui.activity
 
 import android.app.Dialog
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.Gravity
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import com.haoge.easyandroid.easy.EasyToast
-import com.vincent.baselibrary.base.BaseDialog
-import com.vincent.baselibrary.base.BaseDialogFragment
+import com.vincent.dialoglibrary.base.BaseDialog
+import com.vincent.dialoglibrary.base.BaseDialogFragment
 import com.vincent.baseproject.R
 import com.vincent.dialoglibrary.*
 import kotlinx.android.synthetic.main.activity_dialog.*
@@ -144,19 +146,27 @@ class DialogActivity : AppCompatActivity() {
                 .show()
         }
         btn_dialog_custom.setOnClickListener {
-//                        val b = BaseDialogFragment.Builder<BaseDialogFragment.Builder<Int>>(this)
-//
-//            }
-//            BaseDialogFragment.Builder(activity = this)
-//                .setContentView(R.layout.dialog_custom)
-//                .setAnimStyle(BaseDialog.AnimStyle.SCALE)
-//                //.setText(id, "我是预设置的文本")
-//                .setOnClickListener(R.id.btn_dialog_custom_ok, object : BaseDialog.OnClickListener<ImageView> {
-//                    override fun onClick(dialog: Dialog, view: ImageView) {
-//                       dialog.dismiss()
-//                    }
-//                })
-//                .show()
+
+            Custom(this)
+                .setContentView(R.layout.dialog_custom)
+                //.setText(id, "我是预设置的文本")
+                .setOnClickListener(R.id.btn_dialog_custom_ok, object : BaseDialog.OnClickListener<View> {
+                    override fun onClick(dialog: Dialog, view: View) {
+                        dialog.dismiss()
+                    }
+
+                })
+                .apply {
+                    this.mAnimations = BaseDialog.AnimStyle.SCALE
+                }
+                .show()
+
+
         }
+
+
     }
+
+    class Custom(activity: FragmentActivity, themeResId: Int = -1):
+        BaseDialogFragment.Builder<Custom>(activity, themeResId)
 }

@@ -4,8 +4,8 @@ import android.view.Gravity
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
-import com.vincent.baselibrary.base.BaseDialog
-import com.vincent.baselibrary.base.BaseDialogFragment
+import com.vincent.dialoglibrary.base.BaseDialog
+import com.vincent.dialoglibrary.base.BaseDialogFragment
 
 
 /**

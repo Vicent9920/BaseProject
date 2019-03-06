@@ -1,12 +1,13 @@
 package com.vincent.dialoglibrary
 
 import android.app.Dialog
+import android.text.TextUtils.isEmpty
 import android.view.Gravity
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
-import com.vincent.baselibrary.base.BaseDialog
-import com.vincent.baselibrary.base.BaseDialogFragment
+import com.vincent.dialoglibrary.base.BaseDialog
+import com.vincent.dialoglibrary.base.BaseDialogFragment
 
 
 /**
@@ -23,8 +24,8 @@ object MessageDialog {
         View.OnClickListener {
 
 
-         var mListener: OnListener? = null
-         var mAutoDismiss = true // 设置点击按钮后自动消失
+        var mListener: OnListener? = null
+        var mAutoDismiss = true // 设置点击按钮后自动消失
 
         private lateinit var mTitleView: TextView
         private lateinit var mMessageView: TextView
@@ -74,10 +75,10 @@ object MessageDialog {
         fun setCancel(text: CharSequence): Builder {
             mCancelView.text = text
 
-            mCancelView.visibility = if (isEmpty(text)) View.GONE else View.VISIBLE
-            mLineView.visibility = if (isEmpty(text)) View.GONE else View.VISIBLE
+            mCancelView.visibility = if (text.isBlank()) View.GONE else View.VISIBLE
+            mLineView.visibility = if (text.isBlank()) View.GONE else View.VISIBLE
             mConfirmView.setBackgroundResource(
-                if (isEmpty(text))
+                if (text.isBlank())
                     R.drawable.dialog_message_one_button
                 else
                     R.drawable.dialog_message_right_button

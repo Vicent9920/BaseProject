@@ -28,10 +28,20 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     implementation 'androidx.core:core-ktx:1.1.0-alpha04'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
-//    implementation project(':baselibrary')
+    //沉浸式状态栏颜色
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
+    // 界面侧滑
+    implementation 'cn.bingoogolapple:bga-swipebacklayout:1.2.0@aar'
+    def nav_version = "1.0.0-rc02"
+    // For Kotlin use navigation-fragment-ktx
+    implementation "android.arch.navigation:navigation-fragment:$nav_version"
+    // For Kotlin use navigation-ui-ktx
+    implementation "android.arch.navigation:navigation-ui:$nav_version"
+    //    implementation project(':baselibrary')
     compile project(path: ':dialoglibrary')
-    implementation 'com.github.yjfnypeu:EasyAndroid:1.2.5'
+    implementation project(':baselibrary')
 }

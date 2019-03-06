@@ -2,6 +2,7 @@ package com.vincent.dialoglibrary
 
 import android.app.Dialog
 import android.content.Context
+import android.text.TextUtils.isEmpty
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +12,8 @@ import androidx.annotation.NonNull
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.vincent.baselibrary.base.BaseDialog
-import com.vincent.baselibrary.base.BaseDialogFragment
+import com.vincent.dialoglibrary.base.BaseDialog
+import com.vincent.dialoglibrary.base.BaseDialogFragment
 import java.util.*
 
 /**
@@ -28,8 +29,8 @@ object MenuDialog {
         BaseDialogFragment.Builder<Builder>(activity, themeResId), View.OnClickListener, OnItemClickListener {
 
 
-         var mListener: OnListener? = null
-         var mAutoDismiss = true
+        var mListener: OnListener? = null
+        var mAutoDismiss = true
 
         private lateinit var mRecyclerView: RecyclerView
         private lateinit var mAdapter: MenuAdapter
@@ -67,7 +68,7 @@ object MenuDialog {
 
         fun setCancel(text: CharSequence?): Builder {
             mCancelView.text = text
-            mCancelView.visibility = if (isEmpty(text)) View.GONE else View.VISIBLE
+            mCancelView.visibility = if (text?.isBlank() == true) View.GONE else View.VISIBLE
             return this
         }
 

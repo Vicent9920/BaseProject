@@ -17,8 +17,8 @@ import android.view.View
  */
 // 密码总个数
 val PASSWORD_COUNT = 6
-class PasswordView : View {
 
+class PasswordView : View {
 
 
     // 已经输入的密码个数，也就是需要显示的小黑点个数

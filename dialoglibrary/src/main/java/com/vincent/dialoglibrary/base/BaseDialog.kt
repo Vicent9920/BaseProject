@@ -1,4 +1,4 @@
-package com.vincent.baselibrary.base
+package com.vincent.dialoglibrary.base
 
 
 import android.app.Dialog
@@ -15,7 +15,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatDialog
-import com.vincent.baselibrary.R
+import com.vincent.dialoglibrary.R
 
 
 /**
@@ -86,18 +86,13 @@ class BaseDialog(context: Context?, val themeResId: Int = R.style.BaseDialogStyl
             mDialog?.dismiss()
         }
 
-        /**
-         * 文本是否为空（仅供子类调用）
-         */
-        protected fun isEmpty(text: CharSequence?): Boolean {
-            return text == null || "" == text.toString()
-        }
+
 
         /**
          * dp转px（仅供子类调用）
          */
         protected fun dp2px(dpValue: Float): Int {
-            val scale = mContext.getResources().displayMetrics.density
+            val scale = mContext.resources.displayMetrics.density
             return (dpValue * scale + 0.5f).toInt()
         }
 
@@ -105,7 +100,7 @@ class BaseDialog(context: Context?, val themeResId: Int = R.style.BaseDialogStyl
          * sp转px（仅供子类调用）
          */
         protected fun sp2px(spValue: Float): Int {
-            val fontScale = mContext.getResources().displayMetrics.scaledDensity
+            val fontScale = mContext.resources.displayMetrics.scaledDensity
             return (spValue * fontScale + 0.5f).toInt()
         }
 
@@ -130,12 +125,12 @@ class BaseDialog(context: Context?, val themeResId: Int = R.style.BaseDialogStyl
         fun setGravity(gravity: Int): B {
             var gravity = Gravity.getAbsoluteGravity(gravity, mContext.resources.configuration.layoutDirection)
             mGravity = gravity
-            if (mAnimations === -1) {
+            if (mAnimations == -1) {
                 when (mGravity) {
                     Gravity.TOP -> mAnimations = AnimStyle.TOP
                     Gravity.BOTTOM -> mAnimations = AnimStyle.BOTTOM
-                    Gravity.LEFT -> mAnimations = AnimStyle.LEFT
-                    Gravity.RIGHT -> mAnimations = AnimStyle.RIGHT
+                    Gravity.START -> mAnimations = AnimStyle.LEFT
+                    Gravity.END -> mAnimations = AnimStyle.RIGHT
                 }
             }
             return this as B

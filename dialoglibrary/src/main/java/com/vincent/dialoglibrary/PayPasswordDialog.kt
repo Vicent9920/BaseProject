@@ -12,8 +12,8 @@ import androidx.annotation.NonNull
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.vincent.baselibrary.base.BaseDialog
-import com.vincent.baselibrary.base.BaseDialogFragment
+import com.vincent.dialoglibrary.base.BaseDialog
+import com.vincent.dialoglibrary.base.BaseDialogFragment
 import com.vincent.dialoglibrary.widget.PASSWORD_COUNT
 import com.vincent.dialoglibrary.widget.PasswordView
 import java.util.*
@@ -35,8 +35,8 @@ object PayPasswordDialog {
         // 输入键盘文本
         private val KEYBOARD_TEXT = arrayOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "", "0", "")
 
-         var mListener: OnListener? = null
-         var mAutoDismiss = true
+        var mListener: OnListener? = null
+        var mAutoDismiss = true
 
         private lateinit var mPasswordView: PasswordView
         private lateinit var mRecyclerView: RecyclerView
@@ -155,6 +155,7 @@ object PayPasswordDialog {
                     }
                 }
             }
+            mPasswordView.setPassWord(mRecordList.size)
         }
 
     }

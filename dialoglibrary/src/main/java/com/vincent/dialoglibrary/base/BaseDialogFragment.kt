@@ -1,4 +1,4 @@
-package com.vincent.baselibrary.base
+package com.vincent.dialoglibrary.base
 
 import android.app.Dialog
 import android.os.Bundle
@@ -21,7 +21,7 @@ import androidx.fragment.app.FragmentTransaction
  *
  */
 class BaseDialogFragment : DialogFragment() {
-    private lateinit var mDialog: BaseDialog
+    private lateinit var mDialog: com.vincent.dialoglibrary.base.BaseDialog
 
     private lateinit var sShowTag: String
     private var sLastTime: Long = 0
@@ -64,12 +64,12 @@ class BaseDialogFragment : DialogFragment() {
     override fun onCreateDialog(@Nullable savedInstanceState: Bundle?): Dialog {
         mDialog?.let {
             return mDialog
-        } ?: return BaseDialog(context, -1)
+        } ?: return com.vincent.dialoglibrary.base.BaseDialog(context, -1)
 
     }
 
-    open class Builder<B : BaseDialog.Builder<B>> (val activity: FragmentActivity, themeResId: Int = -1) :
-        BaseDialog.Builder<B>(activity, themeResId) {
+    open class Builder<B : com.vincent.dialoglibrary.base.BaseDialog.Builder<B>> (val activity: FragmentActivity, themeResId: Int = -1) :
+        com.vincent.dialoglibrary.base.BaseDialog.Builder<B>(activity, themeResId) {
 
         private lateinit var mDialogFragment: BaseDialogFragment
 
@@ -85,7 +85,7 @@ class BaseDialogFragment : DialogFragment() {
             mDialogFragment.dismiss()
         }
 
-        override fun show(): BaseDialog {
+        override fun show(): com.vincent.dialoglibrary.base.BaseDialog {
             val dialog = create()
             mDialogFragment = BaseDialogFragment()
             mDialogFragment.mDialog = dialog
