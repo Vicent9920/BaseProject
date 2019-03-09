@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        tools:context=".ui.login.LoginActivity">
+
+    <include
+            layout="@layout/app_toolbar"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="30dp"
+            android:src="@mipmap/ic_launcher_round"/>
+
+    <com.vincent.baselibrary.widget.ClearEditText
+            android:id="@+id/login_et_email"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="40dp"
+            android:hint="@string/login_phone_input_hint"
+            android:inputType="textEmailAddress"
+            android:maxLength="20"
+            android:maxLines="1"/>
+
+    <View
+            style="@style/HorizontalLineStyle"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"/>
+
+    <com.vincent.baselibrary.widget.ClearEditText
+            android:id="@+id/login_et_password"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:hint="@string/login_password_input_hint"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:maxLines="1"/>
+
+    <View
+            style="@style/HorizontalLineStyle"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"/>
+
+    <TextView
+            android:id="@+id/login_tv_forget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="15sp"
+            android:layout_marginEnd="60dp"
+            android:text="@string/login_forget"
+            android:textColor="@color/colorAccent"/>
+
+    <Button
+            android:id="@+id/login_btn_commit"
+            style="@style/ButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="40dp"
+            android:text="@string/login_text"/>
+
+</LinearLayout>

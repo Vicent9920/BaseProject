@@ -1,32 +1,32 @@
-package com.vincent.baseproject.ui.activity
+package com.vincent.baseproject.ui
 
 import android.app.Dialog
-import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.Gravity
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.haoge.easyandroid.easy.EasyToast
+import com.vincent.baseproject.R
+import com.vincent.baseproject.common.UIActivity
+import com.vincent.dialoglibrary.*
 import com.vincent.dialoglibrary.base.BaseDialog
 import com.vincent.dialoglibrary.base.BaseDialogFragment
-import com.vincent.baseproject.R
-import com.vincent.dialoglibrary.*
 import kotlinx.android.synthetic.main.activity_dialog.*
-import java.util.*
+import kotlinx.android.synthetic.main.app_toolbar.*
 
-class DialogActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dialog)
-        setSupportActionBar(toolbar)
-        title = "对话框案例"
-        initEvent()
+class DialogActivity : UIActivity() {
+    override fun getLayoutId(): Int {
+        return R.layout.activity_dialog
     }
 
-    private fun initEvent() {
+    override fun initView() {
+        tv_title.text = "对话框示例"
+        initToolBar(app_toolbar)
+
+    }
+
+    override fun initEvent() {
         btn_dialog_message.setOnClickListener {
             MessageDialog.Builder(this)
                 .setTitle("我是标题") // 标题可以不用填写
@@ -169,4 +169,5 @@ class DialogActivity : AppCompatActivity() {
 
     class Custom(activity: FragmentActivity, themeResId: Int = -1):
         BaseDialogFragment.Builder<Custom>(activity, themeResId)
+
 }

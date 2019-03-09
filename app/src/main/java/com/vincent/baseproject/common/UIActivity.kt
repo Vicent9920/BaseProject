@@ -2,6 +2,7 @@ package com.vincent.baseproject.common
 
 import android.os.Bundle
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper
+import com.orhanobut.hawk.Hawk
 import com.vincent.baselibrary.base.BaseActivity
 import com.vincent.baseproject.R
 
@@ -13,21 +14,7 @@ import com.vincent.baseproject.R
  * 备注：
  */
 abstract class UIActivity :BaseActivity(), BGASwipeBackHelper.Delegate {
-    override fun onSwipeBackLayoutExecuted() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
-    override fun onSwipeBackLayoutSlide(slideOffset: Float) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun onSwipeBackLayoutCancel() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun isSupportSwipeBack(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
     private lateinit var mSwipeBackHelper: BGASwipeBackHelper
 
@@ -64,4 +51,34 @@ abstract class UIActivity :BaseActivity(), BGASwipeBackHelper.Delegate {
             mSwipeBackHelper.setIsNavigationBarOverlap(false)
 
     }
+
+    /**
+     * 滑动返回执行完毕，销毁当前 Activity
+     */
+    override fun onSwipeBackLayoutExecuted() {
+        mSwipeBackHelper.swipeBackward()
+    }
+
+    /**
+     * 正在滑动返回
+     *
+     * @param slideOffset 从 0 到 1
+     */
+    override fun onSwipeBackLayoutSlide(slideOffset: Float) {  }
+
+    /**
+     * 没达到滑动返回的阈值，取消滑动返回动作，回到默认状态
+     */
+    override fun onSwipeBackLayoutCancel() { }
+
+    /**
+     * 是否支持滑动返回。这里在父类中默认返回 true 来支持滑动返回，如果某个界面不想支持滑动返回则重写该方法返回 false 即可
+     *
+     * @return
+     */
+    override fun isSupportSwipeBack(): Boolean {
+        return Hawk.get(Contsant.SWIPE_ENABLED,true)
+    }
+
+
 }

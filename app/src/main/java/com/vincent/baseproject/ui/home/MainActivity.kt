@@ -1,24 +1,29 @@
-package com.vincent.baseproject
+package com.vincent.baseproject.ui.home
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.vincent.baseproject.R
+import com.vincent.baseproject.common.UIActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : UIActivity() {
+    override fun getLayoutId() = R.layout.activity_main
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun initView() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         val navigation = findViewById<BottomNavigationView>(R.id.navigation)
-        NavigationUI.setupWithNavController(navigation,navController)
+        NavigationUI.setupWithNavController(navigation, navController)
+        navigation.itemIconTintList = null
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return Navigation.findNavController(this, R.id.nav_fragment).navigateUp()
     }
+
+    override fun isSupportSwipeBack(): Boolean {
+        return false
+    }
+
 }

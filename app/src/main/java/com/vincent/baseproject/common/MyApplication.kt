@@ -3,6 +3,7 @@ package com.vincent.baseproject.common
 import android.app.Application
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper
 import com.haoge.easyandroid.EasyAndroid
+import com.orhanobut.hawk.Hawk
 
 /**
  * 创建日期：2019/3/6 0006on 下午 3:11
@@ -23,5 +24,6 @@ class MyApplication :Application(){
          * 第二个参数：如果发现滑动返回后立即触摸界面时应用崩溃，请把该界面里比较特殊的 View 的 class 添加到该集合中，目前在库中已经添加了 WebView 和 SurfaceView
          */
         BGASwipeBackHelper.init(this, null)
+        Hawk.init(this).build()
     }
 }

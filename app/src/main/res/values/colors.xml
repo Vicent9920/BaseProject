@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
+    <color name="windowBackground">#F4F4F4</color>
+
     <!-- 按钮按压时的颜色 -->
     <color name="colorButtonPressed">#1976d2</color>
     <!-- 按钮禁用时的颜色 -->

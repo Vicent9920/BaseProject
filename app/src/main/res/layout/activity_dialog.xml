@@ -2,22 +2,18 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ui.activity.DialogActivity">
+        tools:context=".ui.DialogActivity">
+    <include
+            layout="@layout/app_toolbar"/>
 
-    <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?android:attr/actionBarSize">
-
-    </androidx.appcompat.widget.Toolbar>
 
     <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
 
         <LinearLayout
                 android:layout_width="match_parent"
@@ -32,7 +28,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:text="弹出消息对话框" />
+                    android:text="弹出消息对话框"/>
 
             <Button
                     android:id="@+id/btn_dialog_bottom_menu"
@@ -40,7 +36,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:text="弹出底部选择框" />
+                    android:text="弹出底部选择框"/>
 
             <Button
                     android:id="@+id/btn_dialog_center_menu"
@@ -48,7 +44,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:text="弹出居中选择框" />
+                    android:text="弹出居中选择框"/>
 
             <Button
                     android:id="@+id/btn_dialog_succeed_toast"
@@ -56,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:text="弹出完成对话框" />
+                    android:text="弹出完成对话框"/>
 
             <Button
                     android:id="@+id/btn_dialog_fail_toast"
@@ -64,7 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:text="弹出错误对话框" />
+                    android:text="弹出错误对话框"/>
 
             <Button
                     android:id="@+id/btn_dialog_warn_toast"
@@ -72,7 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:text="弹出警告对话框" />
+                    android:text="弹出警告对话框"/>
 
             <Button
                     android:id="@+id/btn_dialog_wait"
@@ -80,7 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:text="弹出加载对话框" />
+                    android:text="弹出加载对话框"/>
 
             <Button
                     android:id="@+id/btn_dialog_pay"
@@ -88,7 +84,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:text="弹出支付对话框" />
+                    android:text="弹出支付对话框"/>
 
             <Button
                     android:id="@+id/btn_dialog_custom"
@@ -96,7 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:text="弹出自定义对话框" />
+                    android:text="弹出自定义对话框"/>
 
         </LinearLayout>
 

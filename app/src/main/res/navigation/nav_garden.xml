@@ -6,22 +6,22 @@
 
     <fragment
         android:id="@+id/menu_home"
-        android:name="com.vincent.baseproject.ui.fragment.HomeFragmentA"
+        android:name="com.vincent.baseproject.ui.home.fragment.HomeFragmentA"
         tools:layout="@layout/home_fragment_a"/>
 
     <fragment
             android:id="@+id/home_found"
-            android:name="com.vincent.baseproject.ui.fragment.HomeFragmentB"
+            android:name="com.vincent.baseproject.ui.home.fragment.HomeFragmentB"
             tools:layout="@layout/home_fragment_b"/>
 
     <fragment
             android:id="@+id/home_message"
-            android:name="com.vincent.baseproject.ui.fragment.HomeFragmentC"
+            android:name="com.vincent.baseproject.ui.home.fragment.HomeFragmentC"
             tools:layout="@layout/home_fragment_c"/>
 
     <fragment
             android:id="@+id/home_me"
-            android:name="com.vincent.baseproject.ui.fragment.HomeFragmentD"
+            android:name="com.vincent.baseproject.ui.home.fragment.HomeFragmentD"
             tools:layout="@layout/home_fragment_d"/>
 
 </navigation>

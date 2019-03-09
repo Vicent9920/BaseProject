@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:id="@+id/app_toolbar"
+        style="@style/toolbar_theme"
+        android:background="@color/white">
+
+    <TextView
+            android:id="@+id/tv_title"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:lines="1"
+            android:maxLength="12"
+            tools:text="居中标题"
+            android:ellipsize="end"
+            android:textColor="@color/black80"
+            android:textSize="16sp"/>
+
+    <TextView
+            android:id="@+id/tv_rightMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            tools:text="添加"
+            android:textColor="@color/black30"
+            android:textSize="14sp"
+            android:visibility="gone"/>
+
+
+    <ImageView
+            android:id="@+id/iv_rightMenu"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@mipmap/tab_ico_me_off"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:visibility="gone"/>
+
+</androidx.appcompat.widget.Toolbar>
