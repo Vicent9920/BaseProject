@@ -5,6 +5,8 @@ import android.content.Intent
 import com.vincent.baselibrary.base.BaseLazyFragment
 import com.vincent.baseproject.R
 import com.vincent.baseproject.ui.DialogActivity
+import com.vincent.baseproject.ui.login.LoginActivity
+import com.vincent.baseproject.ui.login.RegisterActivity
 import kotlinx.android.synthetic.main.app_toolbar.*
 import kotlinx.android.synthetic.main.home_fragment_d.*
 
@@ -21,6 +23,12 @@ class HomeFragmentD : BaseLazyFragment() {
         super.initEvent()
         homeD_btn_dialog.setOnClickListener {
             startActivity(Intent(mActivity, DialogActivity::class.java))
+        }
+        homeD_btn_login.setOnClickListener {
+            startActivity(Intent(mActivity,LoginActivity::class.java))
+        }
+        homeD_btn_register.setOnClickListener {
+            startActivity(Intent(mActivity,RegisterActivity::class.java))
         }
     }
 

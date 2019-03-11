@@ -22,6 +22,10 @@ class LoginActivity : UIActivity(), LifecycleOwner {
        return R.layout.activity_login
     }
 
+    override fun getLifecycle(): Lifecycle {
+        return super.getLifecycle()
+    }
+
     override fun initView() {
         tv_rightMenu.text = "注册"
         initToolBar(app_toolbar,false)

@@ -15,7 +15,7 @@ import com.vincent.baseproject.data.Resource
  */
 class LoginViewModel(private val repository:LoginRepository): ViewModel() {
     val loginState = Transformations.map(repository.login) { it }!!
-    val register = Transformations.map(repository.register) { it }!!
+    val registerState = Transformations.map(repository.register) { it }!!
     fun logun(username:String,password:String) = repository.login(username,password)
     fun register(username:String,password:String,rePassword:String) =  repository.register(username, password, rePassword)
 }
