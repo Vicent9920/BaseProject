@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  * 备注：
  */
 object ServiceCreator {
-    private const val BASE_URL = "http://guolin.tech/"
+    private const val BASE_URL = "http://www.wanandroid.com/"
 
     private val httpClient = OkHttpClient.Builder()
 

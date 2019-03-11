@@ -12,7 +12,7 @@ import com.orhanobut.hawk.Hawk
  * QQ：3332168769
  * 备注：
  */
-class MyApplication :Application(){
+class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -26,4 +26,6 @@ class MyApplication :Application(){
         BGASwipeBackHelper.init(this, null)
         Hawk.init(this).build()
     }
+
+
 }

@@ -1,6 +1,5 @@
 package com.vincent.baselibrary.base
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
@@ -38,7 +37,7 @@ abstract class BaseLazyFragment : Fragment() {
             .build()
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         mActivity = context as AppCompatActivity
     }
@@ -124,9 +123,9 @@ abstract class BaseLazyFragment : Fragment() {
      * @param isCloseTitle 是否需要关闭默认title
      */
 
-    fun initToolBar(toolbar: Toolbar, isShowBack:Boolean = false, isCloseTitle:Boolean = false){
+    fun initToolBar(toolbar: Toolbar, isShowBack: Boolean = false, isCloseTitle: Boolean = false) {
         val ac = mActivity as BaseActivity
-        if(ac.isStatusBarEnabled() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+        if (ac.isStatusBarEnabled() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             val layoutParams = toolbar.layoutParams
             if (layoutParams.height != -2 && layoutParams.height != -1) {
                 layoutParams.height += getSystemBarHeight()
@@ -148,7 +147,7 @@ abstract class BaseLazyFragment : Fragment() {
                 }
             }
         }
-        mActivity.supportActionBar?.setDisplayHomeAsUpEnabled( isShowBack)
+        mActivity.supportActionBar?.setDisplayHomeAsUpEnabled(isShowBack)
         mActivity.supportActionBar?.setDisplayShowTitleEnabled(isCloseTitle)
     }
 

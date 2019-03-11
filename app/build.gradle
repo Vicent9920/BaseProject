@@ -13,6 +13,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -25,8 +26,8 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.0-alpha01'
-    implementation 'androidx.core:core-ktx:1.0.1'
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha01'
+    implementation 'androidx.core:core:1.1.0-alpha01'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
     testImplementation 'junit:junit:4.12'
@@ -45,14 +46,14 @@ dependencies {
     implementation "android.arch.navigation:navigation-fragment:$nav_version"
     // For Kotlin use navigation-ui-ktx
     implementation "android.arch.navigation:navigation-ui:$nav_version"
-    def lifecycle_version = "2.0.0"
-    // ViewModel and LiveData
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+
 //    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
     // 底部多级联动选择对话框
     implementation ('com.github.gzu-liyujiang.AndroidPicker:WheelPicker:1.5.6') {
         exclude group: 'com.android.support'
     }
+
+//    implementation "androidx.multidex:multidex:2.0.0"
     //    implementation project(':baselibrary')
     compile project(path: ':dialoglibrary')
     implementation project(':baselibrary')

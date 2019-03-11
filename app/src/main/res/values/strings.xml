@@ -21,9 +21,10 @@
 
     <!-- 注册 -->
     <string name="register_text">注册</string>
-    <string name="register_hint">手机号仅用于登录和保护账号安全</string>
+    <string name="register_hint">邮箱地址仅用于登录和保护账号安全</string>
     <string name="register_login">登录</string>
-    <string name="register_phone_input_hint">输入手机号码</string>
+    <string name="register_email_input_hint">输入手机号码</string>
+    <string name="register_phone_input_hint">输入邮箱地址</string>
     <string name="register_code_input_hint">输入验证码</string>
     <string name="register_send_code">发送验证码</string>
     <string name="register_password_input_hint1">设置密码</string>

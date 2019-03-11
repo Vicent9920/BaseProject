@@ -50,29 +50,30 @@
                     android:orientation="horizontal">
 
                 <EditText
-                        android:id="@+id/et_register_phone"
+                        android:id="@+id/register_et_email"
                         style="@style/EditTextStyle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="@string/register_phone_input_hint"
-                        android:inputType="phone"
-                        android:maxLength="11"
+                        android:hint="@string/register_email_input_hint"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="20"
                         android:maxLines="1" />
-
-                <com.hjq.widget.CountdownView
-                        android:id="@+id/cv_register_countdown"
+                <!--此处不做验证码演示-->
+                <com.vincent.baselibrary.widget.CountdownView
+                        android:id="@+id/register_cv_countdown"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/space_20"
+                        android:padding="10dp"
                         android:text="@string/register_send_code"
-                        android:textColor="@color/colorAccent" />
+                        android:textColor="@color/colorAccent"
+                android:visibility="gone"/>
             </LinearLayout>
 
-            <View style="@style/HorizontalLineStyle" />
-
+            <!--<View style="@style/HorizontalLineStyle" />-->
+            <!--此处不做验证码演示-->
             <EditText
-                    android:id="@+id/et_register_code"
+                    android:id="@+id/register_et_code"
                     style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -80,12 +81,13 @@
                     android:hint="@string/register_code_input_hint"
                     android:inputType="number"
                     android:maxLength="8"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+            android:visibility="gone"/>
 
             <View style="@style/HorizontalLineStyle" />
 
             <EditText
-                    android:id="@+id/et_register_password1"
+                    android:id="@+id/register_et_password1"
                     style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -98,7 +100,7 @@
             <View style="@style/HorizontalLineStyle" />
 
             <EditText
-                    android:id="@+id/et_register_password2"
+                    android:id="@+id/register_et_password2"
                     style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -111,7 +113,7 @@
             <View style="@style/HorizontalLineStyle" />
 
             <Button
-                    android:id="@+id/btn_register_commit"
+                    android:id="@+id/register_btn_commit"
                     style="@style/ButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
