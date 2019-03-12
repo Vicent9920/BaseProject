@@ -39,4 +39,7 @@ class XCollapsingToolbarLayout : CollapsingToolbarLayout {
          */
         fun onScrimsStateChange(shown: Boolean)
     }
+
+
 }
+

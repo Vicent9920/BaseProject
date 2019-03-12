@@ -7,14 +7,14 @@ ext {
     appcompat = '1.1.0-alpha01'
     core = '1.1.0-alpha01'
     constraintlayout = '1.1.2'
-    support--v4 = '1.0.0-beta01'
+    supportV4 = '1.0.0-beta01'
     junit = '4.12'
     runner = '1.1.0-alpha4'
-    espresso--core = '3.1.0-alpha4'
+    espressoCore = '3.1.0-alpha4'
 
     // Retrofit
     retrofit = '2.3.0'
-    converter--gson = '2.3.0'
+    gson = '2.3.0'
 
     // 状态栏
     statusbarutil = '1.5.1'

@@ -15,10 +15,44 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 //        multiDexEnabled true
     }
+
+        signingConfigs {
+//        release {
+//            keyAlias '密钥别称'
+//            keyPassword '密钥密码'
+//            storeFile file('E:/MySign.jks')
+//            storePassword '密钥库密码'
+//        }
+
+//        debug {
+//            keyAlias '密钥别称'
+//            keyPassword '密钥密码'
+//            storeFile file('E:/MySign.jks')
+//            storePassword '密钥库密码'
+//        }
+    }
     buildTypes {
         release {
-            minifyEnabled false
+            // 移除无用的resource文件，前提minifyEnabled必须打开
+            shrinkResources true
+            // ZipAlign优化
+            zipAlignEnabled true
+            // 设置混淆
+            minifyEnabled true
+            // 正式环境签名
+            //signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            //ZipAlign优化
+            zipAlignEnabled false
+            //设置混淆
+            minifyEnabled false
+            //加载默认混淆配置涵
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // 开发环境签名
+            //signingConfig signingConfigs.release
         }
     }
 }
@@ -26,30 +60,29 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0-alpha01'
-    implementation 'androidx.core:core:1.1.0-alpha01'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation "androidx.appcompat:appcompat:$rootProject.ext.appcompat"
+    implementation "androidx.core:core:$rootProject.ext.core"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintlayout"
+    implementation "androidx.legacy:legacy-support-v4:$rootProject.ext.supportV4"
+    testImplementation "junit:junit:$rootProject.ext.junit"
+    androidTestImplementation "androidx.test:runner:$rootProject.ext.runner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espressoCore"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.gson"
     // 沉浸式状态栏颜色
-    implementation 'com.jaeger.statusbarutil:library:1.5.1'
+    implementation "com.jaeger.statusbarutil:library:$rootProject.ext.statusbarutil"
     // 界面侧滑
-    implementation 'cn.bingoogolapple:bga-swipebacklayout:1.2.0@aar'
+    implementation "cn.bingoogolapple:bga-swipebacklayout:$rootProject.ext.swipebacklayout"
     // 键对值存储器
-    implementation "com.orhanobut:hawk:2.0.1"
-    def nav_version = "1.0.0-rc02"
+    implementation "com.orhanobut:hawk:$rootProject.ext.hawk"
     // For Kotlin use navigation-fragment-ktx
-    implementation "android.arch.navigation:navigation-fragment:$nav_version"
+    implementation "android.arch.navigation:navigation-fragment:$rootProject.ext.nav_version"
     // For Kotlin use navigation-ui-ktx
-    implementation "android.arch.navigation:navigation-ui:$nav_version"
+    implementation "android.arch.navigation:navigation-ui:$rootProject.ext.nav_version"
 
 //    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
     // 底部多级联动选择对话框
-    implementation('com.github.gzu-liyujiang.AndroidPicker:WheelPicker:1.5.6') {
+    implementation("com.github.gzu-liyujiang.AndroidPicker:WheelPicker:$rootProject.ext.WheelPicker") {
         exclude group: 'com.android.support'
     }
 
