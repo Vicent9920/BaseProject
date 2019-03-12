@@ -5,11 +5,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "com.vincent.baseproject"
-        minSdkVersion 21
-        targetSdkVersion 28
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -17,12 +17,12 @@ android {
     }
 
         signingConfigs {
-//        release {
-//            keyAlias '密钥别称'
-//            keyPassword '密钥密码'
-//            storeFile file('E:/MySign.jks')
-//            storePassword '密钥库密码'
-//        }
+        release {
+            keyAlias 'base'
+            keyPassword 'base2019'
+            storeFile file('../base.jks')
+            storePassword 'base2019'
+        }
 
 //        debug {
 //            keyAlias '密钥别称'
@@ -33,15 +33,17 @@ android {
     }
     buildTypes {
         release {
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
             // 移除无用的resource文件，前提minifyEnabled必须打开
             shrinkResources true
             // ZipAlign优化
             zipAlignEnabled true
             // 设置混淆
             minifyEnabled true
-            // 正式环境签名
-            //signingConfig signingConfigs.release
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // 开发环境签名
+            signingConfig signingConfigs.release
         }
 
         debug {
@@ -54,6 +56,12 @@ android {
             // 开发环境签名
             //signingConfig signingConfigs.release
         }
+    }
+
+    compileOptions {
+        //使用JAVA8语法解析
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
