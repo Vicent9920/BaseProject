@@ -34,5 +34,7 @@ ext {
     EasyAndroid = '1.2.5'
     // adapter
     BaseRecyclerViewAdapterHelper = '2.9.46'
+    // autosize 屏幕适配
+    autosize = '1.1.2'
 
 }

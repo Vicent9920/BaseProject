@@ -2,6 +2,8 @@ package com.vincent.baselibrary.base
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.graphics.Color
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
@@ -11,6 +13,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.widget.Toolbar
+import me.jessyan.autosize.AutoSizeCompat
 
 
 /**

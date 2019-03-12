@@ -36,6 +36,8 @@ dependencies {
     api "androidx.recyclerview:recyclerview:$rootProject.ext.recyclerview"
     // Easy 工具类
     api "com.github.yjfnypeu:EasyAndroid:$rootProject.ext.EasyAndroid"
+    // 屏幕适配
+    api "me.jessyan:autosize:$rootProject.ext.autosize"
     // Adapter
     api "com.github.CymChad:BaseRecyclerViewAdapterHelper:$rootProject.ext.BaseRecyclerViewAdapterHelper"
     // ViewModel and LiveData
