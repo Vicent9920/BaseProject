@@ -5,6 +5,7 @@ import android.content.Intent
 import com.vincent.baselibrary.base.BaseLazyFragment
 import com.vincent.baseproject.R
 import com.vincent.baseproject.ui.DialogActivity
+import com.vincent.baseproject.ui.WebActivity
 import com.vincent.baseproject.ui.login.LoginActivity
 import com.vincent.baseproject.ui.login.RegisterActivity
 import kotlinx.android.synthetic.main.app_toolbar.*
@@ -29,6 +30,9 @@ class HomeFragmentD : BaseLazyFragment() {
         }
         homeD_btn_register.setOnClickListener {
             startActivity(Intent(mActivity,RegisterActivity::class.java))
+        }
+        homeD_btn_browser.setOnClickListener {
+            startActivity(Intent(mActivity,WebActivity::class.java).putExtra("url","https://www.pgyer.com/he3F"))
         }
     }
 

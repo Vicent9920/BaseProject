@@ -1,0 +1,38 @@
+ext {
+    // Sdk and tools
+    targetSdkVersion = 28
+    compileSdkVersion = 28
+    minSdkVersion = 21
+    // Google Support
+    appcompat = '1.1.0-alpha01'
+    core = '1.1.0-alpha01'
+    constraintlayout = '1.1.2'
+    support--v4 = '1.0.0-beta01'
+    junit = '4.12'
+    runner = '1.1.0-alpha4'
+    espresso--core = '3.1.0-alpha4'
+
+    // Retrofit
+    retrofit = '2.3.0'
+    converter--gson = '2.3.0'
+
+    // 状态栏
+    statusbarutil = '1.5.1'
+    // 页面侧滑
+    swipebacklayout = '1.2.0@aar'
+    // 键对值存储
+    hawk = '2.0.1'
+    // Jetpack navigation
+    nav_version = '1.0.0-rc02'
+    // jetpack LifeRecycler
+    lifecycle_version = '2.0.0'
+    // 滑动选择对话框
+    WheelPicker = '1.5.6'
+    // RecyclerView
+    recyclerview = '1.0.0'
+    // 工具库
+    EasyAndroid = '1.2.5'
+    // adapter
+    BaseRecyclerViewAdapterHelper = '2.9.46'
+
+}
