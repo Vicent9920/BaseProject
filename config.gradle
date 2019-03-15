@@ -36,5 +36,6 @@ ext {
     BaseRecyclerViewAdapterHelper = '2.9.46'
     // autosize 屏幕适配
     autosize = '1.1.2'
+    citypicker = '2.0.3'
 
 }

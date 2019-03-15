@@ -93,7 +93,7 @@ dependencies {
     implementation("com.github.gzu-liyujiang.AndroidPicker:WheelPicker:$rootProject.ext.WheelPicker") {
         exclude group: 'com.android.support'
     }
-
+    implementation "com.zaaach:citypicker:$rootProject.ext.citypicker"
 //    implementation "androidx.multidex:multidex:2.0.0"
     //    implementation project(':baselibrary')
     compile project(path: ':dialoglibrary')
