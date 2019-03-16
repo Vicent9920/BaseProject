@@ -1,29 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               tools:context=".ui.home.fragment.HomeFragmentD">
 
-    <include
-            layout="@layout/app_toolbar"/>
+    <!--<include-->
+            <!--layout="@layout/app_toolbar"/>-->
+
+
 
     <androidx.core.widget.NestedScrollView
+            android:id="@+id/nsv_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:overScrollMode="never">
 
+
+
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingStart="30dp"
-                android:paddingEnd="30dp"
                 android:orientation="vertical">
+
+            <com.zhouwei.mzbanner.MZBannerView
+                    android:id="@+id/banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="144dp"
+                    app:open_mz_mode="true"
+                    app:canLoop="true"
+                    app:indicatorAlign="center"
+                    app:middle_page_cover="true"
+            />
 
             <Button
                     android:id="@+id/homeD_btn_dialog"
                     style="@style/ButtonStyle"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -32,6 +47,8 @@
             <Button
                     android:id="@+id/homeD_btn_login"
                     style="@style/ButtonStyle"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -40,6 +57,8 @@
             <Button
                     android:id="@+id/homeD_btn_register"
                     style="@style/ButtonStyle"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -48,6 +67,8 @@
             <Button
                     android:id="@+id/homeD_btn_about"
                     style="@style/ButtonStyle"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -56,13 +77,38 @@
             <Button
                     android:id="@+id/homeD_btn_browser"
                     style="@style/ButtonStyle"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
+                    android:layout_marginBottom="72dp"
                     android:text="点我进入浏览器界面" />
 
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-</LinearLayout>
+    <RelativeLayout
+            android:id="@+id/top_layout"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@android:color/transparent">
+
+        <TextView
+                android:id="@+id/tv_title"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:lines="1"
+                android:maxLength="12"
+                tools:text="我的"
+                android:ellipsize="end"
+                android:textColor="@color/black80"
+                android:textSize="16sp"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

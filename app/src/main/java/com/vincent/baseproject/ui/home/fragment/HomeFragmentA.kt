@@ -60,12 +60,13 @@ class HomeFragmentA : BaseLazyFragment() {
             hotCities.add(HotCity("深圳", "广东", "101280601"))
             hotCities.add(HotCity("杭州", "浙江", "101210101"))
             CityPicker.from(mActivity) //activity或者fragment
-                .enableAnimation(false)    //启用动画效果，默认无
+                .enableAnimation(true)    //启用动画效果，默认无
 //                .setAnimationStyle(anim)	//自定义动画
                 .setLocatedCity(LocatedCity("杭州", "浙江", "101210101"))  //APP自身已定位的城市，传null会自动定位（默认）
                 .setHotCities(hotCities)    //指定热门城市
                 .setOnPickListener(object : OnPickListener {
                     override fun onPick(position: Int, data: City?) {
+                        homeA_tv_address.text = data?.name
                         EasyToast.DEFAULT.show(data?.name)
                     }
 
@@ -78,12 +79,12 @@ class HomeFragmentA : BaseLazyFragment() {
                         Handler().postDelayed(Runnable {
                             //定位完成之后更新数据
                             CityPicker.from(this@HomeFragmentA)
-                                .locateComplete(LocatedCity("深圳", "广东", "101280601"), LocateState.SUCCESS)
+                                .locateComplete(LocatedCity("成都", "四川", "101270101"), LocateState.SUCCESS)
                         }, 3000)
                     }
 
                 })
-                .show();
+                .show()
         }
     }
 

@@ -94,6 +94,10 @@ dependencies {
         exclude group: 'com.android.support'
     }
     implementation "com.zaaach:citypicker:$rootProject.ext.citypicker"
+
+    implementation "com.github.pinguo-zhouwei:MZBannerView:$rootProject.ext.mzBanner"
+    implementation "com.github.bumptech.glide:glide:$rootProject.ext.glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.ext.glide"
 //    implementation "androidx.multidex:multidex:2.0.0"
     //    implementation project(':baselibrary')
     compile project(path: ':dialoglibrary')

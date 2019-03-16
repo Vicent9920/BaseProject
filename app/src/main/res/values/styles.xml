@@ -23,40 +23,62 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
-
-        <style name="toolbar_theme" parent="@style/AppBaseTheme">
-
-
-        </style>
-
-        <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
-            <!-- 状态栏和标题栏颜色-->
-            <item name="colorPrimary">@color/colorPrimary</item>
-            <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-            <!-- 标题颜色-->
-            <item name="android:textColorPrimary">@android:color/white</item>
-            <!-- 溢出菜单图标颜色-->
-            <item name="colorControlNormal">@android:color/white</item>
-            <!-- 左边箭头 -->
-            <item name="drawerArrowStyle">@style/left_Drawer_Arrow_Style</item>
-            <!-- 溢出菜单文字颜色-->
-            <item name="textAppearanceLargePopupMenu">@style/Overflow_Menu_Text_style</item>
-
-
-        </style>
-        <!-- 左边的箭头指示-->
-        <style name="left_Drawer_Arrow_Style" parent="Widget.AppCompat.DrawerArrowToggle">
-            <item name="spinBars">true</item>
-            <item name="color">@android:color/black</item>
-        </style>
-
-        <!--溢出菜单文字样式-->
-        <style name="Overflow_Menu_Text_style" parent="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large">
-            <item name="android:textColor">@color/black</item>
-        </style>
+    <style name="SelectCityTheme" parent="DefaultCityPickerTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- 窗口背景颜色 -->
+        <item name="android:windowBackground">@color/windowBackground</item>
+        <!-- 应用的主要色调，actionBar默认使用该颜色，Toolbar导航栏的底色 -->
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!-- 应用的主要暗色调，statusBarColor默认使用该颜色 -->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!-- 应用的强调色，CheckBox，RadioButton，SwitchCompat等一般控件的选中效果默认采用该颜色 -->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+        <!-- ActionMode覆盖Actionbar，不顶下来 -->
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- ActionMode的颜色 -->
+        <item name="actionModeBackground">@color/colorPrimary</item>
+        <!-- 解决 Android 5.1 及以上版本 Button 英文字符串自动变大写的问题 -->
+        <item name="android:textAllCaps">false</item>
+    </style>
 
 
-        <!-- 默认圆角按钮样式 -->
+    <style name="toolbar_theme" parent="@style/AppBaseTheme">
+
+
+    </style>
+
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- 状态栏和标题栏颜色-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!-- 标题颜色-->
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <!-- 溢出菜单图标颜色-->
+        <item name="colorControlNormal">@android:color/white</item>
+        <!-- 左边箭头 -->
+        <item name="drawerArrowStyle">@style/left_Drawer_Arrow_Style</item>
+        <!-- 溢出菜单文字颜色-->
+        <item name="textAppearanceLargePopupMenu">@style/Overflow_Menu_Text_style</item>
+
+
+    </style>
+    <!-- 左边的箭头指示-->
+    <style name="left_Drawer_Arrow_Style" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@android:color/black</item>
+    </style>
+
+    <!--溢出菜单文字样式-->
+    <style name="Overflow_Menu_Text_style" parent="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+
+    <!-- 默认圆角按钮样式 -->
     <style name="ButtonStyle" parent="Widget.AppCompat.Button.Borderless">
         <item name="android:paddingLeft">15dp</item>
         <item name="android:paddingRight">15dp</item>
