@@ -32,6 +32,7 @@
                     app:canLoop="true"
                     app:indicatorAlign="center"
                     app:middle_page_cover="true"
+                    android:background="@color/colorPrimary"
             />
 
             <Button
