@@ -9,7 +9,7 @@
 ![消息](./screenCapture/tab3.jpg)
 ![我的](./screenCapture/tab4.jpg)
 
-## 二、项目的依赖：
+## 二、集成框架：
 
 > // ViewModel and LiveData
 > 
