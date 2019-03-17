@@ -150,7 +150,11 @@ class WebActivity : UIActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        unregisterReceiver(DownloadCompleteReceiver())
+        try {
+            // 如果没有注册的话注销会有异常  IllegalArgumentException
+            unregisterReceiver(DownloadCompleteReceiver())
+        } catch (e: Exception) {
+        }
         (web_wv_view.parent as ViewGroup).removeView(web_wv_view)
         web_wv_view.clearHistory()
         web_wv_view.stopLoading()
