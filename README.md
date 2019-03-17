@@ -3,9 +3,13 @@
 
 登录模块使用 MVVM 框架实现，首页通过 Navigation 来实现 Fragment 控制，其它基本上都是属于简单的 Activity 基类、 Fragment 基类封装以及部分自定义 View 编写，具体代码详见内容：
 
-## 一、使用
+## 一、项目截图：
+![首页](./screenCapture/tab1.jpg)
+![发现](./screenCapture/tab2.jpg)
+![消息](./screenCapture/tab3.jpg)
+![我的](./screenCapture/tab4.jpg)
 
-## 二、项目的依赖框架如下：
+## 二、项目的依赖：
 
 > // ViewModel and LiveData
 > 
