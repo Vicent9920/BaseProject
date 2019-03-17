@@ -73,6 +73,10 @@
 > 
 > implementation "com.orhanobut:hawk:$rootProject.ext.hawk"
 
+
+## 三、联系方式：
+ 1. 本人邮箱：weixing9920@163.com
+ 2. [轮子哥：https://www.jianshu.com/u/f7bb67d86765](https://www.jianshu.com/u/f7bb67d86765)
 ## 三、下一周计划：
  * 添加版本更新功能
  * 添加扫一扫功能
