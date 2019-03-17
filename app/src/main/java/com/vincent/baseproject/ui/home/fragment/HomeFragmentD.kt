@@ -74,6 +74,10 @@ class HomeFragmentD : BaseLazyFragment() {
         homeD_btn_browser.setOnClickListener {
             startActivity(Intent(mActivity, WebActivity::class.java).putExtra("url", "https://www.pgyer.com/he3F"))
         }
+
+        homeD_btn_about.setOnClickListener {
+            startActivity(Intent(mActivity, WebActivity::class.java).putExtra("url", "https://github.com/Vicent9920/BaseProject/blob/master/README.md"))
+        }
     }
 
     override fun onResume() {
