@@ -76,6 +76,16 @@
                     android:text="点我进入关于界面" />
 
             <Button
+                    android:id="@+id/homeD_btn_setting"
+                    style="@style/ButtonStyle"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="点我进入设置界面" />
+
+            <Button
                     android:id="@+id/homeD_btn_browser"
                     style="@style/ButtonStyle"
                     android:layout_marginStart="30dp"

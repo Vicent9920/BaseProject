@@ -1,7 +1,7 @@
 此项目是在轮子哥的[模板工程](https://github.com/getActivity/AndroidProject)上进行重构的，初衷是为了删除一些自己不熟悉的框架而添加一些自己熟悉的框架，并且使用 androidX、jetpack、Kotlin，完成一个自己用起来顺手的模板工程。这也符合其开源初衷：
 > 当我们日复一日年复一年的搬砖的时候，你是否曾想过提升一下开发效率，如果一个模板的项目摆在你的面前，你还会选择自己搭架构么
 
-登录模块使用 MVVM 框架实现，首页通过 Navigation 来实现 Fragment 控制，其它基本上都是属于简单的 Activity 基类、 Fragment 基类封装以及部分自定义 View 编写，具体代码详见内容：
+登录模块使用 MVVM 框架实现，首页通过 Navigation 来实现 Fragment 控制，WebActivity 增加 WebView 下载文件功能，其它基本上都是属于简单的 Activity 基类、 Fragment 基类封装以及部分自定义 View 编写，具体代码详见内容。
 
 ## 一、项目截图：
 ![首页](./screenCapture/tab1.jpg)

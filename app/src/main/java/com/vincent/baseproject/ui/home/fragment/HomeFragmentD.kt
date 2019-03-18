@@ -12,10 +12,10 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.core.widget.NestedScrollView
 import com.bumptech.glide.Glide
-import com.vincent.baselibrary.base.BaseActivity
 import com.vincent.baselibrary.base.BaseLazyFragment
 import com.vincent.baseproject.R
 import com.vincent.baseproject.ui.DialogActivity
+import com.vincent.baseproject.ui.SettingActivity
 import com.vincent.baseproject.ui.WebActivity
 import com.vincent.baseproject.ui.login.LoginActivity
 import com.vincent.baseproject.ui.login.RegisterActivity
@@ -76,7 +76,16 @@ class HomeFragmentD : BaseLazyFragment() {
         }
 
         homeD_btn_about.setOnClickListener {
-            startActivity(Intent(mActivity, WebActivity::class.java).putExtra("url", "https://github.com/Vicent9920/BaseProject/blob/master/README.md"))
+            startActivity(
+                Intent(mActivity, WebActivity::class.java).putExtra(
+                    "url",
+                    "https://github.com/Vicent9920/BaseProject/blob/master/README.md"
+                )
+            )
+        }
+
+        homeD_btn_setting.setOnClickListener {
+            startActivity(Intent(mActivity,SettingActivity::class.java))
         }
     }
 

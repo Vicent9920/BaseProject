@@ -5,4 +5,11 @@
         <attr name="circle_border" format="reference|float"/>
         <attr name="circle_color" format="color"/>
     </declare-styleable>
+
+    <declare-styleable name="SwitchButton" >
+        <!-- 是否选中 -->
+        <attr name="android:checked" />
+        <!-- 是否禁用 -->
+        <attr name="android:enabled" />
+    </declare-styleable>
 </resources>

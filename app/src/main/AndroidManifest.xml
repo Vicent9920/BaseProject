@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.vincent.baseproject">
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <!--测试用-->
+    <uses-permission android:name="android.permission.INTERNET"/> <!-- 测试用 -->
     <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
     <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
 
@@ -16,12 +16,16 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".ui.SettingActivity">
+        </activity>
+
         <meta-data
                 android:name="design_width_in_dp"
                 android:value="360"/>
         <meta-data
                 android:name="design_height_in_dp"
                 android:value="640"/>
+
         <activity android:name=".ui.WebActivity">
         </activity>
         <activity android:name=".ui.login.RegisterActivity">
@@ -30,8 +34,9 @@
         </activity>
         <activity android:name=".ui.DialogActivity">
         </activity>
-        <activity android:name=".ui.home.MainActivity"
-        android:theme="@style/SelectCityTheme">
+        <activity
+                android:name=".ui.home.MainActivity"
+                android:theme="@style/SelectCityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
