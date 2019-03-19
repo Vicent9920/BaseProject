@@ -62,10 +62,7 @@ class BaseDialogFragment : DialogFragment() {
 
     @NonNull
     override fun onCreateDialog(@Nullable savedInstanceState: Bundle?): Dialog {
-        mDialog?.let {
-            return mDialog
-        } ?: return com.vincent.dialoglibrary.base.BaseDialog(context, -1)
-
+        return mDialog
     }
 
     open class Builder<B : com.vincent.dialoglibrary.base.BaseDialog.Builder<B>> (val activity: FragmentActivity, themeResId: Int = -1) :

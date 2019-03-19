@@ -12,6 +12,7 @@
             layout="@layout/app_toolbar"/>
 
     <com.vincent.baseproject.widget.SettingBar
+            android:id="@+id/setting_setBar_about"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -19,6 +20,7 @@
             app:bar_rightIcon="@mipmap/icon_black"/>
 
     <com.vincent.baseproject.widget.SettingBar
+            android:id="@+id/setting_setBar_update"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:bar_leftText="检查更新"
@@ -32,11 +34,12 @@
             app:bar_rightIcon="@mipmap/icon_black"/>
 
     <com.vincent.baseproject.widget.SettingBar
+            android:id="@+id/setting_setBar_cache"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             app:bar_leftText="清空缓存"
-            app:bar_rightText="2.73M"
+            tools:bar_rightText="2.73M"
             app:bar_rightColor="@color/gray"
             app:bar_rightIcon="@mipmap/icon_black"/>
 
@@ -44,8 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            app:bar_leftText="自动登录"
-            app:bar_rightIcon="@mipmap/icon_black">
+            app:bar_leftText="自动登录">
         <com.vincent.baselibrary.widget.SwitchButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

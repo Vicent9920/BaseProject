@@ -218,23 +218,19 @@ class BaseDialog(context: Context?, val themeResId: Int = R.style.BaseDialogStyl
          */
         open fun create(): BaseDialog {
 
-            // 判断布局是否为空
-            mContentView ?: throw IllegalArgumentException("Dialog layout cannot be empty")
-
-
             val layoutParams = mContentView.layoutParams
             layoutParams?.let {
-                if (mWidth === ViewGroup.LayoutParams.WRAP_CONTENT) {
+                if (mWidth == ViewGroup.LayoutParams.WRAP_CONTENT) {
                     mWidth = layoutParams.width
                 }
-                if (mHeight === ViewGroup.LayoutParams.WRAP_CONTENT) {
+                if (mHeight == ViewGroup.LayoutParams.WRAP_CONTENT) {
                     mHeight = layoutParams.height
                 }
             }
 
 
             // 判断有没有设置主题
-            if (mThemeResId === -1) {
+            if (mThemeResId == -1) {
                 mDialog = BaseDialog(mContext)
             } else {
                 mDialog = BaseDialog(mContext, mThemeResId)
@@ -258,7 +254,7 @@ class BaseDialog(context: Context?, val themeResId: Int = R.style.BaseDialogStyl
 
 
             // 判断有没有设置动画
-            if (mAnimations === -1) {
+            if (mAnimations == -1) {
                 // 没有的话就设置默认的动画
                 mAnimations = AnimStyle.DEFAULT
             }

@@ -76,12 +76,8 @@ class HomeFragmentD : BaseLazyFragment() {
         }
 
         homeD_btn_about.setOnClickListener {
-            startActivity(
-                Intent(mActivity, WebActivity::class.java).putExtra(
-                    "url",
-                    "https://github.com/Vicent9920/BaseProject/blob/master/README.md"
-                )
-            )
+            startActivity( Intent(mActivity, WebActivity::class.java)
+                .putExtra("url","https://github.com/Vicent9920/BaseProject/blob/master/README.md"))
         }
 
         homeD_btn_setting.setOnClickListener {

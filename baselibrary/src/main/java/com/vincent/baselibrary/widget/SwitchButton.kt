@@ -102,7 +102,7 @@ class SwitchButton(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : 
         when (MeasureSpec.getMode(heightMeasureSpec)) {
             MeasureSpec.AT_MOST, MeasureSpec.UNSPECIFIED -> heightSpec =
                 MeasureSpec.makeMeasureSpec(
-                    (MeasureSpec.getSize(widthMeasureSpec) * mAspectRatio).toInt()
+                    (MeasureSpec.getSize(widthSpec) * mAspectRatio).toInt()
                             + paddingTop + paddingBottom, MeasureSpec.EXACTLY
                 )
             MeasureSpec.EXACTLY -> {
