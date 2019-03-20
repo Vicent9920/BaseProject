@@ -18,7 +18,6 @@ import com.vincent.dialoglibrary.base.BaseDialog
 import com.vincent.dialoglibrary.base.BaseDialogFragment
 import kotlinx.android.synthetic.main.activity_setting.*
 import kotlinx.android.synthetic.main.app_toolbar.*
-import kotlinx.android.synthetic.main.xupdate_dialog_app.*
 import org.lzh.framework.updatepluginlib.UpdateBuilder
 import org.lzh.framework.updatepluginlib.base.CheckNotifier
 import org.lzh.framework.updatepluginlib.base.DownloadCallback
@@ -205,6 +204,6 @@ class Custom2(activity: FragmentActivity, themeResId: Int = -1) :
         if (progressBar == null) {
             progressBar = mContentView.findViewById(com.vincent.baseproject.R.id.dialog_npb_progress)
         }
-        progressBar?.progress = progress
+        progressBar?.setProgress(progress)
     }
 }

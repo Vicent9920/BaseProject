@@ -23,7 +23,7 @@ import com.vincent.baseproject.common.UIActivity
 import kotlinx.android.synthetic.main.activity_web.*
 import kotlinx.android.synthetic.main.app_toolbar.*
 
-
+const val INFO = "info:"
 class WebActivity : UIActivity() {
     override fun getLayoutId() = com.vincent.baseproject.R.layout.activity_web
 
@@ -103,11 +103,28 @@ class WebActivity : UIActivity() {
 
     override fun initData() {
         super.initData()
-        web_wv_view.loadUrl(intent.getStringExtra("url"))
+        val url = intent.getStringExtra("url")
+        if(url.startsWith(INFO)){
+            val info = url.replace(INFO,"")
+            val standard = "<html> \n" +
+            "<head> \n" +
+                    "<style type=\"text/css\"> \n" +
+                    "body {font-size:13px;}\n" +
+                    "</style> \n" +
+                    "</head> \n" +
+                    "<body>" +
+                    info+
+              "</body>" +
+                    "</html>"
+            web_wv_view.loadDataWithBaseURL(null,standard,"text/html","utf-8",null)
+        }else{
+            web_wv_view.loadUrl(intent.getStringExtra("url"))
 //        //注册下载文件广播
-        registerReceiver(
-            DownloadCompleteReceiver(),
-            IntentFilter().apply { this.addAction(DownloadManager.ACTION_DOWNLOAD_COMPLETE) })
+            registerReceiver(
+                DownloadCompleteReceiver(),
+                IntentFilter().apply { this.addAction(DownloadManager.ACTION_DOWNLOAD_COMPLETE) })
+        }
+
     }
 
     override fun initEvent() {

@@ -1,10 +1,13 @@
 package com.vincent.baseproject.ui.home.fragment
 
+import android.content.Intent
 import android.os.Handler
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.haoge.easyandroid.easy.EasyToast
 import com.vincent.baselibrary.base.BaseLazyFragment
+import com.vincent.baseproject.R
+import com.vincent.baseproject.ui.ScannerActivity
 import com.vincent.baseproject.widget.XCollapsingToolbarLayout
 import com.zaaach.citypicker.CityPicker
 import com.zaaach.citypicker.adapter.OnPickListener
@@ -30,19 +33,11 @@ class HomeFragmentA : BaseLazyFragment() {
         ctl_top_bar.mListener = object : XCollapsingToolbarLayout.OnScrimsListener {
             override fun onScrimsStateChange(shown: Boolean) {
                 if (shown) {
-                    homeA_tv_address.setTextColor(
-                        ContextCompat.getColor(
-                            context!!,
-                            com.vincent.baseproject.R.color.black
-                        )
-                    )
+                    homeA_tv_address.setTextColor(ContextCompat.getColor( mActivity,R.color.black))
+                    homeA_iv_scan.setImageResource(R.mipmap.scan_change)
                 } else {
-                    homeA_tv_address.setTextColor(
-                        ContextCompat.getColor(
-                            context!!,
-                            com.vincent.baseproject.R.color.white
-                        )
-                    )
+                    homeA_tv_address.setTextColor(ContextCompat.getColor(mActivity, R.color.white))
+                    homeA_iv_scan.setImageResource(R.mipmap.scan_normal)
                 }
                 homeA_tv_search.isSelected = shown
             }
@@ -85,6 +80,9 @@ class HomeFragmentA : BaseLazyFragment() {
 
                 })
                 .show()
+        }
+        homeA_iv_scan.setOnClickListener {
+            startActivity(Intent(mActivity,ScannerActivity::class.java))
         }
     }
 

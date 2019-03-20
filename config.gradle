@@ -44,4 +44,6 @@ ext {
 
     //版本更新
     updatePlugin = '3.1.2'
+    // 扫一扫
+    zxing = '2.1.3'
 }

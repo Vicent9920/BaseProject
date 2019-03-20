@@ -46,7 +46,6 @@
                             android:id="@+id/homeA_tv_address"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="@dimen/dp_10"
                             android:gravity="center_vertical"
                             android:text="地区"
                             android:textColor="@color/white"
@@ -54,15 +53,23 @@
 
                     <TextView
                             android:id="@+id/homeA_tv_search"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="match_parent"
                             android:layout_marginStart="20dp"
-                            android:layout_marginEnd="50dp"
+                            android:layout_marginEnd="20dp"
                             android:background="@drawable/home_search_bar_bg"
                             android:gravity="center"
                             android:text="请输入搜索关键字"
                             android:textColor="#a4a4a4"
                             android:textSize="@dimen/sp_14"/>
+
+                    <ImageView
+                            android:id="@+id/homeA_iv_scan"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@mipmap/scan_normal"
+                            android:layout_marginEnd="10dp"/>
 
                 </LinearLayout>
 

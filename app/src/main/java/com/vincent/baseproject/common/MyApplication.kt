@@ -1,25 +1,14 @@
 package com.vincent.baseproject.common
 
-import android.app.Activity
 import android.app.Application
-import android.app.Dialog
-import android.view.View
-import androidx.fragment.app.FragmentActivity
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper
 import com.haoge.easyandroid.EasyAndroid
-import com.haoge.easyandroid.safe.SafeDialogHandle
 import com.orhanobut.hawk.Hawk
-import com.vincent.baseproject.widget.NumberProgressBar
-import com.vincent.dialoglibrary.MessageDialog
-import com.vincent.dialoglibrary.base.BaseDialog
-import com.vincent.dialoglibrary.base.BaseDialogFragment
 import me.jessyan.autosize.AutoSizeConfig
 import org.json.JSONObject
 import org.lzh.framework.updatepluginlib.UpdateConfig
 import org.lzh.framework.updatepluginlib.base.*
-import org.lzh.framework.updatepluginlib.model.CheckEntity
 import org.lzh.framework.updatepluginlib.model.Update
-import java.io.File
 
 
 /**

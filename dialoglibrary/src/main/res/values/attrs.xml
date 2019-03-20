@@ -3,9 +3,9 @@
 
     <declare-styleable name="CircularProgressDrawable">
         <attr name="cpd_padding" format="reference|dimension"/>
-        <attr name="cpd_initialAngle" format="reference|integer"/>
-        <attr name="cpd_maxSweepAngle" format="reference|integer"/>
-        <attr name="cpd_minSweepAngle" format="reference|integer"/>
+        <attr name="cpd_initialAngle" format="reference|float"/>
+        <attr name="cpd_maxSweepAngle" format="reference|float"/>
+        <attr name="cpd_minSweepAngle" format="reference|float"/>
         <attr name="cpd_strokeSize" format="reference|dimension"/>
         <attr name="cpd_strokeColor" format="reference|color"/>
         <attr name="cpd_strokeSecondaryColor" format="reference|color"/>

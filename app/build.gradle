@@ -104,6 +104,8 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.ext.glide"
     // 版本更新
     implementation "com.github.yjfnypeu:UpdatePlugin:$rootProject.ext.updatePlugin"
+
+    implementation "com.mylhyl:zxingscanner:$rootProject.ext.zxing"
 //    implementation "androidx.multidex:multidex:2.0.0"
     //    implementation project(':baselibrary')
     compile project(path: ':dialoglibrary')
