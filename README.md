@@ -91,6 +91,7 @@
 > implementation "com.github.yjfnypeu:UpdatePlugin:$rootProject.ext.updatePlugin"
 >
 > //城市选择 https://github.com/zaaach/CityPicker
+> 
 > implementation "com.zaaach:citypicker:$rootProject.ext.citypicker"
 > 
 > // 扫一扫 https://github.com/mylhyl/Android-Zxing
