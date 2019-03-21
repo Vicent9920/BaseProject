@@ -1,5 +1,6 @@
 package com.vincent.baseproject.ui
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
@@ -10,6 +11,8 @@ import android.view.KeyEvent
 import com.google.gson.Gson
 import com.google.zxing.Result
 import com.google.zxing.client.result.*
+import com.haoge.easyandroid.easy.EasyPermissions
+import com.haoge.easyandroid.easy.EasyToast
 import com.mylhyl.zxing.scanner.OnScannerCompletionListener
 import com.mylhyl.zxing.scanner.decode.QRDecode
 import com.vincent.baselibrary.base.BaseActivity
@@ -24,6 +27,8 @@ class ScannerActivity : BaseActivity(), OnScannerCompletionListener {
     override fun getLayoutId() = R.layout.activity_scanner
 
     override fun initView() {
+        scanner_toolbar.setNavigationIcon(R.mipmap.back)
+        initToolBar(scanner_toolbar)
         scanner_view.setOnScannerCompletionListener(this)
         scanner_view.setMediaResId(R.raw.weixin_beep)//设置扫描成功的声音
         scanner_view.setDrawText("将二维码放入框内", true)
@@ -35,17 +40,23 @@ class ScannerActivity : BaseActivity(), OnScannerCompletionListener {
 
     override fun initEvent() {
         super.initEvent()
-        scan_iv_back.setOnClickListener { finish() }
         scan_iv_flash.setOnClickListener {
             scanner_view.toggleLight(mode)
             scan_iv_flash.isSelected = mode
             mode = !mode
         }
         scan_tv_pictures.setOnClickListener {
-            val intent = Intent(
-                Intent.ACTION_PICK,
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            startActivityForResult(intent, REQ_PHOTO)
+            EasyPermissions.create(Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE).callback {
+                if(it){
+                    val intent = Intent(
+                        Intent.ACTION_PICK,
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                    startActivityForResult(intent, REQ_PHOTO)
+                }else{
+                    EasyToast.DEFAULT.show("你拒绝了存储权限，无法打开相册")
+                }
+            }.request(this)
+
         }
     }
 
@@ -91,28 +102,31 @@ class ScannerActivity : BaseActivity(), OnScannerCompletionListener {
     }
 
     override fun onScannerCompletion(rawResult: Result?, parsedResult: ParsedResult?, barcode: Bitmap?) {
-        parsedResult ?: return
-        when (parsedResult.type) {
-            ParsedResultType.ISBN -> {
-                val info = (parsedResult as ISBNParsedResult).isbn
-                startActivity(Intent(this,WebActivity::class.java).putExtra("url","$INFO$info"))
-            }
-            ParsedResultType.TEXT -> {
-                val info = (parsedResult as TextParsedResult).text
-                startActivity(Intent(this,WebActivity::class.java).putExtra("url","$INFO$info"))
-            }
-            ParsedResultType.URI -> {
-                val result = parsedResult as URIParsedResult
-                startActivity(Intent(this,WebActivity::class.java).putExtra("url",result.uri))
-            }
-            // ParsedResultType.ADDRESSBOOK, ParsedResultType.PRODUCT, ParsedResultType.TEL, ParsedResultType.SMS 等
-            else -> {
-                val info = Gson().toJson(parsedResult)
-                startActivity(Intent(this,WebActivity::class.java).putExtra("url","$INFO$info"))
+        rawResult?.let {
+            parsedResult ?: return@let
+            when (parsedResult.type) {
+                ParsedResultType.ISBN -> {
+                    val info = (parsedResult as ISBNParsedResult).isbn
+                    startActivity(Intent(this,WebActivity::class.java).putExtra("url","$INFO$info"))
+                }
+                ParsedResultType.TEXT -> {
+                    val info = (parsedResult as TextParsedResult).text
+                    startActivity(Intent(this,WebActivity::class.java).putExtra("url","$INFO$info"))
+                }
+                ParsedResultType.URI -> {
+                    val result = parsedResult as URIParsedResult
+                    startActivity(Intent(this,WebActivity::class.java).putExtra("url",result.uri))
+                }
+                // ParsedResultType.ADDRESSBOOK, ParsedResultType.PRODUCT, ParsedResultType.TEL, ParsedResultType.SMS 等
+                else -> {
+                    val info = Gson().toJson(parsedResult)
+                    startActivity(Intent(this,WebActivity::class.java).putExtra("url","$INFO$info"))
+                }
+
             }
 
+            finish()
         }
 
-        finish()
     }
 }

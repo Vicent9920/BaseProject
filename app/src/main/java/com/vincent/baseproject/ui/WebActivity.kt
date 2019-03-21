@@ -16,6 +16,7 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.*
+import androidx.core.content.ContextCompat.getSystemService
 import com.haoge.easyandroid.easy.EasyLog
 import com.haoge.easyandroid.easy.EasyPermissions
 import com.haoge.easyandroid.easy.EasyToast
@@ -108,12 +109,16 @@ class WebActivity : UIActivity() {
             val info = url.replace(INFO,"")
             val standard = "<html> \n" +
             "<head> \n" +
+                    "<title>扫描结果</title>"+
+                    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />"+
                     "<style type=\"text/css\"> \n" +
                     "body {font-size:13px;}\n" +
                     "</style> \n" +
                     "</head> \n" +
                     "<body>" +
+                    "<div style=\"word-break: break-all;\">{" +
                     info+
+                    "}</div>"+
               "</body>" +
                     "</html>"
             web_wv_view.loadDataWithBaseURL(null,standard,"text/html","utf-8",null)
