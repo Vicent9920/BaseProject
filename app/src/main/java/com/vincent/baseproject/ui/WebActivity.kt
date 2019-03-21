@@ -112,13 +112,13 @@ class WebActivity : UIActivity() {
                     "<title>扫描结果</title>"+
                     "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />"+
                     "<style type=\"text/css\"> \n" +
-                    "body {font-size:13px;}\n" +
+                    "body {font-size:13px; background: #EEEEEE;}\n" +
                     "</style> \n" +
                     "</head> \n" +
                     "<body>" +
-                    "<div style=\"word-break: break-all;\">{" +
+                    "<div style=\"word-break: break-all;\">" +
                     info+
-                    "}</div>"+
+                    "</div>"+
               "</body>" +
                     "</html>"
             web_wv_view.loadDataWithBaseURL(null,standard,"text/html","utf-8",null)
