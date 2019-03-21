@@ -14,7 +14,7 @@
 ![发现](./screenCapture/tab2.jpg)
 ![消息](./screenCapture/tab3.jpg)
 ![我的](./screenCapture/tab4.jpg)
-![我的](./screenCapture/tab4.jpg)
+![设置](./screenCapture/setting.jpg)
 ![选择城市](./screenCapture/cityPicker.jpg)
 ![扫一扫](./screenCapture/scan.jpg)
 ![扫描结果](./screenCapture/scanResult.jpg)
@@ -104,3 +104,4 @@
 ## 五、下一步计划：
  * 新增全部网络提醒
  * 新增年月日选择对话框
+ * 解决城市选择自动定位异常以及查看扫一扫框架api警告原因
