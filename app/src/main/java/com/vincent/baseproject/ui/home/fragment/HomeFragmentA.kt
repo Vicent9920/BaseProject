@@ -75,7 +75,7 @@ class HomeFragmentA : BaseLazyFragment() {
                         //定位接口，需要APP自身实现，这里模拟一下定位
                         Handler().postDelayed( {
                             //定位完成之后更新数据
-                            CityPicker.from(this@HomeFragmentA)
+                            CityPicker.from(mActivity)
                                 .locateComplete(LocatedCity("成都", "四川", "101270101"), LocateState.SUCCESS)
                         }, 1500)
                     }

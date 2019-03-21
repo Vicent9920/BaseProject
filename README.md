@@ -86,22 +86,21 @@
 > 
 > implementation "com.orhanobut:hawk:$rootProject.ext.hawk"
 > 
-> // 版本更新
+> // 版本更新 https://github.com/yjfnypeu/UpdatePlugin
 >
 > implementation "com.github.yjfnypeu:UpdatePlugin:$rootProject.ext.updatePlugin"
 >
-> //城市选择
+> //城市选择 https://github.com/zaaach/CityPicker
 > implementation "com.zaaach:citypicker:$rootProject.ext.citypicker"
 > 
-> // 扫一扫
+> // 扫一扫 https://github.com/mylhyl/Android-Zxing
 > 
 > implementation "com.mylhyl:zxingscanner:$rootProject.ext.zxing"
 
 ## 四、联系方式：
- 1. 本人邮箱：weixing9920@163.com
- 2. [轮子哥：https://www.jianshu.com/u/f7bb67d86765](https://www.jianshu.com/u/f7bb67d86765)
+ 1. 邮箱：weixing9920@163.com
+ 2. 博客：[https://juejin.im/user/593def80fe88c2006a2707df/posts](https://juejin.im/user/593def80fe88c2006a2707df/posts)
 
 ## 五、下一步计划：
  * 新增全部网络提醒
  * 新增年月日选择对话框
- * 解决城市选择自动定位异常以及查看扫一扫框架api警告原因

@@ -14,6 +14,7 @@ import com.google.zxing.client.result.*
 import com.haoge.easyandroid.easy.EasyPermissions
 import com.haoge.easyandroid.easy.EasyToast
 import com.mylhyl.zxing.scanner.OnScannerCompletionListener
+import com.mylhyl.zxing.scanner.ScannerOptions
 import com.mylhyl.zxing.scanner.decode.QRDecode
 import com.vincent.baselibrary.base.BaseActivity
 import com.vincent.baseproject.R
@@ -30,11 +31,19 @@ class ScannerActivity : BaseActivity(), OnScannerCompletionListener {
         scanner_toolbar.setNavigationIcon(R.mipmap.back)
         initToolBar(scanner_toolbar)
         scanner_view.setOnScannerCompletionListener(this)
-        scanner_view.setMediaResId(R.raw.weixin_beep)//设置扫描成功的声音
-        scanner_view.setDrawText("将二维码放入框内", true)
-        scanner_view.setDrawTextColor(Color.RED)
-        scanner_view.setLaserGridLineResId(R.mipmap.zfb_grid_scan_line)//网格图
-        scanner_view.setLaserFrameBoundColor(-0xd93101)//支付宝颜色
+
+        val builder = ScannerOptions.Builder()
+        //设置扫描成功的声音
+        builder.setMediaResId(R.raw.weixin_beep)
+        // 设置提醒文本
+        builder.setTipText("将二维码放入框内")
+        // 设置提醒文本颜色
+        builder.setTipTextColor(Color.parseColor("#999999"))
+        // 设置扫描动画样式及资源文件
+        builder.setLaserStyle(ScannerOptions.LaserStyle.RES_GRID,R.mipmap.zfb_grid_scan_line)
+        // 设置扫模框四角的颜色
+//        builder.setFrameCornerColor(Color.parseColor("#CCCCCC"))
+        scanner_view.setScannerOptions(builder.build())
         scan_iv_flash.isSelected = !mode
     }
 
