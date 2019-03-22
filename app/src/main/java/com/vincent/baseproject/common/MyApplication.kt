@@ -4,10 +4,14 @@ import android.app.Application
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper
 import com.haoge.easyandroid.EasyAndroid
 import com.orhanobut.hawk.Hawk
+import com.vincent.baselibrary.util.NetUtils
 import me.jessyan.autosize.AutoSizeConfig
 import org.json.JSONObject
 import org.lzh.framework.updatepluginlib.UpdateConfig
-import org.lzh.framework.updatepluginlib.base.*
+import org.lzh.framework.updatepluginlib.base.FileChecker
+import org.lzh.framework.updatepluginlib.base.UpdateChecker
+import org.lzh.framework.updatepluginlib.base.UpdateParser
+import org.lzh.framework.updatepluginlib.base.UpdateStrategy
 import org.lzh.framework.updatepluginlib.model.Update
 
 
@@ -36,7 +40,10 @@ class MyApplication : Application() {
         Hawk.init(this).build()
         // 初始化版本升级框架
         initUpdateConfig()
+//        // 网络监听
+        NetUtils.netWorkListener(this)
     }
+
 
     private fun initUpdateConfig() {
         UpdateConfig.getConfig().setUrl("https://raw.githubusercontent.com/yjfnypeu/UpdatePlugin/master/update.json")
@@ -54,20 +61,20 @@ class MyApplication : Application() {
                 }
             })
             // 更新接口api网络访问任务
-    //            .setCheckWorker(object : CheckWorker() {
-    //                // 异步查询服务端 apk 版本号
-    //                override fun useAsync(): Boolean {
-    //                    return false
-    //                }
-    //
-    //                // 异步操作 此处运行于子线程
-    //                override fun asyncCheck(entity: CheckEntity?) {
-    //                    super.asyncCheck(entity)
-    //                    // 此处可以使用自定义Retrofit等方式请求更新接口
-    //                    // 当请求失败：需要手动调用onError(Throwable)并传入失败异常
-    //                    // 当请求成功：需要手动调用onResponse(String)并传入接口返回原始数据。便于后续解析
-    //                }
-    //            }::class.java)
+            //            .setCheckWorker(object : CheckWorker() {
+            //                // 异步查询服务端 apk 版本号
+            //                override fun useAsync(): Boolean {
+            //                    return false
+            //                }
+            //
+            //                // 异步操作 此处运行于子线程
+            //                override fun asyncCheck(entity: CheckEntity?) {
+            //                    super.asyncCheck(entity)
+            //                    // 此处可以使用自定义Retrofit等方式请求更新接口
+            //                    // 当请求失败：需要手动调用onError(Throwable)并传入失败异常
+            //                    // 当请求成功：需要手动调用onResponse(String)并传入接口返回原始数据。便于后续解析
+            //                }
+            //            }::class.java)
             // 更新数据检测器 判断诸如版本号之类决定是否下载apk文件升级
             .setUpdateChecker(object : UpdateChecker() {
                 override fun check(update: Update?): Boolean {
@@ -114,7 +121,7 @@ class MyApplication : Application() {
                 return true
             }
         }
-            // 提醒用户升级的Dialog
+        // 提醒用户升级的Dialog
 //            .setCheckNotifier(object : CheckNotifier() {
 //                override fun create(context: Activity): Dialog {
 //                    return Custom(this as FragmentActivity)
@@ -143,7 +150,7 @@ class MyApplication : Application() {
 //                        .show()
 //                }
 //            })
-            // 展示下载进度
+        // 展示下载进度
 //            .setDownloadNotifier(object : DownloadNotifier() {
 //                override fun create(update: Update, activity: Activity): DownloadCallback {
 //                    val dialog = Custom2(this as FragmentActivity)
@@ -196,7 +203,7 @@ class MyApplication : Application() {
 //                    }
 //                }
 //            })
-                // Dialog 使用的FragmentActivity需要到需要的页面才能使用，否则不能生成对话框
+        // Dialog 使用的FragmentActivity需要到需要的页面才能使用，否则不能生成对话框
 //            .setInstallNotifier(object : InstallNotifier() {
 //                override fun create(activity: Activity?): Dialog {
 //                    val updateContent = String.format(

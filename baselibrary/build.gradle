@@ -34,6 +34,8 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espressoCore"
     // RecyclerView
     api "androidx.recyclerview:recyclerview:$rootProject.ext.recyclerview"
+    // EventBus
+    api "org.greenrobot:eventbus:$rootProject.ext.eventbus"
     // Easy 工具类
     api "com.github.yjfnypeu:EasyAndroid:$rootProject.ext.EasyAndroid"
     // 屏幕适配

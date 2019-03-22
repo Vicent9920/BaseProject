@@ -5,6 +5,9 @@ import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Color
+import android.net.ConnectivityManager
+import android.net.Network
+import android.net.NetworkRequest
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +16,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.widget.Toolbar
+import com.haoge.easyandroid.easy.EasyLog
 import me.jessyan.autosize.AutoSizeCompat
 
 
@@ -36,6 +40,8 @@ abstract class BaseActivity : AppCompatActivity() {
         initData()
         initEvent()
     }
+
+
 
     // 引入布局
     abstract fun getLayoutId(): Int
@@ -122,4 +128,6 @@ abstract class BaseActivity : AppCompatActivity() {
         val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
         return resources.getDimensionPixelSize(resourceId)
     }
+
+
 }
