@@ -6,6 +6,7 @@ import com.haoge.easyandroid.EasyAndroid
 import com.orhanobut.hawk.Hawk
 import com.vincent.baselibrary.util.NetUtils
 import me.jessyan.autosize.AutoSizeConfig
+import okhttp3.internal.Internal.instance
 import org.json.JSONObject
 import org.lzh.framework.updatepluginlib.UpdateConfig
 import org.lzh.framework.updatepluginlib.base.FileChecker
@@ -23,6 +24,7 @@ import org.lzh.framework.updatepluginlib.model.Update
  * 备注：
  */
 class MyApplication : Application() {
+
 
     override fun onCreate() {
         super.onCreate()
@@ -42,6 +44,7 @@ class MyApplication : Application() {
         initUpdateConfig()
 //        // 网络监听
         NetUtils.netWorkListener(this)
+
     }
 
 

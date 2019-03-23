@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+          android:orientation="vertical"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:paddingTop="6dp"
+          android:paddingBottom="6dp"
+          android:paddingStart="14dp"
+          android:paddingEnd="14dp"
+          android:text="网络不给力，请检查网络设置。"
+          android:textColor="@color/black80"
+          android:drawablePadding="10dp"
+          android:drawableStart="@mipmap/error"
+          android:drawableEnd="@mipmap/arrow_right_icon"
+          android:background="#E8947A"
+>
+
+
+</TextView>

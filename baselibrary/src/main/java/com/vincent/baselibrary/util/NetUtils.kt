@@ -108,6 +108,7 @@ object NetUtils {
      * 测试过程中没有添加 WRITE_SETTINGS 权限在报错在 Vivo 和华为P9 测试没有问题
      */
     fun netWorkListener(context: Context) {
+        isConnected = isNetworkConnected(context)
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val req = NetworkRequest.Builder()
         // 蜂窝煤网络
@@ -124,7 +125,7 @@ object NetUtils {
             override fun onAvailable(network: Network) {
                 super.onAvailable(network)
                 isConnected = true
-                EasyLog.DEFAULT.e(network)
+                EasyLog.DEFAULT.e(true)
                 EventBus.getDefault().post(NetworkChangeEvent(true))
             }
 
