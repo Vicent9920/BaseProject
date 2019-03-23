@@ -1,21 +1,18 @@
 package com.vincent.baseproject.common
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.PixelFormat
 import android.os.Bundle
-import android.provider.Settings
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper
-import com.haoge.easyandroid.easy.EasyLog
 import com.orhanobut.hawk.Hawk
 import com.vincent.baselibrary.base.BaseActivity
 import com.vincent.baselibrary.dao.NetworkChangeEvent
+import com.vincent.baselibrary.helper.SettingUtil
 import com.vincent.baselibrary.util.NetUtils
-import com.vincent.baseproject.ui.WebActivity
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -34,7 +31,8 @@ abstract class UIActivity : BaseActivity(), BGASwipeBackHelper.Delegate {
     private lateinit var mSwipeBackHelper: BGASwipeBackHelper
     private val netErrorView: View by lazy {
         val inflater = layoutInflater
-        inflater.inflate(com.vincent.baseproject.R.layout.network_error_layout, null) //提示View布局
+        //提示View布局
+        inflater.inflate(com.vincent.baseproject.R.layout.network_error_layout, null)
 
     }
     private val mLayoutParams: WindowManager.LayoutParams by lazy {
@@ -42,7 +40,7 @@ abstract class UIActivity : BaseActivity(), BGASwipeBackHelper.Delegate {
             ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT,
             WindowManager.LayoutParams.TYPE_APPLICATION,
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
-        PixelFormat.TRANSLUCENT
+            PixelFormat.TRANSLUCENT
         ).apply {
             this.x = 0
             this.y = 0
@@ -71,14 +69,14 @@ abstract class UIActivity : BaseActivity(), BGASwipeBackHelper.Delegate {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onNetworkChangeEvent(event: NetworkChangeEvent) {
-        checkNetWork(event.isConnected);
+        this.checkNetWork(event.isConnected)
     }
 
-    private fun checkNetWork(isConnected:Boolean) {
+    private fun checkNetWork(isConnected: Boolean) {
         if (isConnected) {
             if (netErrorView.parent != null) {
                 mWindowManager.removeViewImmediate(netErrorView)
-                netErrorView.setOnClickListener (null)
+                netErrorView.setOnClickListener(null)
             }
         } else {
             if (netErrorView.parent == null) {
@@ -148,11 +146,13 @@ abstract class UIActivity : BaseActivity(), BGASwipeBackHelper.Delegate {
 
     override fun initEvent() {
         super.initEvent()
+        // 必须返回false才能将事件分发到点击事件
         netErrorView.setOnTouchListener { v, event ->
-            false }
+            false
+        }
         netErrorView.setOnClickListener {
-            EasyLog.DEFAULT.e("setOnClickListener")
-            startActivity(Intent(Settings.ACTION_SETTINGS)) }
+            SettingUtil.goSetting(this)
+        }
     }
 
 }
