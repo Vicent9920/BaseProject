@@ -66,8 +66,8 @@ class BaseDialog(context: Context?, val themeResId: Int = R.style.BaseDialogStyl
         // 位置
         private var mGravity = Gravity.CENTER
         // 宽度和高度
-        private var mWidth = ViewGroup.LayoutParams.WRAP_CONTENT
-        private var mHeight = ViewGroup.LayoutParams.WRAP_CONTENT
+         var mWidth = ViewGroup.LayoutParams.WRAP_CONTENT
+         var mHeight = ViewGroup.LayoutParams.WRAP_CONTENT
         // 垂直和水平边距
         private val mVerticalMargin: Float = 0f
         private val mHorizontalMargin: Float = 0f

@@ -145,6 +145,18 @@ class DialogActivity : UIActivity() {
                 }
                 .show()
         }
+        btn_dialog_date.setOnClickListener {
+            DateDialog.Builder(this).apply { this.mListener = object :DateDialog.OnListener{
+                override fun onSelected(dialog: Dialog, year: Int, month: Int, day: Int) {
+                    EasyToast.DEFAULT.show("${year}年${month}月${day}日")
+                }
+
+                override fun onCancel(dialog: Dialog) {
+                    EasyToast.DEFAULT.show("取消")
+                }
+
+            } }.setTitle("请选择日期").show()
+        }
         btn_dialog_custom.setOnClickListener {
 
             Custom(this)
