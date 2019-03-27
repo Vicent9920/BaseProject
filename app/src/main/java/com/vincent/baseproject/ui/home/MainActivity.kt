@@ -1,13 +1,12 @@
 package com.vincent.baseproject.ui.home
 
 
-import android.Manifest
+import android.content.Intent
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.haoge.easyandroid.easy.EasyPermissions
-import com.vincent.baselibrary.util.NetUtils
+import com.haoge.easyandroid.easy.EasyActivityResult
 import com.vincent.baseproject.R
 import com.vincent.baseproject.common.UIActivity
 
@@ -30,5 +29,6 @@ class MainActivity : UIActivity() {
     override fun isSupportSwipeBack(): Boolean {
         return false
     }
+
 
 }

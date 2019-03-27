@@ -12,9 +12,11 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.core.widget.NestedScrollView
 import com.bumptech.glide.Glide
+import com.haoge.easyandroid.easy.EasyActivityResult
 import com.vincent.baselibrary.base.BaseLazyFragment
 import com.vincent.baseproject.R
 import com.vincent.baseproject.ui.DialogActivity
+import com.vincent.baseproject.ui.ScannerActivity
 import com.vincent.baseproject.ui.SettingActivity
 import com.vincent.baseproject.ui.WebActivity
 import com.vincent.baseproject.ui.login.LoginActivity
@@ -63,25 +65,25 @@ class HomeFragmentD : BaseLazyFragment() {
             setTopBackground()
         }
         homeD_btn_dialog.setOnClickListener {
-            startActivity(Intent(mActivity, DialogActivity::class.java))
+            EasyActivityResult.startActivity(mActivity,Intent(mActivity, DialogActivity::class.java),null)
         }
         homeD_btn_login.setOnClickListener {
-            startActivity(Intent(mActivity, LoginActivity::class.java))
+            EasyActivityResult.startActivity(mActivity,Intent(mActivity, LoginActivity::class.java),null)
         }
         homeD_btn_register.setOnClickListener {
-            startActivity(Intent(mActivity, RegisterActivity::class.java))
+            EasyActivityResult.startActivity(mActivity,Intent(mActivity, RegisterActivity::class.java),null)
         }
         homeD_btn_browser.setOnClickListener {
-            startActivity(Intent(mActivity, WebActivity::class.java).putExtra("url", "https://www.pgyer.com/he3F"))
+            EasyActivityResult.startActivity(mActivity,Intent(mActivity, WebActivity::class.java).putExtra("url", "https://www.pgyer.com/he3F"),null)
         }
 
         homeD_btn_about.setOnClickListener {
-            startActivity( Intent(mActivity, WebActivity::class.java)
-                .putExtra("url","https://github.com/Vicent9920/BaseProject/blob/master/README.md"))
+            EasyActivityResult.startActivity(mActivity,Intent(mActivity, WebActivity::class.java)
+                .putExtra("url","https://github.com/Vicent9920/BaseProject/blob/master/README.md"),null)
         }
 
         homeD_btn_setting.setOnClickListener {
-            startActivity(Intent(mActivity,SettingActivity::class.java))
+            EasyActivityResult.startActivity(mActivity,Intent(mActivity,SettingActivity::class.java),null)
         }
     }
 

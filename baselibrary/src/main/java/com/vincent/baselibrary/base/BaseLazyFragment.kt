@@ -1,12 +1,14 @@
 package com.vincent.baselibrary.base
 
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import com.haoge.easyandroid.easy.EasyActivityResult
 import com.haoge.easyandroid.easy.EasyToast
 import com.vincent.baselibrary.R
 
@@ -36,6 +38,8 @@ abstract class BaseLazyFragment : Fragment() {
             .setGravity(Gravity.CENTER, 0, 0)
             .build()
     }
+
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

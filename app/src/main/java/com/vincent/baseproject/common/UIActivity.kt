@@ -1,6 +1,7 @@
 package com.vincent.baseproject.common
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.PixelFormat
 import android.os.Bundle
 import android.view.Gravity
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper
+import com.haoge.easyandroid.easy.EasyActivityResult
 import com.orhanobut.hawk.Hawk
 import com.vincent.baselibrary.base.BaseActivity
 import com.vincent.baselibrary.dao.NetworkChangeEvent
@@ -153,6 +155,11 @@ abstract class UIActivity : BaseActivity(), BGASwipeBackHelper.Delegate {
         netErrorView.setOnClickListener {
             SettingUtil.goSetting(this)
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        EasyActivityResult.dispatch(this, requestCode, resultCode, data)
     }
 
 }

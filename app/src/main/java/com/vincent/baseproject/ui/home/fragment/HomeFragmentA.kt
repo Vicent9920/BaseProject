@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Handler
 import android.view.View
 import androidx.core.content.ContextCompat
+import com.haoge.easyandroid.easy.EasyActivityResult
 import com.haoge.easyandroid.easy.EasyPermissions
 import com.haoge.easyandroid.easy.EasyToast
 import com.vincent.baselibrary.base.BaseLazyFragment
@@ -86,7 +87,7 @@ class HomeFragmentA : BaseLazyFragment() {
         homeA_iv_scan.setOnClickListener {
             EasyPermissions.create(Manifest.permission.CAMERA).callback {
                 if(it){
-                    startActivity(Intent(mActivity,ScannerActivity::class.java))
+                    EasyActivityResult.startActivity(mActivity,Intent(mActivity,ScannerActivity::class.java),null)
                 }else{
                     EasyToast.DEFAULT.show("你拒绝了打开摄像头权限，无法打开扫一扫")
                 }
