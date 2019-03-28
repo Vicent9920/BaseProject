@@ -162,4 +162,18 @@ abstract class UIActivity : BaseActivity(), BGASwipeBackHelper.Delegate {
         EasyActivityResult.dispatch(this, requestCode, resultCode, data)
     }
 
+    /**
+     * Activity 跳转
+     */
+    fun easyStart(clazz: Class<*>, callback:((resultCode:Int, data:Intent?) -> Unit)? = null) {
+        EasyActivityResult.startActivity(this, Intent(this,clazz), callback, null)
+    }
+
+    /**
+     * Activity 跳转
+     */
+    fun easyStart(i:Intent, callback:((resultCode:Int, data:Intent?) -> Unit)? = null) {
+        EasyActivityResult.startActivity(this, i, callback, null)
+    }
+
 }

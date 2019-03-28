@@ -12,6 +12,7 @@ import com.haoge.easyandroid.safe.SafeDialogHandle
 import com.vincent.baselibrary.base.BaseActivity
 import com.vincent.baselibrary.helper.CacheDataManager
 import com.vincent.baseproject.R
+import com.vincent.baseproject.common.UIActivity
 import com.vincent.baseproject.widget.NumberProgressBar
 import com.vincent.dialoglibrary.MessageDialog
 import com.vincent.dialoglibrary.base.BaseDialog
@@ -27,7 +28,7 @@ import org.lzh.framework.updatepluginlib.model.Update
 import java.io.File
 
 
-class SettingActivity : BaseActivity() {
+class SettingActivity : UIActivity() {
     override fun getLayoutId() = com.vincent.baseproject.R.layout.activity_setting
 
     override fun initView() {
@@ -49,7 +50,7 @@ class SettingActivity : BaseActivity() {
             setting_setBar_cache.setRightText(CacheDataManager.getTotalCacheSize(this))
         }
         setting_setBar_about.setOnClickListener {
-            startActivity( Intent(this, WebActivity::class.java)
+            easyStart( Intent(this, WebActivity::class.java)
                 .putExtra("url","https://github.com/Vicent9920/BaseProject/blob/master/README.md"))
         }
 

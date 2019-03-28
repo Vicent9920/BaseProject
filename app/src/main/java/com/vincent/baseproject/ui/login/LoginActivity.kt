@@ -56,7 +56,7 @@ class LoginActivity : UIActivity(), LifecycleOwner {
                 .apply {
                     this.mListener = object : com.vincent.dialoglibrary.MessageDialog.OnListener {
                         override fun confirm(dialog: Dialog) {
-                            startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
+                            easyStart(RegisterActivity::class.java)
                         }
 
                         override fun cancel(dialog: Dialog) {

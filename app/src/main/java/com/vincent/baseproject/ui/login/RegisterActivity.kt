@@ -1,6 +1,5 @@
 package com.vincent.baseproject.ui.login
 
-import android.content.Intent
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -49,7 +48,7 @@ class RegisterActivity : UIActivity() {
             if (from) {
                 finish()
             } else {
-                startActivity(Intent(this, LoginActivity::class.java))
+                easyStart(LoginActivity::class.java)
                 finish()
             }
         }

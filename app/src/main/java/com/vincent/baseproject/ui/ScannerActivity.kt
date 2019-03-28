@@ -18,9 +18,10 @@ import com.mylhyl.zxing.scanner.ScannerOptions
 import com.mylhyl.zxing.scanner.decode.QRDecode
 import com.vincent.baselibrary.base.BaseActivity
 import com.vincent.baseproject.R
+import com.vincent.baseproject.common.UIActivity
 import kotlinx.android.synthetic.main.activity_scanner.*
 private const val REQ_PHOTO = 1001
-class ScannerActivity : BaseActivity(), OnScannerCompletionListener {
+class ScannerActivity : UIActivity(), OnScannerCompletionListener {
 
 
     private var mode = true
@@ -116,20 +117,20 @@ class ScannerActivity : BaseActivity(), OnScannerCompletionListener {
             when (parsedResult.type) {
                 ParsedResultType.ISBN -> {
                     val info = (parsedResult as ISBNParsedResult).isbn
-                    startActivity(Intent(this,WebActivity::class.java).putExtra("url","$INFO$info"))
+                    easyStart(Intent(this,WebActivity::class.java).putExtra("url","$INFO$info"))
                 }
                 ParsedResultType.TEXT -> {
                     val info = (parsedResult as TextParsedResult).text
-                    startActivity(Intent(this,WebActivity::class.java).putExtra("url","$INFO$info"))
+                    easyStart(Intent(this,WebActivity::class.java).putExtra("url","$INFO$info"))
                 }
                 ParsedResultType.URI -> {
                     val result = parsedResult as URIParsedResult
-                    startActivity(Intent(this,WebActivity::class.java).putExtra("url",result.uri))
+                    easyStart(Intent(this,WebActivity::class.java).putExtra("url",result.uri))
                 }
                 // ParsedResultType.ADDRESSBOOK, ParsedResultType.PRODUCT, ParsedResultType.TEL, ParsedResultType.SMS 等
                 else -> {
                     val info = Gson().toJson(parsedResult)
-                    startActivity(Intent(this,WebActivity::class.java).putExtra("url","$INFO$info"))
+                    easyStart(Intent(this,WebActivity::class.java).putExtra("url","$INFO$info"))
                 }
 
             }
