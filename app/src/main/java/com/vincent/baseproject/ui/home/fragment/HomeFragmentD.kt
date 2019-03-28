@@ -21,6 +21,7 @@ import com.vincent.baseproject.ui.SettingActivity
 import com.vincent.baseproject.ui.WebActivity
 import com.vincent.baseproject.ui.login.LoginActivity
 import com.vincent.baseproject.ui.login.RegisterActivity
+import com.vincent.baseproject.ui.space.SpaceActivity
 import com.zhouwei.mzbanner.MZBannerView
 import com.zhouwei.mzbanner.holder.MZHolderCreator
 import com.zhouwei.mzbanner.holder.MZViewHolder
@@ -75,6 +76,10 @@ class HomeFragmentD : BaseLazyFragment() {
         }
         homeD_btn_browser.setOnClickListener {
             EasyActivityResult.startActivity(mActivity,Intent(mActivity, WebActivity::class.java).putExtra("url", "https://www.pgyer.com/he3F"),null)
+        }
+
+        homeD_btn_space.setOnClickListener {
+            EasyActivityResult.startActivity(mActivity,Intent(mActivity, SpaceActivity::class.java),null)
         }
 
         homeD_btn_about.setOnClickListener {

@@ -36,4 +36,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="empty_data">空数据</string>
+    <string name="loading_data">加载页</string>
+    <string name="net_work_error">网络异常</string>
+    <string name="test_in_fragment">Fragment 测试</string>
 </resources>

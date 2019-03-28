@@ -17,12 +17,10 @@ object SettingUtil {
     fun goSetting(context: Context) {
 
         val manufacturer = Build.MANUFACTURER.toLowerCase()
-        if (manufacturer.contains("huawei")) {
-            goHuaweiPermission(context)
-        }else if(manufacturer.contains("meizu")){
-            goMeizuPermission(context)
-        }else{
-            goDefaultSetting(context)
+        when {
+            manufacturer.contains("huawei") -> goHuaweiPermission(context)
+            manufacturer.contains("meizu") -> goMeizuPermission(context)
+            else -> goDefaultSetting(context)
         }
 
 

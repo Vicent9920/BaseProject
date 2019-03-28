@@ -10,7 +10,7 @@ import com.haoge.easyandroid.easy.PermissionAlwaysDenyNotifier
 import com.jaeger.library.StatusBarUtil
 import com.orhanobut.hawk.Hawk
 import com.vincent.baselibrary.base.BaseLazyFragment
-import com.vincent.baselibrary.helper.PermissionSettingPage
+import com.vincent.baselibrary.helper.SettingUtil
 import com.vincent.baseproject.R
 import com.vincent.baseproject.common.Contsant
 import com.vincent.dialoglibrary.MessageDialog
@@ -104,7 +104,7 @@ class HomeFragmentC : BaseLazyFragment() {
                             this.mListener = object : MessageDialog.OnListener {
                                 override fun confirm(dialog: Dialog) {
                                     //打开设置页面
-                                    PermissionSettingPage.start(mActivity, false)
+                                    SettingUtil.goSetting(mActivity)
                                 }
 
                                 override fun cancel(dialog: Dialog) {

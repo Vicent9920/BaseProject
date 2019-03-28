@@ -74,6 +74,7 @@ dependencies {
     implementation "androidx.legacy:legacy-support-v4:$rootProject.ext.supportV4"
     implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
     testImplementation "junit:junit:$rootProject.ext.junit"
     androidTestImplementation "androidx.test:runner:$rootProject.ext.runner"
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espressoCore"
@@ -110,4 +111,6 @@ dependencies {
     //    implementation project(':baselibrary')
     compile project(path: ':dialoglibrary')
     implementation project(':baselibrary')
+
+    implementation 'com.kingja.loadsir:loadsir:1.3.6'
 }

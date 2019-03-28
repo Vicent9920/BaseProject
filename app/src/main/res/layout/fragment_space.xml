@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:id="@+id/main_layout"
+             tools:context=".ui.space.SpaceFragment">
+
+
+    <Button
+            android:id="@+id/fragment_btn_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/empty_data"/>
+
+    <Button
+            android:id="@+id/fragment_btn_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="84dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/loading_data"/>
+
+    <Button
+            android:id="@+id/fragment_btn_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="144dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/net_work_error"/>
+
+</FrameLayout>
