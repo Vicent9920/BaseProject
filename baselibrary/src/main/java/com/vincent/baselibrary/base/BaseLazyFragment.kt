@@ -1,14 +1,13 @@
 package com.vincent.baselibrary.base
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import com.haoge.easyandroid.easy.EasyActivityResult
 import com.haoge.easyandroid.easy.EasyToast
 import com.vincent.baselibrary.R
 
@@ -19,6 +18,7 @@ import com.vincent.baselibrary.R
  * QQ：3332168769
  * 备注：Fragment 懒加载基类
  */
+@SuppressLint("InflateParams")
 abstract class BaseLazyFragment : Fragment() {
     // Activity对象
     lateinit var mActivity: AppCompatActivity
@@ -31,7 +31,7 @@ abstract class BaseLazyFragment : Fragment() {
     // 是否是 replace Fragment 的形式
     private var isReplaceFragment: Boolean = false
 
-    val toastCustom by lazy {
+    open val toastCustom by lazy {
         // 创建自定义的Toast.
         val layout = LayoutInflater.from(context).inflate(R.layout.toast_custom_layout, null)
         EasyToast.newBuilder(layout, R.id.toast_tv)

@@ -3,8 +3,8 @@ package com.vincent.baselibrary.helper
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.PixelFormat
-import android.os.Bundle
 import android.view.*
+import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 
 /**
@@ -96,7 +96,7 @@ object SpaceLayout {
             wm.removeView(currentLayout)
         }
         isAresShowing = true
-        onRetryClickedListener?.let {listener ->
+        onRetryClickedListener?.let { listener ->
             networkErrorLayout.findViewById<View>(retryId).setOnClickListener {
                 listener.onRetryClick()
             }
@@ -160,58 +160,111 @@ object SpaceLayout {
      * 展示空数据界面
      *
      */
-    fun showEmptyLayout(target: Fragment, empty: View = emptyLayout, tag: String? = null) {
-        showFragmentLayout(tag, target, empty)
+    fun showEmptyLayout(target: Fragment, empty: View = emptyLayout) {
+        showFragmentLayout(false, target, empty)
     }
 
     /**
      * 展示加载中界面
      *
      */
-    fun showLoadingLayout(target: Fragment, empty: View = loadingLayout, tag: String? = null) {
-        showFragmentLayout(tag, target, empty)
+    fun showLoadingLayout(target: Fragment, empty: View = loadingLayout) {
+        showFragmentLayout(false, target, empty)
     }
 
     /**
      * 展示网络错误界面
      *
      */
-    fun showNetworkErrorLayout(target: Fragment, empty: View = loadingLayout, tag: String? = null) {
-        showFragmentLayout(tag, target, empty)
+    fun showNetworkErrorLayout(
+        target: Fragment,
+        empty: View = networkErrorLayout,
+        id: Int = 0,
+        listener: OnRetryClickedListener? = null
+    ) {
+        if (id != 0) {
+            setOnFragmentRetryClickedListener(target, id, listener)
+
+        }
+        showFragmentLayout(true, target, empty)
+    }
+
+    fun setOnFragmentRetryClickedListener(target: Fragment, id: Int = 0, listener: OnRetryClickedListener? = null) {
+        if (target.view!! !is LoadLayout) {
+            throw RuntimeException("请在 onCreateView 方法处将根View替换为 LoadLayout")
+        }
+        val loadLayout = target.view as LoadLayout
+        loadLayout.setListener(id, listener)
     }
 
     /**
      * 重置 Fragment 状态
      */
-    fun onDestroy(target: Fragment, tag: String? = null) :String{
-        var t = tag
-        if (t == null) {
-            t = target::class.java.simpleName
+    fun onDestroy(target: Fragment) {
+        if (target.view!! !is LoadLayout) {
+            throw RuntimeException("请在 onCreateView 方法处将根View替换为 LoadLayout")
         }
-        val child = target.childFragmentManager.findFragmentByTag(t)
-        if (child != null) {
-            target.childFragmentManager.beginTransaction().remove(child).commitAllowingStateLoss()
-        }
-        return t!!
+        val loadLayout = target.view as LoadLayout
+        loadLayout.restView()
     }
 
     /**
      * Fragment 显示状态View
      * fragment Root View 必须设置 id
      */
-    private fun showFragmentLayout(tag: String?, target: Fragment, empty: View) {
+    private fun showFragmentLayout(isRetry: Boolean, target: Fragment, empty: View) {
+        if (target.view!! !is LoadLayout) {
+            throw RuntimeException("请在 onCreateView 方法处将根View替换为 LoadLayout")
+        }
+        val loadLayout = target.view as LoadLayout
+        if (isRetry) {
+            loadLayout.showNetworkErrorLayout(empty)
+        } else {
+            loadLayout.showView(empty)
+        }
 
-        target.childFragmentManager
-            .beginTransaction()
-            .replace(target.view!!.id, SpaceFragment(empty), SpaceLayout.onDestroy(target, tag))
-            .commit()
+
     }
 
-    @SuppressLint("ValidFragment")
-     class SpaceFragment(private val stateView: View) : Fragment() {
-        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-            return stateView
+
+    @SuppressLint("ViewConstructor")
+    class LoadLayout(private val mView: View) : FrameLayout(mView.context) {
+        private var retryId = 0
+        private var mListener: OnRetryClickedListener? = null
+
+        init {
+            addView(mView)
         }
+
+        fun setListener(id: Int, listener: OnRetryClickedListener?) {
+            this.retryId = id
+            this.mListener = listener
+        }
+
+        fun showNetworkErrorLayout(spaceView: View) {
+            if (retryId != 0) {
+                spaceView.findViewById<View>(retryId).setOnClickListener {
+                    mListener?.onRetryClick()
+                }
+            }
+            showView(spaceView)
+        }
+
+        fun showView(spaceView: View) {
+            mView.visibility = View.GONE
+            if (childCount > 1) {
+                removeViewAt(1)
+            }
+            addView(spaceView, 1)
+        }
+
+        fun restView() {
+            mView.visibility = View.VISIBLE
+            if (childCount > 1) {
+                removeViewAt(1)
+            }
+        }
+
     }
 
 }

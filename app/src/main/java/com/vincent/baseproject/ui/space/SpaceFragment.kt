@@ -3,14 +3,11 @@ package com.vincent.baseproject.ui.space
 
 import android.os.Bundle
 import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.vincent.baselibrary.base.BaseActivityHandler
 import com.vincent.baselibrary.base.BaseLazyFragment
 import com.vincent.baselibrary.helper.SpaceLayout
-
 import com.vincent.baseproject.R
 import kotlinx.android.synthetic.main.fragment_space.*
 
@@ -21,8 +18,15 @@ import kotlinx.android.synthetic.main.fragment_space.*
  */
 class SpaceFragment : BaseLazyFragment() {
     override fun getLayoutId(): Int {
-        // 根布局一定需要设置id且必须是ViewGroup
         return R.layout.fragment_space
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        if (mRootView == null && getLayoutId() > 0) {
+            mRootView = layoutInflater.inflate(getLayoutId(), container, false)
+        }
+        container?.removeView(mRootView)
+        return SpaceLayout.LoadLayout(mRootView!!)
     }
 
     override fun initView() {
@@ -46,12 +50,15 @@ class SpaceFragment : BaseLazyFragment() {
 
         fragment_btn_error.setOnClickListener {
             Handler().post {
-                SpaceLayout.setOnRetryClickedListener(R.id.retry,object :SpaceLayout.OnRetryClickedListener{
-                    override fun onRetryClick() {
-                        SpaceLayout.onDestroy(this@SpaceFragment)
-                    }
+                SpaceLayout.setOnFragmentRetryClickedListener(
+                    this@SpaceFragment,
+                    R.id.retry,
+                    object : SpaceLayout.OnRetryClickedListener {
+                        override fun onRetryClick() {
+                            SpaceLayout.onDestroy(this@SpaceFragment)
+                        }
 
-                })
+                    })
                 SpaceLayout.showNetworkErrorLayout(this)
             }
 

@@ -24,6 +24,7 @@ class MainActivity : UIActivity() {
         SpaceLayout.setEmptyLayout(R.layout.layout_empty)
         SpaceLayout.setLoadingLayout(R.layout.layout_loading)
         SpaceLayout.setNetworkErrorLayout(R.layout.network_error2_layout)
+
     }
 
 
