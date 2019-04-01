@@ -9,6 +9,10 @@
  * 首页增加扫一扫功能，并对扫一扫结果通过 WebActivity 展示
  * 通过多网络 API 对全部网络提醒（非传统的广播）
  *  Activity 基类、 Fragment 基类封装以及部分自定义 View 编写等
+ 
+  下载地址
+ 
+ ![下载地址](https://www.pgyer.com/app/qrcode/ZvDE)
 
 ## 一、项目截图：
 ![首页](./screenCapture/tab1.jpg)
@@ -23,6 +27,8 @@
 ![Apk文件下载](./screenCapture/fileDownload.jpg)
 ![安装提示](./screenCapture/installTip.jpg)
 ![网络异常](./screenCapture/netError.gif)
+![选择年月日](./screenCapture/selectDate.png)
+![空布局测试](./screenCapture/spaceLayout.gif)
 ## 三、集成框架：
 
 > // ViewModel and LiveData
@@ -104,5 +110,5 @@
  2. 博客：[https://juejin.im/user/593def80fe88c2006a2707df/posts](https://juejin.im/user/593def80fe88c2006a2707df/posts)
 
 ## 五、下一步计划：
- * 新增年月日选择对话框
- * 新增空布局
+ * 优化城市选择库
+ * 空布局的使用与思考总结
