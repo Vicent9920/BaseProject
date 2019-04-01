@@ -4,7 +4,9 @@ package com.vincent.baseproject.ui.home.fragment
 import android.Manifest
 import android.app.Activity
 import android.app.Dialog
+import android.content.Intent
 import androidx.fragment.app.Fragment
+import com.haoge.easyandroid.easy.EasyActivityResult
 import com.haoge.easyandroid.easy.EasyPermissions
 import com.haoge.easyandroid.easy.PermissionAlwaysDenyNotifier
 import com.jaeger.library.StatusBarUtil
@@ -13,6 +15,8 @@ import com.vincent.baselibrary.base.BaseLazyFragment
 import com.vincent.baselibrary.helper.SettingUtil
 import com.vincent.baseproject.R
 import com.vincent.baseproject.common.Contsant
+import com.vincent.baseproject.ui.city_picker.CityPickerActivity
+import com.vincent.baseproject.ui.login.RegisterActivity
 import com.vincent.dialoglibrary.MessageDialog
 import kotlinx.android.synthetic.main.app_toolbar.*
 import kotlinx.android.synthetic.main.home_fragment_c.*
@@ -49,6 +53,9 @@ class HomeFragmentC : BaseLazyFragment() {
         }
         homeC_btn_swipeDisable.setOnClickListener {
             Hawk.put(Contsant.SWIPE_ENABLED,false)
+        }
+        homeC_btn_cityPicker.setOnClickListener {
+            EasyActivityResult.startActivity(mActivity, Intent(mActivity, CityPickerActivity::class.java),null)
         }
     }
 

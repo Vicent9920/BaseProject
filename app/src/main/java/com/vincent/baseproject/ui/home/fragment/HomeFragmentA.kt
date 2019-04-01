@@ -1,24 +1,34 @@
 package com.vincent.baseproject.ui.home.fragment
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.os.Handler
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.haoge.easyandroid.easy.EasyActivityResult
 import com.haoge.easyandroid.easy.EasyPermissions
 import com.haoge.easyandroid.easy.EasyToast
 import com.vincent.baselibrary.base.BaseLazyFragment
 import com.vincent.baseproject.R
+import com.vincent.baseproject.data.SourceCity
 import com.vincent.baseproject.ui.ScannerActivity
+import com.vincent.baseproject.util.ChangeToPinYin
 import com.vincent.baseproject.widget.XCollapsingToolbarLayout
 import com.zaaach.citypicker.CityPicker
 import com.zaaach.citypicker.adapter.OnPickListener
+import com.zaaach.citypicker.db.CustomDBManager
 import com.zaaach.citypicker.model.City
 import com.zaaach.citypicker.model.HotCity
 import com.zaaach.citypicker.model.LocateState
 import com.zaaach.citypicker.model.LocatedCity
 import kotlinx.android.synthetic.main.home_fragment_a.*
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
 
 
 /**
@@ -119,6 +129,7 @@ class HomeFragmentA : BaseLazyFragment() {
             }
         }
     }
+
 
 
 }
