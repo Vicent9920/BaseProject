@@ -20,7 +20,7 @@ import static com.zaaach.citypicker.db.DBConfig.LATEST_DB_NAME;
 import static com.zaaach.citypicker.db.DBConfig.TABLE_NAME;
 
 /**
- * Author Bro0cL on 2016/1/26.
+ * @author Vincent
  */
 public class DefaultDBManager extends DBManager {
 

@@ -34,7 +34,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
-            android:text="自定义数据1"/>
+            android:text="自定义数据文件"/>
 
     <Button
             android:id="@+id/cityPicker_btn_list"
@@ -42,6 +42,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="12dp"
-            android:text="自定义数据2"/>
+            android:text="自定义数据集合"/>
 
 </LinearLayout>

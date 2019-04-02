@@ -13,8 +13,7 @@ import static com.zaaach.citypicker.db.DBConfig.TABLE_NAME;
 
 /**
  * 创建日期：2019/4/1 0001on 下午 1:46
- * 描述：
- *
+ * 描述：通过List集合接收数据源
  * @author Vincent
  * QQ：3332168769
  * 备注：

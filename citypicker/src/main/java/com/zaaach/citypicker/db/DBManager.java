@@ -30,27 +30,24 @@ public abstract class DBManager {
         copyDBFile();
     }
 
-    private void copyDBFile() {
+    public void copyDBFile() {
         File dir = new File(DB_PATH);
         if (!dir.exists()) {
             dir.mkdirs();
         }
-        //如果旧版数据库存在，则删除
-        File dbV1 = new File(DB_PATH + DB_NAME_V1);
-        if (dbV1.exists()) {
-            dbV1.delete();
-        }
+
         createDbFile(LATEST_DB_NAME);
     }
 
-    private void createDbFile(String tbName) {
+    public void createDbFile(String tbName) {
         //创建新版本数据库
         File dbFile = new File(DB_PATH + tbName);
         if (!dbFile.exists()) {
             InputStream is;
             OutputStream os;
             try {
-                is = mContext.getResources().getAssets().open(tbName);
+                is = mContext.getAssets().open(tbName);
+//                        mContext.getResources().getAssets().open(tbName);
                 os = new FileOutputStream(dbFile);
                 byte[] buffer = new byte[BUFFER_SIZE];
                 int length;

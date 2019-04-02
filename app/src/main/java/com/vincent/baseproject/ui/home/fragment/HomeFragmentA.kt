@@ -1,34 +1,24 @@
 package com.vincent.baseproject.ui.home.fragment
 
 import android.Manifest
-import android.content.Context
 import android.content.Intent
 import android.os.Handler
 import android.view.View
-import android.widget.Toast
 import androidx.core.content.ContextCompat
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.haoge.easyandroid.easy.EasyActivityResult
 import com.haoge.easyandroid.easy.EasyPermissions
 import com.haoge.easyandroid.easy.EasyToast
 import com.vincent.baselibrary.base.BaseLazyFragment
 import com.vincent.baseproject.R
-import com.vincent.baseproject.data.SourceCity
 import com.vincent.baseproject.ui.ScannerActivity
-import com.vincent.baseproject.util.ChangeToPinYin
 import com.vincent.baseproject.widget.XCollapsingToolbarLayout
 import com.zaaach.citypicker.CityPicker
 import com.zaaach.citypicker.adapter.OnPickListener
-import com.zaaach.citypicker.db.CustomDBManager
 import com.zaaach.citypicker.model.City
 import com.zaaach.citypicker.model.HotCity
 import com.zaaach.citypicker.model.LocateState
 import com.zaaach.citypicker.model.LocatedCity
 import kotlinx.android.synthetic.main.home_fragment_a.*
-import java.io.BufferedReader
-import java.io.IOException
-import java.io.InputStreamReader
 
 
 /**
@@ -46,7 +36,7 @@ class HomeFragmentA : BaseLazyFragment() {
         ctl_top_bar.mListener = object : XCollapsingToolbarLayout.OnScrimsListener {
             override fun onScrimsStateChange(shown: Boolean) {
                 if (shown) {
-                    homeA_tv_address.setTextColor(ContextCompat.getColor( mActivity,R.color.black))
+                    homeA_tv_address.setTextColor(ContextCompat.getColor(mActivity, R.color.black))
                     homeA_iv_scan.setImageResource(R.mipmap.scan_change)
                 } else {
                     homeA_tv_address.setTextColor(ContextCompat.getColor(mActivity, R.color.white))
@@ -84,7 +74,7 @@ class HomeFragmentA : BaseLazyFragment() {
 
                     override fun onLocate() {
                         //定位接口，需要APP自身实现，这里模拟一下定位
-                        Handler().postDelayed( {
+                        Handler().postDelayed({
                             //定位完成之后更新数据
                             CityPicker.from(mActivity)
                                 .locateComplete(LocatedCity("成都", "四川", "101270101"), LocateState.SUCCESS)
@@ -96,9 +86,9 @@ class HomeFragmentA : BaseLazyFragment() {
         }
         homeA_iv_scan.setOnClickListener {
             EasyPermissions.create(Manifest.permission.CAMERA).callback {
-                if(it){
-                    EasyActivityResult.startActivity(mActivity,Intent(mActivity,ScannerActivity::class.java),null)
-                }else{
+                if (it) {
+                    EasyActivityResult.startActivity(mActivity, Intent(mActivity, ScannerActivity::class.java), null)
+                } else {
                     EasyToast.DEFAULT.show("你拒绝了打开摄像头权限，无法打开扫一扫")
                 }
             }.request(mActivity)
@@ -129,7 +119,6 @@ class HomeFragmentA : BaseLazyFragment() {
             }
         }
     }
-
 
 
 }
