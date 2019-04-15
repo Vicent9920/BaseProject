@@ -123,8 +123,6 @@ dependencies {
     // 扫一扫
     implementation "com.mylhyl:zxingscanner:$rootProject.ext.zxing"
 
-    implementation group: 'com.belerweb', name: 'pinyin4j', version: '2.5.1'
-
     //    implementation "androidx.multidex:multidex:2.0.0"
 
     //    implementation project(':baselibrary')
