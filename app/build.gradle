@@ -80,36 +80,53 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espressoCore"
     implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.gson"
+
     // 沉浸式状态栏颜色
     implementation "com.jaeger.statusbarutil:library:$rootProject.ext.statusbarutil"
+
     // 界面侧滑
     implementation "cn.bingoogolapple:bga-swipebacklayout:$rootProject.ext.swipebacklayout"
+
     // 键对值存储器
     implementation "com.orhanobut:hawk:$rootProject.ext.hawk"
+
     // For Kotlin use navigation-fragment-ktx
     implementation "android.arch.navigation:navigation-fragment:$rootProject.ext.nav_version"
+
     // For Kotlin use navigation-ui-ktx
     implementation "android.arch.navigation:navigation-ui:$rootProject.ext.nav_version"
 
-//    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    //    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
     // 底部多级联动选择对话框
-//    implementation("com.github.gzu-liyujiang.AndroidPicker:WheelPicker:$rootProject.ext.WheelPicker") {
-//        exclude group: 'com.android.support'
-//    }
+
+    //    implementation("com.github.gzu-liyujiang.AndroidPicker:WheelPicker:$rootProject.ext.WheelPicker") {
+
+    //        exclude group: 'com.android.support'
+
+    //    }
+
     //城市选择
-    implementation "com.zaaach:citypicker:$rootProject.ext.citypicker"
+
+    //    implementation "com.zaaach:citypicker:$rootProject.ext.citypicker"
+
     // 仿魅族banner
     implementation "com.github.pinguo-zhouwei:MZBannerView:$rootProject.ext.mzBanner"
+
     // 图片加载 glide
     implementation "com.github.bumptech.glide:glide:$rootProject.ext.glide"
     annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.ext.glide"
+
     // 版本更新
     implementation "com.github.yjfnypeu:UpdatePlugin:$rootProject.ext.updatePlugin"
+
     // 扫一扫
     implementation "com.mylhyl:zxingscanner:$rootProject.ext.zxing"
-//    implementation "androidx.multidex:multidex:2.0.0"
+
+    //    implementation "androidx.multidex:multidex:2.0.0"
+
     //    implementation project(':baselibrary')
     compile project(path: ':dialoglibrary')
     implementation project(':baselibrary')
-
+    implementation project(':citypicker')
 }

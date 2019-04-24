@@ -36,7 +36,7 @@ class HomeFragmentA : BaseLazyFragment() {
         ctl_top_bar.mListener = object : XCollapsingToolbarLayout.OnScrimsListener {
             override fun onScrimsStateChange(shown: Boolean) {
                 if (shown) {
-                    homeA_tv_address.setTextColor(ContextCompat.getColor( mActivity,R.color.black))
+                    homeA_tv_address.setTextColor(ContextCompat.getColor(mActivity, R.color.black))
                     homeA_iv_scan.setImageResource(R.mipmap.scan_change)
                 } else {
                     homeA_tv_address.setTextColor(ContextCompat.getColor(mActivity, R.color.white))
@@ -74,7 +74,7 @@ class HomeFragmentA : BaseLazyFragment() {
 
                     override fun onLocate() {
                         //定位接口，需要APP自身实现，这里模拟一下定位
-                        Handler().postDelayed( {
+                        Handler().postDelayed({
                             //定位完成之后更新数据
                             CityPicker.from(mActivity)
                                 .locateComplete(LocatedCity("成都", "四川", "101270101"), LocateState.SUCCESS)
@@ -86,9 +86,9 @@ class HomeFragmentA : BaseLazyFragment() {
         }
         homeA_iv_scan.setOnClickListener {
             EasyPermissions.create(Manifest.permission.CAMERA).callback {
-                if(it){
-                    EasyActivityResult.startActivity(mActivity,Intent(mActivity,ScannerActivity::class.java),null)
-                }else{
+                if (it) {
+                    EasyActivityResult.startActivity(mActivity, Intent(mActivity, ScannerActivity::class.java), null)
+                } else {
                     EasyToast.DEFAULT.show("你拒绝了打开摄像头权限，无法打开扫一扫")
                 }
             }.request(mActivity)

@@ -37,7 +37,7 @@ ext {
     // autosize 屏幕适配
     autosize = '1.1.2'
     // 选择城市
-    citypicker = '2.0.3'
+//    citypicker = '2.0.3'
     // banner
     mzBanner = 'v2.0.2'
     glide = '4.9.0'

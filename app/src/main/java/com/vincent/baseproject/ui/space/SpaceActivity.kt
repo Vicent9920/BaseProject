@@ -27,16 +27,20 @@ class SpaceActivity : UIActivity() {
 
     override fun initEvent() {
         super.initEvent()
+        // 重置公共布局
         tv_rightMenu.setOnClickListener {
             SpaceLayout.onDestroy(windowManager)
         }
+        // 展示空布局
         ll_btn_empty.setOnClickListener {
             SpaceLayout.showEmptyLayout(ll_content, windowManager)
         }
+        // 展示加载中布局
         ll_btn_loading.setOnClickListener {
             SpaceLayout.showLoadingLayout(ll_content, windowManager)
         }
 
+        // 展示网络异常页面，支持点击事件回调
         ll_btn_error.setOnClickListener {
             // 防止回调事件错乱 因此回调事件的作用只有一次 即重置的时候对事件进行了回收
             SpaceLayout.setOnRetryClickedListener(R.id.retry,object :SpaceLayout.OnRetryClickedListener{

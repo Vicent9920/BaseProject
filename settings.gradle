@@ -1,1 +1,1 @@
-include ':app', ':baselibrary', ':dialoglibrary'
+include ':app', ':baselibrary', ':dialoglibrary', ':citypicker'

@@ -106,12 +106,9 @@ object SpaceLayout {
         wm.addView(currentLayout, setLayoutParams(target))
     }
 
-    fun getEmptyLayout(): View = emptyLayout
 
-    /**
-     * 是否有Ares界面正在展示
-     */
-    fun isAresShowing(): Boolean = isAresShowing
+
+
 
 
     private fun setLayoutParams(target: View): WindowManager.LayoutParams {

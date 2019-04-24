@@ -38,6 +38,14 @@
                     android:text="请求权限" />
 
             <Button
+                    android:id="@+id/homeC_btn_cityPicker"
+                    style="@style/ButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="选择城市" />
+
+            <Button
                     android:id="@+id/homeC_btn_stateBlack"
                     style="@style/ButtonStyle"
                     android:layout_width="match_parent"
