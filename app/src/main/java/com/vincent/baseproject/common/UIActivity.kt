@@ -83,7 +83,7 @@ abstract class UIActivity : BaseActivity(), BGASwipeBackHelper.Delegate {
         } else {
             if (netErrorView.parent == null) {
                 mWindowManager.addView(netErrorView, mLayoutParams)
-
+                initErrorEvent()
             }
         }
     }
@@ -146,8 +146,9 @@ abstract class UIActivity : BaseActivity(), BGASwipeBackHelper.Delegate {
     }
 
 
-    override fun initEvent() {
-        super.initEvent()
+
+
+    private fun initErrorEvent() {
         // 必须返回false才能将事件分发到点击事件
         netErrorView.setOnTouchListener { v, event ->
             false

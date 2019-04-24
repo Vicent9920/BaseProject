@@ -7,7 +7,7 @@
  * WebActivity 增加 WebView 下载文件功能
  * 首页增加城市选择，城市选择数据查看：[所有城市](https://github.com/Vicent9920/BaseProject/blob/master/allcity.html)。如果需要自定义数据，需要重写数据库类[DBManager](https://github.com/zaaach/CityPicker/blob/master/citypicker/src/main/java/com/zaaach/citypicker/db/DBManager.java)
  * 首页增加扫一扫功能，并对扫一扫结果通过 WebActivity 展示
- * 通过多网络 API 对全部网络提醒（非传统的广播）
+ * 通过多网络 API 对全部网络提醒（非传统的广播）[使用说明](./doc/NetworkExceptionChecking.md)。
  *  Activity 基类、 Fragment 基类封装以及部分自定义 View 编写等
  
   下载地址
@@ -109,6 +109,3 @@
  1. 邮箱：weixing9920@163.com
  2. 博客：[https://juejin.im/user/593def80fe88c2006a2707df/posts](https://juejin.im/user/593def80fe88c2006a2707df/posts)
 
-## 五、下一步计划：
- * 优化城市选择库
- * 空布局的使用与思考总结

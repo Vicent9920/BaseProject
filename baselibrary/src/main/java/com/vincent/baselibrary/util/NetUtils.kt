@@ -116,7 +116,7 @@ object NetUtils {
         // WiFi
         req.addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
         // 蓝牙
-        req.addTransportType(NetworkCapabilities.TRANSPORT_BLUETOOTH)
+//        req.addTransportType(NetworkCapabilities.TRANSPORT_BLUETOOTH)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // 字面意思理解应该是热点
             req.addTransportType(NetworkCapabilities.TRANSPORT_WIFI_AWARE)

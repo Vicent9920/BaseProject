@@ -42,7 +42,7 @@ class MyApplication : Application() {
         Hawk.init(this).build()
         // 初始化版本升级框架
         initUpdateConfig()
-//        // 网络监听
+       // 网络监听
         NetUtils.netWorkListener(this)
 
     }
