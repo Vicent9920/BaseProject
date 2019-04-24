@@ -5,7 +5,7 @@
 
 ```
 // 网络监听
-        NetUtils.netWorkListener(this)
+NetUtils.netWorkListener(this)
 ```
 * 进入```UI```（可见状态）前检查网络
 ```
@@ -43,3 +43,4 @@ fun onNetworkChangeEvent(event: NetworkChangeEvent) {
     
 
 ```
+[使用示例](https://github.com/Vicent9920/BaseProject/blob/master/app/src/main/java/com/vincent/baseproject/common/UIActivity.kt)
