@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -115,7 +115,7 @@ dependencies {
 
     // 图片加载 glide
     implementation "com.github.bumptech.glide:glide:$rootProject.ext.glide"
-    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.ext.glide"
+    kapt "com.github.bumptech.glide:compiler:$rootProject.ext.glide"
 
     // 版本更新
     implementation "com.github.yjfnypeu:UpdatePlugin:$rootProject.ext.updatePlugin"
@@ -123,10 +123,20 @@ dependencies {
     // 扫一扫
     implementation "com.mylhyl:zxingscanner:$rootProject.ext.zxing"
 
-    //    implementation "androidx.multidex:multidex:2.0.0"
+    //  基础库
+    // EventBus
+    api "org.greenrobot:eventbus:$rootProject.ext.eventbus"
+    // Easy 工具类
+    api "com.github.yjfnypeu:EasyAndroid:$rootProject.ext.EasyAndroid"
+    // 屏幕适配
+    api "me.jessyan:autosize:$rootProject.ext.autosize"
+    // Adapter
+    api "com.github.CymChad:BaseRecyclerViewAdapterHelper:$rootProject.ext.BaseRecyclerViewAdapterHelper"
+    // ViewModel and LiveData
+    api "androidx.lifecycle:lifecycle-extensions:$rootProject.ext.lifecycle_version"
 
-    //    implementation project(':baselibrary')
-    compile project(path: ':dialoglibrary')
+    implementation 'com.github.Vicent9920:DialogLibrary:1.0.2'
+//    compile project(path: ':dialoglibrary')
     implementation project(':baselibrary')
     implementation project(':citypicker')
 }

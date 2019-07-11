@@ -1,5 +1,7 @@
+@file:SuppressLint("ClickableViewAccessibility")
 package com.vincent.baselibrary.widget
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.text.Editable
@@ -21,10 +23,10 @@ import com.vincent.baselibrary.R
  */
 class ClearEditText : EditText, View.OnTouchListener, View.OnFocusChangeListener, TextWatcher {
 
-    private lateinit var mClearIcon: Drawable
+    private  var mClearIcon: Drawable
 
-    private var mOnTouchListener: View.OnTouchListener? = null
-    private var mOnFocusChangeListener: View.OnFocusChangeListener? = null
+    private var mOnTouchListener: OnTouchListener? = null
+    private var mOnFocusChangeListener: OnFocusChangeListener? = null
 
 
     constructor(context: Context) : super(context)

@@ -10,7 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/baselibrary" />
-            <option value="$PROJECT_DIR$/dialoglibrary" />
+            <option value="$PROJECT_DIR$/citypicker" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

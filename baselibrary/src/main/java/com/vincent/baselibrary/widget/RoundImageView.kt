@@ -1,3 +1,5 @@
+@file:SuppressLint("CustomViewStyleable")
+
 package com.vincent.baselibrary.widget
 
 import android.annotation.SuppressLint
@@ -8,14 +10,15 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.util.TypedValue
 import androidx.appcompat.widget.AppCompatImageView
-import android.graphics.RectF
-import android.widget.ImageView
+import com.vincent.baselibrary.R
+import kotlin.math.max
+import kotlin.math.min
 
 
 /**
  * 创建日期：2019/3/7 0007on 下午 3:21
  * 描述：设置圆角/圆环效果
- * @author：Vincent
+ * author：Vincent
  * QQ：3332168769
  * 备注：
  */
@@ -26,7 +29,7 @@ class RoundImageView(context: Context, val attrs: AttributeSet?, defStyleAttr: I
     var mBorderRadius = 6f
     // 圆环半径 默认为1
     var mBoederWidth = 0f
-    var mBorderColor:Int = Color.GRAY
+    var mBorderColor: Int = Color.GRAY
 
     private var mPaint: Paint = Paint()
 
@@ -40,21 +43,19 @@ class RoundImageView(context: Context, val attrs: AttributeSet?, defStyleAttr: I
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
 
 
-
-
     init {
         mPaint.isAntiAlias = true
         mMatrix = Matrix()
-        val typedArray = context.obtainStyledAttributes(attrs, com.vincent.baselibrary.R.styleable.CircleDrawable, defStyleAttr, 0)
-        mBorderRadius = typedArray.getFloat(com.vincent.baselibrary.R.styleable.CircleDrawable_circle_radius, 6f)
-        mBoederWidth = typedArray.getFloat(com.vincent.baselibrary.R.styleable.CircleDrawable_circle_border, 0f)
-        mBorderColor = typedArray.getColor(com.vincent.baselibrary.R.styleable.CircleDrawable_circle_color,Color.GRAY)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircleDrawable, defStyleAttr, 0)
+        mBorderRadius = typedArray.getFloat(R.styleable.CircleDrawable_circle_radius, 6f)
+        mBoederWidth = typedArray.getFloat(R.styleable.CircleDrawable_circle_border, 0f)
+        mBorderColor = typedArray.getColor(R.styleable.CircleDrawable_circle_color, Color.GRAY)
         typedArray.recycle()
-        mBorderRadius = dipToPixels(context,mBorderRadius)
-        if(mBoederWidth != 0f){
-            mBoederWidth = dipToPixels(context,mBoederWidth)
+        mBorderRadius = dipToPixels(context, mBorderRadius)
+        if (mBoederWidth != 0f) {
+            mBoederWidth = dipToPixels(context, mBoederWidth)
         }
-        super.setScaleType(ImageView.ScaleType.CENTER_CROP)
+        super.setScaleType(ScaleType.CENTER_CROP)
     }
 
     @SuppressLint("DrawAllocation")
@@ -65,10 +66,7 @@ class RoundImageView(context: Context, val attrs: AttributeSet?, defStyleAttr: I
         var scale = 1.0f
         if (!(bitmap.width == width && bitmap.height == height)) {
             // 如果图片的宽或者高与view的宽高不匹配，计算出需要缩放的比例；缩放后的图片的宽高，一定要大于我们view的宽高；所以我们这里取大值；
-            scale = Math.max(
-                width * 1.0f / bitmap.width,
-                height * 1.0f / bitmap.height
-            )
+            scale = max(width * 1.0f / bitmap.width, height * 1.0f / bitmap.height)
         }
         // shader的变换矩阵，我们这里主要用于放大或者缩小
         mMatrix.setScale(scale, scale)
@@ -76,16 +74,16 @@ class RoundImageView(context: Context, val attrs: AttributeSet?, defStyleAttr: I
         mBitmapShader?.setLocalMatrix(mMatrix)
         // 设置shader
         mPaint.shader = mBitmapShader
-        if(mBoederWidth == 0f){
+        if (mBoederWidth == 0f) {
             canvas?.drawRoundRect(
                 RectF(0f, 0f, width.toFloat(), height.toFloat()), mBorderRadius, mBorderRadius,
                 mPaint
             )
-        }else{
+        } else {
             canvas?.drawRoundRect(
-                RectF(mBoederWidth, mBoederWidth, width.toFloat()-mBoederWidth, height.toFloat()-mBoederWidth),
-                mBorderRadius-mBoederWidth,
-                mBorderRadius-mBoederWidth,
+                RectF(mBoederWidth, mBoederWidth, width.toFloat() - mBoederWidth, height.toFloat() - mBoederWidth),
+                mBorderRadius - mBoederWidth,
+                mBorderRadius - mBoederWidth,
                 mPaint
             )
             val mBorderRect = calculateBounds()
@@ -94,8 +92,9 @@ class RoundImageView(context: Context, val attrs: AttributeSet?, defStyleAttr: I
             p.style = Paint.Style.STROKE
             p.strokeWidth = mBoederWidth
             p.color = mBorderColor
-            val bgRadius = Math.min((mBorderRect.height() - mBoederWidth) / 2.0f, (mBorderRect.width() - mBoederWidth) / 2.0f)
-            canvas?.drawCircle(mBorderRect.centerX(),mBorderRect.centerY(),bgRadius,p)
+            val bgRadius =
+                min((mBorderRect.height() - mBoederWidth) / 2.0f, (mBorderRect.width() - mBoederWidth) / 2.0f)
+            canvas?.drawCircle(mBorderRect.centerX(), mBorderRect.centerY(), bgRadius, p)
         }
 
 
@@ -124,7 +123,7 @@ class RoundImageView(context: Context, val attrs: AttributeSet?, defStyleAttr: I
         val availableWidth = width - paddingLeft - paddingRight
         val availableHeight = height - paddingTop - paddingBottom
 
-        val sideLength = Math.min(availableWidth, availableHeight)
+        val sideLength = min(availableWidth, availableHeight)
 
         val left = paddingLeft + (availableWidth - sideLength) / 2f
         val top = paddingTop + (availableHeight - sideLength) / 2f

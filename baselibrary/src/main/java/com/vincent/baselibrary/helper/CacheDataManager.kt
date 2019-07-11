@@ -2,8 +2,6 @@ package com.vincent.baselibrary.helper
 
 import android.content.Context
 import android.os.Environment
-import java.nio.file.Files.isDirectory
-import android.os.Environment.MEDIA_MOUNTED
 import java.io.File
 import java.math.BigDecimal
 
@@ -41,7 +39,7 @@ object CacheDataManager {
      * 删除文件夹
      */
     private fun deleteDir(dir: File?): Boolean {
-        dir?:return true
+        dir ?: return true
         if (dir.isDirectory) {
             val children = dir.list()
             for (i in children.indices) {
@@ -58,7 +56,7 @@ object CacheDataManager {
     // Context.getExternalFilesDir() --> SDCard/Android/data/你的应用的包名/files/ 目录，一般放一些长时间保存的数据
     // Context.getExternalCacheDir() --> SDCard/Android/data/你的应用包名/cache/目录，一般存放临时缓存数据
     private fun getFolderSize(file: File?): Long {
-        file?:return 0
+        file ?: return 0
         var size: Long = 0
         try {
             val fileList = file.listFiles()

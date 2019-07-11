@@ -1,3 +1,4 @@
+@file:Suppress("unused")
 package com.vincent.baselibrary.widget
 
 import android.annotation.SuppressLint
@@ -117,10 +118,10 @@ class SwitchButton(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : 
         if (isCanVisibleDrawing) {
             val actuallyDrawingAreaWidth = w - paddingStart - paddingEnd
             val actuallyDrawingAreaHeight = h - paddingTop - paddingBottom
-            var actuallyDrawingAreaLeft = 0
-            var actuallyDrawingAreaRight = 0
-            var actuallyDrawingAreaTop = 0
-            var actuallyDrawingAreaBottom = 0
+            val actuallyDrawingAreaLeft:Int
+            val actuallyDrawingAreaRight:Int
+            val actuallyDrawingAreaTop:Int
+            val actuallyDrawingAreaBottom:Int
             if (actuallyDrawingAreaWidth * mAspectRatio < actuallyDrawingAreaHeight) {
                 actuallyDrawingAreaLeft = paddingLeft
                 actuallyDrawingAreaRight = w - paddingRight
@@ -135,34 +136,34 @@ class SwitchButton(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : 
                 actuallyDrawingAreaBottom = height - paddingBottom
             }
             mShadowReservedHeight = (actuallyDrawingAreaBottom - actuallyDrawingAreaTop) * 0.07f
-            val left = actuallyDrawingAreaLeft
-            val top = actuallyDrawingAreaTop + mShadowReservedHeight
+            val l = actuallyDrawingAreaLeft
+            val t = actuallyDrawingAreaTop + mShadowReservedHeight
             mRight = actuallyDrawingAreaRight.toFloat()
-            val bottom = actuallyDrawingAreaBottom - mShadowReservedHeight
+            val b = actuallyDrawingAreaBottom - mShadowReservedHeight
 
-            val sHeight = bottom - top
-            mCenterX = (mRight + left) / 2
-            mCenterY = (bottom + top) / 2
+            val sHeight = b - t
+            mCenterX = (mRight + l) / 2
+            mCenterY = (b + t) / 2
 
-            mLeft = left.toFloat()
-            mWidth = bottom - top
-            bRight = left + mWidth
+            mLeft = l.toFloat()
+            mWidth = b - t
+            bRight = l + mWidth
             val halfHeightOfS = mWidth / 2 // OfB
             mRadius = halfHeightOfS * 0.95f
             mOffset = mRadius * 0.2f // offset of switching
             mStrokeWidth = (halfHeightOfS - mRadius) * 2
             mOnLeftX = mRight - mWidth
             mOn2LeftX = mOnLeftX - mOffset
-            mOffLeftX = left.toFloat()
+            mOffLeftX = l.toFloat()
             mOff2LeftX = mOffLeftX + mOffset
             mScale = 1 - mStrokeWidth / sHeight
 
             mBackgroundPath.reset()
             val bound = RectF()
-            bound.top = top
-            bound.bottom = bottom
-            bound.left = left.toFloat()
-            bound.right = left + sHeight
+            bound.top = t
+            bound.bottom = b
+            bound.left = l.toFloat()
+            bound.right = l + sHeight
             mBackgroundPath.arcTo(bound, 90f, 180f)
             bound.left = mRight - sHeight
             bound.right = mRight
@@ -171,10 +172,10 @@ class SwitchButton(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : 
 
             mBound.left = mLeft
             mBound.right = bRight
-            mBound.top = top + mStrokeWidth / 2  // bTop = sTop
-            mBound.bottom = bottom - mStrokeWidth / 2 // bBottom = sBottom
+            mBound.top = t + mStrokeWidth / 2  // bTop = sTop
+            mBound.bottom = b - mStrokeWidth / 2 // bBottom = sBottom
             val bCenterX = (bRight + mLeft) / 2
-            val bCenterY = (bottom + top) / 2
+            val bCenterY = (b + t) / 2
 
             val red = mShadowColor shr 16 and 0xFF
             val green = mShadowColor shr 8 and 0xFF
@@ -258,8 +259,7 @@ class SwitchButton(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : 
     }
 
     override fun onSaveInstanceState(): Parcelable? {
-        val superState = super.onSaveInstanceState()
-        val state = Companion.SavedState(superState)
+        val state = SavedState(super.onSaveInstanceState())
         state.checked = mChecked
         return state
     }
@@ -390,7 +390,7 @@ class SwitchButton(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : 
         private class SavedState : BaseSavedState {
             var checked: Boolean = false
 
-            constructor(superState: Parcelable) : super(superState)
+            constructor(superState: Parcelable?) : super(superState)
             constructor(i: Parcel) : super(i) {
                 checked = 1 == i.readInt()
             }
@@ -407,7 +407,7 @@ class SwitchButton(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : 
             @JvmField
             val CREATOR = object : Parcelable.Creator<SavedState> {
                 override fun createFromParcel(source: Parcel): SavedState {
-                    return SwitchButton.Companion.SavedState(source)
+                    return Companion.SavedState(source)
                 }
 
                 override fun newArray(size: Int): Array<SavedState> {

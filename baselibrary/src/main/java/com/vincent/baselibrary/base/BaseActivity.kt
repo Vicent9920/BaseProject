@@ -2,22 +2,15 @@ package com.vincent.baselibrary.base
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.res.Configuration
-import android.content.res.Resources
 import android.graphics.Color
-import android.net.ConnectivityManager
-import android.net.Network
-import android.net.NetworkRequest
-import android.os.Bundle
-import android.view.inputmethod.InputMethodManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Build
+import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.haoge.easyandroid.easy.EasyLog
-import me.jessyan.autosize.AutoSizeCompat
 
 
 /**
@@ -31,16 +24,15 @@ import me.jessyan.autosize.AutoSizeCompat
 abstract class BaseActivity : AppCompatActivity() {
     val HANDLER = @SuppressLint("HandlerLeak")
     object : BaseActivityHandler<BaseActivity>(this) {}
-    private var mToolbar:Toolbar? = null
+    private var mToolbar: Toolbar? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if(isStatusBarEnabled())initStatusBar()
+        if (isStatusBarEnabled()) initStatusBar()
         setContentView(getLayoutId())
         initView()
         initData()
         initEvent()
     }
-
 
 
     // 引入布局
@@ -63,7 +55,7 @@ abstract class BaseActivity : AppCompatActivity() {
     /**
      * 默认开启沉浸式状态栏
      */
-    open fun isStatusBarEnabled():Boolean{
+    open fun isStatusBarEnabled(): Boolean {
         return true
     }
 
@@ -94,7 +86,7 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if(item?.itemId == android.R.id.home){
+        if (item?.itemId == android.R.id.home) {
             onBackPressed()
             return true
         }
@@ -108,19 +100,23 @@ abstract class BaseActivity : AppCompatActivity() {
      * @param isCloseTitle 是否需要关闭默认title
      */
 
-    fun initToolBar(toolbar: Toolbar?, isShowBack:Boolean = true, isCloseTitle:Boolean = false){
+    fun initToolBar(toolbar: Toolbar?, isShowBack: Boolean = true, isCloseTitle: Boolean = false) {
 
 //        toolbar?:return
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled( isShowBack)
+        supportActionBar?.setDisplayHomeAsUpEnabled(isShowBack)
         supportActionBar?.setDisplayShowTitleEnabled(isCloseTitle)
-        if(isStatusBarEnabled() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            toolbar?.setPadding(toolbar.paddingStart,toolbar.paddingTop+getSystemBarHeight(),toolbar.paddingEnd,toolbar.paddingBottom)
+        if (isStatusBarEnabled() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            toolbar?.setPadding(
+                toolbar.paddingStart,
+                toolbar.paddingTop + getSystemBarHeight(),
+                toolbar.paddingEnd,
+                toolbar.paddingBottom
+            )
             toolbar?.layoutParams?.height = toolbar?.layoutParams?.height?.plus(getSystemBarHeight())
         }
         mToolbar = toolbar
     }
-
 
 
     private fun getSystemBarHeight(): Int {

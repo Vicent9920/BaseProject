@@ -1,4 +1,4 @@
-package com.vincent.baselibrary.dao
+package com.vincent.baselibrary.entity
 
 /**
  * 创建日期：2019/3/22 0022on 下午 1:57

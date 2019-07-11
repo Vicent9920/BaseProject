@@ -12,9 +12,10 @@ import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper
 import com.haoge.easyandroid.easy.EasyActivityResult
 import com.orhanobut.hawk.Hawk
 import com.vincent.baselibrary.base.BaseActivity
-import com.vincent.baselibrary.dao.NetworkChangeEvent
+import com.vincent.baselibrary.entity.NetworkChangeEvent
 import com.vincent.baselibrary.helper.SettingUtil
 import com.vincent.baselibrary.util.NetUtils
+import com.vincent.baseproject.R
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -34,7 +35,7 @@ abstract class UIActivity : BaseActivity(), BGASwipeBackHelper.Delegate {
     private val netErrorView: View by lazy {
         val inflater = layoutInflater
         //提示View布局
-        inflater.inflate(com.vincent.baseproject.R.layout.network_error_layout, null)
+        inflater.inflate(R.layout.network_error_layout, null)
 
     }
     private val mLayoutParams: WindowManager.LayoutParams by lazy {

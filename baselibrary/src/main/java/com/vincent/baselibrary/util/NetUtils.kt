@@ -8,7 +8,7 @@ import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import android.os.Build
 import com.haoge.easyandroid.easy.EasyLog
-import com.vincent.baselibrary.dao.NetworkChangeEvent
+import com.vincent.baselibrary.entity.NetworkChangeEvent
 import org.greenrobot.eventbus.EventBus
 
 

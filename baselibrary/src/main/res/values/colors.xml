@@ -46,4 +46,18 @@
     <!-- 橙色 -->
     <color name="orange">#FFA500</color>
 
+    <color name="colorLineGray">#DCDCDC</color>
+
+    <color name="colorActionSheetWeiXinText">#393939</color>
+    <color name="colorActionSheetNormalItemText">#393939</color>
+    <color name="colorActionSheetTitleText">#969696</color>
+    <color name="colorActionSheetCancelText">#1382FF</color>
+    <color name="colorActionSheetItemText">#1382FF</color>
+    <color name="colorActionSheetEdgePressed">#F0F0F0</color>
+    <color name="colorActionSheetEdge">#FFFFFF</color>
+    <color name="colorActionSheetEdgeLineGray">@color/colorLineGray</color>
+    <color name="colorActionSheetNormalBackground">#e5e3e4</color>
+
+    <color name="colorRadiusDefaultRipple">#c8cccccc</color>
+
 </resources>

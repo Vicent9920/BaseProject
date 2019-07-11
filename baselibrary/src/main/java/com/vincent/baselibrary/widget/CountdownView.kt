@@ -1,3 +1,4 @@
+@file:Suppress("unused")
 package com.vincent.baselibrary.widget
 
 import android.annotation.SuppressLint
