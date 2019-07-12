@@ -26,12 +26,12 @@ import com.vincent.baselibrary.util.ResourceUtil
  * <p>版本号：1<p>
  *
  */
-open class RadiusTextDelegate<T : RadiusViewDelegate<T>> constructor(
+open class RadiusTextDelegate<T> constructor(
      open val textView: TextView,
     override val context: Context,
     attrs: AttributeSet?
 ) :
-    RadiusViewDelegate<T>(textView, context, attrs) {
+    RadiusViewDelegate<T>(textView, context, attrs) where T:RadiusViewDelegate<T>{
 
 
     private var mTextColor: Int = 0

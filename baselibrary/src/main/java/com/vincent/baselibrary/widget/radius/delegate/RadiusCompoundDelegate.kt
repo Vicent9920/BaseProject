@@ -18,11 +18,11 @@ import com.vincent.baselibrary.util.DrawableUtil
  * <p>版本号：1<p>
  *
  */
-open class RadiusCompoundDelegate<T : RadiusTextDelegate<T>> constructor(
+open class RadiusCompoundDelegate<T> constructor(
     open val compoundButton: CompoundButton,
     override val context: Context,
     attrs: AttributeSet?
-) : RadiusTextDelegate<T>(compoundButton, context, attrs) {
+) : RadiusTextDelegate<T>(compoundButton, context, attrs) where T:RadiusTextDelegate<T>{
 
     private lateinit var mButton: CompoundButton
     private var mStateButtonDrawable: StateListDrawable? = null

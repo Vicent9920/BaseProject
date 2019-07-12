@@ -21,8 +21,8 @@ import com.vincent.baselibrary.util.ResourceUtil
  * <p>版本号：1<p>
  *
  */
-open class RadiusSwitchDelegate <T : RadiusCompoundDelegate<T>>(val switch: Switch, context: Context, attrs: AttributeSet?) :
-    RadiusCompoundDelegate<T>(switch, context, attrs) {
+open class RadiusSwitchDelegate <T>(val switch: Switch, context: Context, attrs: AttributeSet?) :
+    RadiusCompoundDelegate<T>(switch, context, attrs)where T: RadiusCompoundDelegate<T>{
 
 
     private lateinit var mStateThumbDrawable: StateListDrawable

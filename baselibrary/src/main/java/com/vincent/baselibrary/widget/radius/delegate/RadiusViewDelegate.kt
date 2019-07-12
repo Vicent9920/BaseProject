@@ -31,11 +31,11 @@ import com.vincent.baselibrary.widget.radius.RadiusSwitch
  * <p>版本号：1<p>
  *
  */
-open class RadiusViewDelegate<T : RadiusViewDelegate<T>>(
+open class RadiusViewDelegate<T>(
     val view: View,
     open val context: Context,
     open val attrs: AttributeSet?
-) {
+)where T:RadiusViewDelegate<T>{
 
     internal var mTypedArray: TypedArray
 
