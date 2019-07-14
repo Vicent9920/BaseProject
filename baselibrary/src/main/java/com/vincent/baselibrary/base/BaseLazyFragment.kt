@@ -8,8 +8,6 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import com.haoge.easyandroid.easy.EasyToast
-import com.vincent.baselibrary.R
 
 /**
  * 创建日期：2019/3/6 0006on 上午 11:17
@@ -31,19 +29,14 @@ abstract class BaseLazyFragment : Fragment() {
     // 是否是 replace Fragment 的形式
     private var isReplaceFragment: Boolean = false
 
-    open val toastCustom by lazy {
-        // 创建自定义的Toast.
-        val layout = LayoutInflater.from(context).inflate(R.layout.toast_custom_layout, null)
-        EasyToast.newBuilder(layout, R.id.toast_tv)
-            .setGravity(Gravity.CENTER, 0, 0)
-            .build()
-    }
+
 
 
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mActivity = context as AppCompatActivity
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -155,13 +148,7 @@ abstract class BaseLazyFragment : Fragment() {
         mActivity.supportActionBar?.setDisplayShowTitleEnabled(isCloseTitle)
     }
 
-    fun toast(resString: Int) {
-        toastCustom.show(resString)
-    }
 
-    fun toast(s: String) {
-        toastCustom.show(s)
-    }
 
     fun getSystemBarHeight(): Int {
         val resources = resources

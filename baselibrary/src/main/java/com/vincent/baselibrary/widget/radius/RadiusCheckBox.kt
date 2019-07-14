@@ -2,24 +2,23 @@ package com.vincent.baselibrary.widget.radius
 
 import android.content.Context
 import android.util.AttributeSet
-import android.widget.Switch
-import com.vincent.baselibrary.widget.radius.delegate.RadiusSwitchDelegateImp
+import android.widget.CheckBox
+import com.vincent.baselibrary.widget.radius.delegate.RadiusCompoundDelegateImp
 import kotlin.math.max
-
 
 /**
  * <p>文件描述：<p>
- * <p>author 烤鱼<p>
- * <p>date 2019/7/10 0010 <p>
- * <p>update 2019/7/10 0010<p>
+ * <p>@author 烤鱼<p>
+ * <p>@date 2019/7/12 0012 <p>
+ * <p>@update 2019/7/12 0012<p>
  * <p>版本号：1<p>
  *
  */
-class RadiusSwitch @JvmOverloads constructor(
+class RadiusCheckBox @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : Switch(context, attrs, defStyleAttr) {
+) : CheckBox(context, attrs, defStyleAttr) {
 
-    val delegate: RadiusSwitchDelegateImp = RadiusSwitchDelegateImp(this, context, attrs)
+    val delegate = RadiusCompoundDelegateImp(this, context, attrs)
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         if (delegate.getWidthHeightEqualEnable() && width > 0 && height > 0) {
@@ -44,4 +43,18 @@ class RadiusSwitch @JvmOverloads constructor(
         delegate.setSelected(selected)
     }
 
+    override fun setEnabled(enabled: Boolean) {
+        super.setEnabled(enabled)
+        delegate.initShape()
+    }
+
+    override fun setPressed(pressed: Boolean) {
+        super.setPressed(pressed)
+        delegate.initShape()
+    }
+
+    override fun setChecked(checked: Boolean) {
+        super.setChecked(checked)
+        delegate.initShape()
+    }
 }

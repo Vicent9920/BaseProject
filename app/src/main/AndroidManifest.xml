@@ -22,8 +22,11 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ui.city_picker.CityPickerActivity"
-        android:theme="@style/SelectCityTheme">
+        <activity android:name=".ui.RadiusActivity">
+        </activity>
+        <activity
+                android:name=".ui.city_picker.CityPickerActivity"
+                android:theme="@style/SelectCityTheme">
         </activity>
         <activity android:name=".ui.space.SpaceInFragmentActivity">
         </activity>

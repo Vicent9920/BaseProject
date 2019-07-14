@@ -2,6 +2,7 @@
 package com.vincent.baselibrary.widget.radius.delegate
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
@@ -21,7 +22,7 @@ import com.vincent.baselibrary.util.ResourceUtil
  * <p>版本号：1<p>
  *
  */
-open class RadiusSwitchDelegate <T>(val switch: Switch, context: Context, attrs: AttributeSet?) :
+open class RadiusSwitchDelegate <T>(var switch: Switch,  context: Context, attrs: AttributeSet?) :
     RadiusCompoundDelegate<T>(switch, context, attrs)where T: RadiusCompoundDelegate<T>{
 
 
@@ -70,49 +71,49 @@ open class RadiusSwitchDelegate <T>(val switch: Switch, context: Context, attrs:
         mColorDefault = Color.LTGRAY
     }
 
-    override fun initAttributes() {
+    override fun initAttributes(typedArray: TypedArray) {
         mThumbDrawableWidth =
-            mTypedArray.getDimensionPixelSize(R.styleable.RadiusSwitch_rv_thumbDrawableWidth, dp2px(24f))
+            typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_thumbDrawableWidth, dp2px(24f))
         mThumbDrawableHeight =
-            mTypedArray.getDimensionPixelSize(R.styleable.RadiusSwitch_rv_thumbDrawableHeight, dp2px(24f))
-        val thumbDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_thumbDrawable)
-        val thumbPressedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_thumbPressedDrawable)
-        val thumbDisabledDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_thumbDisabledDrawable)
-        val thumbSelectedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_thumbSelectedDrawable)
-        val thumbCheckedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_thumbCheckedDrawable)
-        mThumbStrokeColor = mTypedArray.getColor(R.styleable.RadiusSwitch_rv_thumbStrokeColor, mColorDefault)
+            typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_thumbDrawableHeight, dp2px(24f))
+        val thumbDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_thumbDrawable)
+        val thumbPressedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_thumbPressedDrawable)
+        val thumbDisabledDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_thumbDisabledDrawable)
+        val thumbSelectedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_thumbSelectedDrawable)
+        val thumbCheckedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_thumbCheckedDrawable)
+        mThumbStrokeColor = typedArray.getColor(R.styleable.RadiusView_rv_thumbStrokeColor, mColorDefault)
         mThumbStrokePressedColor =
-            mTypedArray.getColor(R.styleable.RadiusSwitch_rv_thumbStrokePressedColor, mThumbStrokeColor)
+            typedArray.getColor(R.styleable.RadiusView_rv_thumbStrokePressedColor, mThumbStrokeColor)
         mThumbStrokeDisabledColor =
-            mTypedArray.getColor(R.styleable.RadiusSwitch_rv_thumbStrokeDisabledColor, mThumbStrokeColor)
+            typedArray.getColor(R.styleable.RadiusView_rv_thumbStrokeDisabledColor, mThumbStrokeColor)
         mThumbStrokeSelectedColor =
-            mTypedArray.getColor(R.styleable.RadiusSwitch_rv_thumbStrokeSelectedColor, mThumbStrokeColor)
+            typedArray.getColor(R.styleable.RadiusView_rv_thumbStrokeSelectedColor, mThumbStrokeColor)
         mThumbStrokeCheckedColor =
-            mTypedArray.getColor(R.styleable.RadiusSwitch_rv_thumbStrokeCheckedColor, mColorAccent)
-        mThumbStrokeWidth = mTypedArray.getDimensionPixelSize(R.styleable.RadiusSwitch_rv_thumbStrokeWidth, dp2px(2f))
-        mThumbRadius = mTypedArray.getDimension(R.styleable.RadiusSwitch_rv_thumbRadius, 100f)
+            typedArray.getColor(R.styleable.RadiusView_rv_thumbStrokeCheckedColor, mColorAccent)
+        mThumbStrokeWidth = typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_thumbStrokeWidth, dp2px(2f))
+        mThumbRadius = typedArray.getDimension(R.styleable.RadiusView_rv_thumbRadius, 100f)
 
         //轨道属性
         mTrackDrawableWidth =
-            mTypedArray.getDimensionPixelSize(R.styleable.RadiusSwitch_rv_trackDrawableWidth, dp2px(48f))
+            typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_trackDrawableWidth, dp2px(48f))
         mTrackDrawableHeight =
-            mTypedArray.getDimensionPixelSize(R.styleable.RadiusSwitch_rv_trackDrawableHeight, dp2px(24f))
-        val trackDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_trackDrawable)
-        val trackPressedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_trackPressedDrawable)
-        val trackDisabledDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_trackDisabledDrawable)
-        val trackSelectedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_trackSelectedDrawable)
-        val trackCheckedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_trackCheckedDrawable)
-        mTrackStrokeColor = mTypedArray.getColor(R.styleable.RadiusSwitch_rv_trackStrokeColor, mColorDefault)
+            typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_trackDrawableHeight, dp2px(24f))
+        val trackDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_trackDrawable)
+        val trackPressedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_trackPressedDrawable)
+        val trackDisabledDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_trackDisabledDrawable)
+        val trackSelectedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_trackSelectedDrawable)
+        val trackCheckedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_trackCheckedDrawable)
+        mTrackStrokeColor = typedArray.getColor(R.styleable.RadiusView_rv_trackStrokeColor, mColorDefault)
         mTrackStrokePressedColor =
-            mTypedArray.getColor(R.styleable.RadiusSwitch_rv_trackStrokePressedColor, mTrackStrokeColor)
+            typedArray.getColor(R.styleable.RadiusView_rv_trackStrokePressedColor, mTrackStrokeColor)
         mTrackStrokeDisabledColor =
-            mTypedArray.getColor(R.styleable.RadiusSwitch_rv_trackStrokeDisabledColor, mTrackStrokeColor)
+            typedArray.getColor(R.styleable.RadiusView_rv_trackStrokeDisabledColor, mTrackStrokeColor)
         mTrackStrokeSelectedColor =
-            mTypedArray.getColor(R.styleable.RadiusSwitch_rv_trackStrokeSelectedColor, mThumbStrokeColor)
+            typedArray.getColor(R.styleable.RadiusView_rv_trackStrokeSelectedColor, mThumbStrokeColor)
         mTrackStrokeCheckedColor =
-            mTypedArray.getColor(R.styleable.RadiusSwitch_rv_trackStrokeCheckedColor, mColorAccent)
-        mTrackStrokeWidth = mTypedArray.getDimensionPixelSize(R.styleable.RadiusSwitch_rv_trackStrokeWidth, dp2px(2f))
-        mTrackRadius = mTypedArray.getDimension(R.styleable.RadiusSwitch_rv_trackRadius, 100f)
+            typedArray.getColor(R.styleable.RadiusView_rv_trackStrokeCheckedColor, mColorAccent)
+        mTrackStrokeWidth = typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_trackStrokeWidth, dp2px(2f))
+        mTrackRadius = typedArray.getDimension(R.styleable.RadiusView_rv_trackRadius, 100f)
 
         mThumbDrawable = thumbDrawable ?: ColorDrawable(Color.WHITE)
         mThumbPressedDrawable = if (trackPressedDrawable == null) mThumbDrawable else thumbPressedDrawable
@@ -126,7 +127,7 @@ open class RadiusSwitchDelegate <T>(val switch: Switch, context: Context, attrs:
         mTrackDisabledDrawable = trackDisabledDrawable ?: mTrackDrawable
         mTrackSelectedDrawable = trackSelectedDrawable ?: mTrackDrawable
         mTrackCheckedDrawable = trackCheckedDrawable ?: ColorDrawable(mColorAccent)
-        super.initAttributes()
+        super.initAttributes(typedArray)
     }
 
     /**

@@ -6,12 +6,12 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
 import com.haoge.easyandroid.easy.EasyToast
+import com.hjq.dialog.MessageDialog
+import com.hjq.dialog.ToastDialog
 import com.vincent.baselibrary.helper.EditTextInputHelper
 import com.vincent.baseproject.R
 import com.vincent.baseproject.common.UIActivity
 import com.vincent.baseproject.data.LoginRepository
-import com.vincent.dialoglibrary.MessageDialog
-import com.vincent.dialoglibrary.ToastDialog
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.app_toolbar.*
 import java.util.regex.Pattern
@@ -54,7 +54,7 @@ class LoginActivity : UIActivity(), LifecycleOwner {
                 .setCancel("我在想想") // 设置 null 表示不显示取消按钮
                 //.setAutoDismiss(false) // 设置点击按钮后不关闭对话框
                 .apply {
-                    this.mListener = object : com.vincent.dialoglibrary.MessageDialog.OnListener {
+                    this.mListener = object : MessageDialog.OnListener {
                         override fun confirm(dialog: Dialog) {
                             easyStart(RegisterActivity::class.java)
                         }

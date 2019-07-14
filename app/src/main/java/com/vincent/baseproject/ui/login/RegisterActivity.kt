@@ -5,12 +5,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.hjq.dialog.ToastDialog
 import com.vincent.baselibrary.helper.EditTextInputHelper
 import com.vincent.baseproject.R
 import com.vincent.baseproject.common.UIActivity
 import com.vincent.baseproject.data.LoginRepository
 import com.vincent.baseproject.data.Resource
-import com.vincent.dialoglibrary.ToastDialog
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.app_toolbar.*
 import java.util.regex.Pattern

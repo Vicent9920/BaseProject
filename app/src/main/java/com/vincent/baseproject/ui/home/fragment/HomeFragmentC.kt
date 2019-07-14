@@ -5,10 +5,14 @@ import android.Manifest
 import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
+import android.view.Gravity
+import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import com.haoge.easyandroid.easy.EasyActivityResult
 import com.haoge.easyandroid.easy.EasyPermissions
+import com.haoge.easyandroid.easy.EasyToast
 import com.haoge.easyandroid.easy.PermissionAlwaysDenyNotifier
+import com.hjq.dialog.MessageDialog
 import com.jaeger.library.StatusBarUtil
 import com.orhanobut.hawk.Hawk
 import com.vincent.baselibrary.base.BaseLazyFragment
@@ -16,8 +20,6 @@ import com.vincent.baselibrary.helper.SettingUtil
 import com.vincent.baseproject.R
 import com.vincent.baseproject.common.Contsant
 import com.vincent.baseproject.ui.city_picker.CityPickerActivity
-import com.vincent.baseproject.ui.login.RegisterActivity
-import com.vincent.dialoglibrary.MessageDialog
 import kotlinx.android.synthetic.main.app_toolbar.*
 import kotlinx.android.synthetic.main.home_fragment_c.*
 
@@ -26,6 +28,20 @@ import kotlinx.android.synthetic.main.home_fragment_c.*
  *
  */
 class HomeFragmentC : BaseLazyFragment() {
+    open val toastCustom by lazy {
+        // 创建自定义的Toast.
+        val layout = LayoutInflater.from(context).inflate(com.vincent.baselibrary.R.layout.toast_custom_layout, null)
+        EasyToast.newBuilder(layout, com.vincent.baselibrary.R.id.toast_tv)
+            .setGravity(Gravity.CENTER, 0, 0)
+            .build()
+    }
+    fun toast(resString: Int) {
+        toastCustom.show(resString)
+    }
+
+    fun toast(s: String) {
+        toastCustom.show(s)
+    }
     override fun getLayoutId() = R.layout.home_fragment_c
 
     override fun initView() {

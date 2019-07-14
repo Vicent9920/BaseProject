@@ -7,7 +7,6 @@ import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import android.os.Build
-import com.haoge.easyandroid.easy.EasyLog
 import com.vincent.baselibrary.entity.NetworkChangeEvent
 import org.greenrobot.eventbus.EventBus
 
@@ -125,7 +124,7 @@ object NetUtils {
             override fun onAvailable(network: Network) {
                 super.onAvailable(network)
                 isConnected = true
-                EasyLog.DEFAULT.e(true)
+
                 EventBus.getDefault().post(NetworkChangeEvent(true))
             }
 
@@ -133,13 +132,13 @@ object NetUtils {
                 super.onUnavailable()
                 isConnected = false
                 EventBus.getDefault().post(NetworkChangeEvent(false))
-                EasyLog.DEFAULT.e("onUnavailable")
+
             }
 
             override fun onLost(network: Network?) {
                 super.onLost(network)
                 isConnected = false
-                EasyLog.DEFAULT.e(network)
+
                 EventBus.getDefault().post(NetworkChangeEvent(false))
             }
         })

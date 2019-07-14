@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
@@ -13,12 +14,10 @@ import android.widget.RelativeLayout
 import androidx.core.widget.NestedScrollView
 import com.bumptech.glide.Glide
 import com.haoge.easyandroid.easy.EasyActivityResult
+import com.haoge.easyandroid.easy.EasyToast
 import com.vincent.baselibrary.base.BaseLazyFragment
 import com.vincent.baseproject.R
-import com.vincent.baseproject.ui.DialogActivity
-import com.vincent.baseproject.ui.ScannerActivity
-import com.vincent.baseproject.ui.SettingActivity
-import com.vincent.baseproject.ui.WebActivity
+import com.vincent.baseproject.ui.*
 import com.vincent.baseproject.ui.login.LoginActivity
 import com.vincent.baseproject.ui.login.RegisterActivity
 import com.vincent.baseproject.ui.space.SpaceActivity
@@ -29,6 +28,20 @@ import kotlinx.android.synthetic.main.home_fragment_d.*
 
 
 class HomeFragmentD : BaseLazyFragment() {
+    open val toastCustom by lazy {
+        // 创建自定义的Toast.
+        val layout = LayoutInflater.from(context).inflate(com.vincent.baselibrary.R.layout.toast_custom_layout, null)
+        EasyToast.newBuilder(layout, com.vincent.baselibrary.R.id.toast_tv)
+            .setGravity(Gravity.CENTER, 0, 0)
+            .build()
+    }
+    fun toast(resString: Int) {
+        toastCustom.show(resString)
+    }
+
+    fun toast(s: String) {
+        toastCustom.show(s)
+    }
 
     private var statusAlpha = 0
     override fun getLayoutId() = R.layout.home_fragment_d
@@ -64,6 +77,9 @@ class HomeFragmentD : BaseLazyFragment() {
             val scrollDistance = Math.min(scrollY, headerHeight)
             statusAlpha = (255F * scrollDistance / headerHeight).toInt()
             setTopBackground()
+        }
+        homeD_btn_radius.setOnClickListener {
+            EasyActivityResult.startActivity(mActivity,Intent(mActivity, RadiusActivity::class.java),null)
         }
         homeD_btn_dialog.setOnClickListener {
             EasyActivityResult.startActivity(mActivity,Intent(mActivity, DialogActivity::class.java),null)

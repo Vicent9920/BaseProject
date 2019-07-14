@@ -303,7 +303,7 @@ class SwitchButton(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : 
             } else if (mCheckedState == STATE_SWITCH_ON) {
                 result = mOnLeftX // on -> on
             }
-            else // init
+            else // initShape
             -> if (mCheckedState == STATE_SWITCH_OFF) {
                 result = mOffLeftX
             } else if (mCheckedState == STATE_SWITCH_ON) {

@@ -2,6 +2,7 @@
 package com.vincent.baselibrary.widget.radius.delegate
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.StateListDrawable
 import android.util.AttributeSet
@@ -19,8 +20,8 @@ import com.vincent.baselibrary.util.DrawableUtil
  *
  */
 open class RadiusCompoundDelegate<T> constructor(
-    open val compoundButton: CompoundButton,
-    override val context: Context,
+    open var compoundButton: CompoundButton,
+    override var context: Context,
     attrs: AttributeSet?
 ) : RadiusTextDelegate<T>(compoundButton, context, attrs) where T:RadiusTextDelegate<T>{
 
@@ -42,21 +43,21 @@ open class RadiusCompoundDelegate<T> constructor(
         setButtonDrawable()
     }
 
-    override fun initAttributes() {
+    override fun initAttributes(typedArray: TypedArray) {
         mButtonDrawableSystemEnable =
-            mTypedArray.getBoolean(R.styleable.RadiusSwitch_rv_buttonDrawableSystemEnable, false)
+            typedArray.getBoolean(R.styleable.RadiusView_rv_buttonDrawableSystemEnable, false)
         mButtonDrawableColorRadius =
-            mTypedArray.getDimension(R.styleable.RadiusSwitch_rv_buttonDrawableColorRadius, 0f)
+            typedArray.getDimension(R.styleable.RadiusView_rv_buttonDrawableColorRadius, 0f)
         mButtonDrawableColorCircleEnable =
-            mTypedArray.getBoolean(R.styleable.RadiusSwitch_rv_buttonDrawableColorCircleEnable, false)
-        mButtonDrawableWidth = mTypedArray.getDimensionPixelSize(R.styleable.RadiusSwitch_rv_buttonDrawableWidth, -1)
-        mButtonDrawableHeight = mTypedArray.getDimensionPixelSize(R.styleable.RadiusSwitch_rv_buttonDrawableHeight, -1)
-        mButtonDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_buttonDrawable)
-        mButtonPressedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_buttonPressedDrawable)
-        mButtonDisabledDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_buttonDisabledDrawable)
-        mButtonSelectedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_buttonSelectedDrawable)
-        mButtonCheckedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_buttonCheckedDrawable)
-        super.initAttributes()
+            typedArray.getBoolean(R.styleable.RadiusView_rv_buttonDrawableColorCircleEnable, false)
+        mButtonDrawableWidth = typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_buttonDrawableWidth, -1)
+        mButtonDrawableHeight = typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_buttonDrawableHeight, -1)
+        mButtonDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_buttonDrawable)
+        mButtonPressedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_buttonPressedDrawable)
+        mButtonDisabledDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_buttonDisabledDrawable)
+        mButtonSelectedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_buttonSelectedDrawable)
+        mButtonCheckedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_buttonCheckedDrawable)
+        super.initAttributes(typedArray)
     }
 
 

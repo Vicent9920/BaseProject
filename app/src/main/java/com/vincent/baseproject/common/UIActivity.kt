@@ -96,7 +96,7 @@ abstract class UIActivity : BaseActivity(), BGASwipeBackHelper.Delegate {
 
         mSwipeBackHelper = BGASwipeBackHelper(this, this)
 
-        // 「必须在 Application 的 onCreate 方法中执行 BGASwipeBackHelper.init 来初始化滑动返回」
+        // 「必须在 Application 的 onCreate 方法中执行 BGASwipeBackHelper.initShape 来初始化滑动返回」
         // 下面几项可以不配置，这里只是为了讲述接口用法。
 
         // 设置滑动返回是否可用。默认值为 true

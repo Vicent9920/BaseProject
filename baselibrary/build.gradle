@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-android'
 
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -32,9 +32,11 @@ dependencies {
     testImplementation "junit:junit:$rootProject.ext.junit"
     androidTestImplementation "androidx.test:runner:$rootProject.ext.runner"
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espressoCore"
+
     // RecyclerView
     api "androidx.recyclerview:recyclerview:$rootProject.ext.recyclerview"
-
+// EventBus
+    api "org.greenrobot:eventbus:$rootProject.ext.eventbus"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {

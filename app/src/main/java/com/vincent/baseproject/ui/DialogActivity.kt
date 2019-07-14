@@ -7,11 +7,11 @@ import android.view.Gravity
 import android.view.View
 import androidx.fragment.app.FragmentActivity
 import com.haoge.easyandroid.easy.EasyToast
+import com.hjq.dialog.*
+import com.hjq.dialog.base.BaseDialog
+import com.hjq.dialog.base.BaseDialogFragment
 import com.vincent.baseproject.R
 import com.vincent.baseproject.common.UIActivity
-import com.vincent.dialoglibrary.*
-import com.vincent.dialoglibrary.base.BaseDialog
-import com.vincent.dialoglibrary.base.BaseDialogFragment
 import kotlinx.android.synthetic.main.activity_dialog.*
 import kotlinx.android.synthetic.main.app_toolbar.*
 
@@ -35,7 +35,7 @@ class DialogActivity : UIActivity() {
                 .setCancel("取消") // 设置 null 表示不显示取消按钮
                 //.setAutoDismiss(false) // 设置点击按钮后不关闭对话框
                 .apply {
-                    this.mListener = object : com.vincent.dialoglibrary.MessageDialog.OnListener {
+                    this.mListener = object : MessageDialog.OnListener {
                         override fun confirm(dialog: Dialog) {
                             EasyToast.DEFAULT.show("确定了")
                         }

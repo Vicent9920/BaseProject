@@ -3,6 +3,7 @@ package com.vincent.baselibrary.widget.radius.delegate
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.content.res.TypedArray
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
@@ -19,7 +20,7 @@ import com.vincent.baselibrary.util.ResourceUtil
 
 
 /**
- * <p>文件描述：<p>
+ * <p>文件描述：TextView 设置Shape 背景<p>
  * <p>author 烤鱼<p>
  * <p>date 2019/7/10 0010 <p>
  * <p>update 2019/7/10 0010<p>
@@ -27,8 +28,8 @@ import com.vincent.baselibrary.util.ResourceUtil
  *
  */
 open class RadiusTextDelegate<T> constructor(
-     open val textView: TextView,
-    override val context: Context,
+     open var textView: TextView,
+    override var context: Context,
     attrs: AttributeSet?
 ) :
     RadiusViewDelegate<T>(textView, context, attrs) where T:RadiusViewDelegate<T>{
@@ -114,64 +115,64 @@ open class RadiusTextDelegate<T> constructor(
 
     }
 
-    override fun initAttributes() {
-        mTextColor = mTypedArray.getColor(R.styleable.RadiusSwitch_rv_textColor, Integer.MAX_VALUE)
+    override fun initAttributes(typedArray: TypedArray) {
+        mTextColor = typedArray.getColor(R.styleable.RadiusView_rv_textColor, Integer.MAX_VALUE)
         mTextColor = if (mTextColor == Integer.MAX_VALUE) textView.textColors.defaultColor else mTextColor
-        mTextPressedColor = mTypedArray.getColor(R.styleable.RadiusSwitch_rv_textPressedColor, Integer.MAX_VALUE)
-        mTextDisabledColor = mTypedArray.getColor(R.styleable.RadiusSwitch_rv_textDisabledColor, Integer.MAX_VALUE)
-        mTextSelectedColor = mTypedArray.getColor(R.styleable.RadiusSwitch_rv_textSelectedColor, Integer.MAX_VALUE)
-        mTextCheckedColor = mTypedArray.getColor(R.styleable.RadiusSwitch_rv_textCheckedColor, Integer.MAX_VALUE)
+        mTextPressedColor = typedArray.getColor(R.styleable.RadiusView_rv_textPressedColor, Integer.MAX_VALUE)
+        mTextDisabledColor = typedArray.getColor(R.styleable.RadiusView_rv_textDisabledColor, Integer.MAX_VALUE)
+        mTextSelectedColor = typedArray.getColor(R.styleable.RadiusView_rv_textSelectedColor, Integer.MAX_VALUE)
+        mTextCheckedColor = typedArray.getColor(R.styleable.RadiusView_rv_textCheckedColor, Integer.MAX_VALUE)
 
-        mLeftDrawableSystemEnable = mTypedArray.getBoolean(R.styleable.RadiusSwitch_rv_leftDrawableSystemEnable, false)
-        mLeftDrawableColorRadius = mTypedArray.getDimension(R.styleable.RadiusSwitch_rv_leftDrawableColorRadius, 0f)
+        mLeftDrawableSystemEnable = typedArray.getBoolean(R.styleable.RadiusView_rv_leftDrawableSystemEnable, false)
+        mLeftDrawableColorRadius = typedArray.getDimension(R.styleable.RadiusView_rv_leftDrawableColorRadius, 0f)
         mLeftDrawableColorCircleEnable =
-            mTypedArray.getBoolean(R.styleable.RadiusSwitch_rv_leftDrawableColorCircleEnable, false)
-        mLeftDrawableWidth = mTypedArray.getDimensionPixelSize(R.styleable.RadiusSwitch_rv_leftDrawableWidth, -1)
-        mLeftDrawableHeight = mTypedArray.getDimensionPixelSize(R.styleable.RadiusSwitch_rv_leftDrawableHeight, -1)
-        mLeftDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_leftDrawable)
-        mLeftPressedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_leftPressedDrawable)
-        mLeftDisabledDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_leftDisabledDrawable)
-        mLeftSelectedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_leftSelectedDrawable)
-        mLeftCheckedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_leftCheckedDrawable)
+            typedArray.getBoolean(R.styleable.RadiusView_rv_leftDrawableColorCircleEnable, false)
+        mLeftDrawableWidth = typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_leftDrawableWidth, -1)
+        mLeftDrawableHeight = typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_leftDrawableHeight, -1)
+        mLeftDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_leftDrawable)
+        mLeftPressedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_leftPressedDrawable)
+        mLeftDisabledDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_leftDisabledDrawable)
+        mLeftSelectedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_leftSelectedDrawable)
+        mLeftCheckedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_leftCheckedDrawable)
 
-        mTopDrawableSystemEnable = mTypedArray.getBoolean(R.styleable.RadiusSwitch_rv_topDrawableSystemEnable, false)
-        mTopDrawableColorRadius = mTypedArray.getDimension(R.styleable.RadiusSwitch_rv_topDrawableColorRadius, 0f)
+        mTopDrawableSystemEnable = typedArray.getBoolean(R.styleable.RadiusView_rv_topDrawableSystemEnable, false)
+        mTopDrawableColorRadius = typedArray.getDimension(R.styleable.RadiusView_rv_topDrawableColorRadius, 0f)
         mTopDrawableColorCircleEnable =
-            mTypedArray.getBoolean(R.styleable.RadiusSwitch_rv_topDrawableColorCircleEnable, false)
-        mTopDrawableWidth = mTypedArray.getDimensionPixelSize(R.styleable.RadiusSwitch_rv_topDrawableWidth, -1)
-        mTopDrawableHeight = mTypedArray.getDimensionPixelSize(R.styleable.RadiusSwitch_rv_topDrawableHeight, -1)
-        mTopDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_topDrawable)
-        mTopPressedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_topPressedDrawable)
-        mTopDisabledDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_topDisabledDrawable)
-        mTopSelectedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_topSelectedDrawable)
-        mTopCheckedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_topCheckedDrawable)
+            typedArray.getBoolean(R.styleable.RadiusView_rv_topDrawableColorCircleEnable, false)
+        mTopDrawableWidth = typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_topDrawableWidth, -1)
+        mTopDrawableHeight = typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_topDrawableHeight, -1)
+        mTopDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_topDrawable)
+        mTopPressedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_topPressedDrawable)
+        mTopDisabledDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_topDisabledDrawable)
+        mTopSelectedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_topSelectedDrawable)
+        mTopCheckedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_topCheckedDrawable)
 
         mRightDrawableSystemEnable =
-            mTypedArray.getBoolean(R.styleable.RadiusSwitch_rv_rightDrawableSystemEnable, false)
-        mRightDrawableColorRadius = mTypedArray.getDimension(R.styleable.RadiusSwitch_rv_rightDrawableColorRadius, 0f)
+            typedArray.getBoolean(R.styleable.RadiusView_rv_rightDrawableSystemEnable, false)
+        mRightDrawableColorRadius = typedArray.getDimension(R.styleable.RadiusView_rv_rightDrawableColorRadius, 0f)
         mRightDrawableColorCircleEnable =
-            mTypedArray.getBoolean(R.styleable.RadiusSwitch_rv_rightDrawableColorCircleEnable, false)
-        mRightDrawableWidth = mTypedArray.getDimensionPixelSize(R.styleable.RadiusSwitch_rv_rightDrawableWidth, -1)
-        mRightDrawableHeight = mTypedArray.getDimensionPixelSize(R.styleable.RadiusSwitch_rv_rightDrawableHeight, -1)
-        mRightDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_rightDrawable)
-        mRightPressedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_rightPressedDrawable)
-        mRightDisabledDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_rightDisabledDrawable)
-        mRightSelectedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_rightSelectedDrawable)
-        mRightCheckedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_rightCheckedDrawable)
+            typedArray.getBoolean(R.styleable.RadiusView_rv_rightDrawableColorCircleEnable, false)
+        mRightDrawableWidth = typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_rightDrawableWidth, -1)
+        mRightDrawableHeight = typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_rightDrawableHeight, -1)
+        mRightDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_rightDrawable)
+        mRightPressedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_rightPressedDrawable)
+        mRightDisabledDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_rightDisabledDrawable)
+        mRightSelectedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_rightSelectedDrawable)
+        mRightCheckedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_rightCheckedDrawable)
 
         mBottomDrawableSystemEnable =
-            mTypedArray.getBoolean(R.styleable.RadiusSwitch_rv_bottomDrawableSystemEnable, false)
-        mBottomDrawableColorRadius = mTypedArray.getDimension(R.styleable.RadiusSwitch_rv_bottomDrawableColorRadius, 0f)
+            typedArray.getBoolean(R.styleable.RadiusView_rv_bottomDrawableSystemEnable, false)
+        mBottomDrawableColorRadius = typedArray.getDimension(R.styleable.RadiusView_rv_bottomDrawableColorRadius, 0f)
         mBottomDrawableColorCircleEnable =
-            mTypedArray.getBoolean(R.styleable.RadiusSwitch_rv_bottomDrawableColorCircleEnable, false)
-        mBottomDrawableWidth = mTypedArray.getDimensionPixelSize(R.styleable.RadiusSwitch_rv_bottomDrawableWidth, -1)
-        mBottomDrawableHeight = mTypedArray.getDimensionPixelSize(R.styleable.RadiusSwitch_rv_bottomDrawableHeight, -1)
-        mBottomDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_bottomDrawable)
-        mBottomPressedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_bottomPressedDrawable)
-        mBottomDisabledDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_bottomDisabledDrawable)
-        mBottomSelectedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_bottomSelectedDrawable)
-        mBottomCheckedDrawable = mTypedArray.getDrawable(R.styleable.RadiusSwitch_rv_bottomCheckedDrawable)
-        super.initAttributes()
+            typedArray.getBoolean(R.styleable.RadiusView_rv_bottomDrawableColorCircleEnable, false)
+        mBottomDrawableWidth = typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_bottomDrawableWidth, -1)
+        mBottomDrawableHeight = typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_bottomDrawableHeight, -1)
+        mBottomDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_bottomDrawable)
+        mBottomPressedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_bottomPressedDrawable)
+        mBottomDisabledDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_bottomDisabledDrawable)
+        mBottomSelectedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_bottomSelectedDrawable)
+        mBottomCheckedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_bottomCheckedDrawable)
+        super.initAttributes(typedArray)
     }
 
 
@@ -613,27 +614,27 @@ open class RadiusTextDelegate<T> constructor(
         var index = 0
         var width = mLeftDrawableWidth
         var height = mLeftDrawableHeight
-        var radius = (if (mLeftDrawableColorCircleEnable) width + height / 2 else mLeftDrawableColorRadius).toFloat()
+        var radius = if (mLeftDrawableColorCircleEnable)( width + height / 2).toFloat() else mLeftDrawableColorRadius
         when (gravity) {
             Gravity.TOP -> {
                 index = 1
                 width = mTopDrawableWidth
                 height = mTopDrawableHeight
-                radius = (if (mTopDrawableColorCircleEnable) width + height / 2 else mTopDrawableColorRadius).toFloat()
+                radius = if (mTopDrawableColorCircleEnable) (width + height / 2).toFloat() else mTopDrawableColorRadius
             }
             Gravity.RIGHT -> {
                 index = 2
                 width = mRightDrawableWidth
                 height = mRightDrawableHeight
                 radius =
-                    (if (mRightDrawableColorCircleEnable) width + height / 2 else mRightDrawableColorRadius).toFloat()
+                    if (mRightDrawableColorCircleEnable) (width + height / 2).toFloat() else mRightDrawableColorRadius
             }
             Gravity.BOTTOM -> {
                 index = 3
                 width = mBottomDrawableWidth
                 height = mBottomDrawableHeight
                 radius =
-                    (if (mBottomDrawableColorCircleEnable) width + height / 2 else mBottomDrawableColorRadius).toFloat()
+                    if (mBottomDrawableColorCircleEnable) (width + height / 2).toFloat() else mBottomDrawableColorRadius
             }
         }
         val drawables = textView.compoundDrawables

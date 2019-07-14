@@ -2,6 +2,7 @@
 package com.vincent.baselibrary.widget.radius.delegate
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.widget.EditText
 import com.vincent.baselibrary.R
@@ -20,10 +21,10 @@ open class RadiusEditTextDelegate<T>(editText: EditText, context: Context, attrs
     private var mSelectionEndEnable: Boolean = false
     private var mSelectionEndOnceEnable: Boolean = false
 
-    override fun initAttributes() {
-        mSelectionEndEnable = mTypedArray.getBoolean(R.styleable.RadiusEditText_rv_selectionEndEnable, true)
-        mSelectionEndOnceEnable = mTypedArray.getBoolean(R.styleable.RadiusEditText_rv_selectionEndOnceEnable, false)
-        super.initAttributes()
+    override fun initAttributes(typedArray: TypedArray) {
+        mSelectionEndEnable = typedArray.getBoolean(R.styleable.RadiusView_rv_selectionEndEnable, true)
+        mSelectionEndOnceEnable = typedArray.getBoolean(R.styleable.RadiusView_rv_selectionEndOnceEnable, false)
+        super.initAttributes(typedArray)
     }
 
 
