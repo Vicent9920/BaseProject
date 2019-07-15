@@ -17,9 +17,9 @@ import kotlin.math.max
 class RadiusLinearLayout @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
-    val delegate = RadiusViewDelegateImp(this, context, attrs)
+    val delegate:RadiusViewDelegateImp? = RadiusViewDelegateImp(this, context, attrs)
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        if (delegate.getWidthHeightEqualEnable() && width > 0 && height > 0) {
+        if (delegate?.getWidthHeightEqualEnable()==true && width > 0 && height > 0) {
             val max = max(width, height)
             val measureSpec = MeasureSpec.makeMeasureSpec(max, MeasureSpec.EXACTLY)
             super.onMeasure(measureSpec, measureSpec)
@@ -30,14 +30,14 @@ class RadiusLinearLayout @JvmOverloads constructor(
 
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
         super.onLayout(changed, l, t, r, b)
-        if (delegate.getRadiusHalfHeightEnable()) {
+        if (delegate?.getRadiusHalfHeightEnable() == true) {
             delegate.setRadius(height / 2f)
         }
-        delegate.initShape()
+        delegate?.initShape()
     }
 
     override fun setSelected(selected: Boolean) {
         super.setSelected(selected)
-        delegate.setSelected(selected)
+        delegate?.setSelected(selected)
     }
 }

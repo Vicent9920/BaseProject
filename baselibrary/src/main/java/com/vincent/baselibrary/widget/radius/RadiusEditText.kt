@@ -22,22 +22,22 @@ class RadiusEditText @JvmOverloads constructor(
      * 是否设置完成光标标识
      */
     private var mSelectionEndDone: Boolean = false
-    val delegate = RadiusEditTextDelegateImp(this, context, attrs)
+    val delegate:RadiusEditTextDelegateImp? = RadiusEditTextDelegateImp(this, context, attrs)
 
     override fun setText(text: CharSequence?, type: BufferType?) {
         super.setText(text, type)
         text ?: return
-        if (!delegate.isSelectionEndEnable()) {
+        if (delegate?.isSelectionEndEnable() == false) {
             return
         }
         if (mSelectionEndDone) return
 
         setSelection(text.length)
-        mSelectionEndDone = delegate.isSelectionEndOnceEnable()
+        mSelectionEndDone = delegate?.isSelectionEndOnceEnable()?:true
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        if (delegate.getWidthHeightEqualEnable() && width > 0 && height > 0) {
+        if (delegate?.getWidthHeightEqualEnable() == true && width > 0 && height > 0) {
             val max = max(width, height)
             val measureSpec = MeasureSpec.makeMeasureSpec(max, MeasureSpec.EXACTLY)
             super.onMeasure(measureSpec, measureSpec)
@@ -49,24 +49,24 @@ class RadiusEditText @JvmOverloads constructor(
 
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
         super.onLayout(changed, left, top, right, bottom)
-        if (delegate.getRadiusHalfHeightEnable()) {
+        if (delegate?.getRadiusHalfHeightEnable() == true) {
             delegate.setRadius(height / 2f)
         }
-        delegate.initShape()
+        delegate?.initShape()
     }
 
     override fun setSelected(selected: Boolean) {
         super.setSelected(selected)
-        delegate.setSelected(selected)
+        delegate?.setSelected(selected)
     }
 
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
-        delegate.initShape()
+        delegate?.initShape()
     }
 
     override fun setPressed(pressed: Boolean) {
         super.setPressed(pressed)
-        delegate.initShape()
+        delegate?.initShape()
     }
 }

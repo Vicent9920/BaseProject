@@ -15,7 +15,7 @@ import com.vincent.baselibrary.R
  * <p>版本号：1<p>
  *
  */
-open class RadiusEditTextDelegate<T>(editText: EditText, context: Context, attrs: AttributeSet?) :
+open class RadiusEditTextDelegate<T>  constructor(editText: EditText, context: Context, attrs: AttributeSet?) :
     RadiusTextDelegate<T>(editText, context, attrs) where T:RadiusTextDelegate<T>{
 
     private var mSelectionEndEnable: Boolean = false

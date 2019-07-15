@@ -7,5 +7,4 @@
     <!-- 默认分割线的宽度或者高度 -->
     <dimen name="line_size">1px</dimen>
 
-
 </resources>

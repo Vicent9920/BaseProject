@@ -19,29 +19,30 @@ class RadiusSwitch @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : Switch(context, attrs, defStyleAttr) {
 
-    val delegate: RadiusSwitchDelegateImp = RadiusSwitchDelegateImp(this, context, attrs)
+    val delegate: RadiusSwitchDelegateImp? = RadiusSwitchDelegateImp(this, context, attrs)
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        if (delegate.getWidthHeightEqualEnable() && width > 0 && height > 0) {
+        if (delegate?.getWidthHeightEqualEnable() == true && width > 0 && height > 0) {
             val max = max(width, height)
             val measureSpec = MeasureSpec.makeMeasureSpec(max, MeasureSpec.EXACTLY)
             super.onMeasure(measureSpec, measureSpec)
-            return
+        }else{
+            super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         }
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+
     }
 
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
         super.onLayout(changed, left, top, right, bottom)
-        if (delegate.getRadiusHalfHeightEnable()) {
+        if (delegate?.getRadiusHalfHeightEnable() == true) {
             delegate.setRadius(height / 2f)
         }
-        delegate.initShape()
+        delegate?.initShape()
     }
 
     override fun setSelected(selected: Boolean) {
         super.setSelected(selected)
-        delegate.setSelected(selected)
+        delegate?.setSelected(selected)
     }
 
 }

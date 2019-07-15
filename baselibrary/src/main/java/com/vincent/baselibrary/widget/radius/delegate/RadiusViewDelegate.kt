@@ -21,6 +21,8 @@ import android.graphics.drawable.RippleDrawable
 import android.util.AttributeSet
 import android.view.View
 import android.widget.CompoundButton
+import com.haoge.easyandroid.easy.EasyFormatter
+import com.haoge.easyandroid.easy.EasyLog
 import com.vincent.baselibrary.R
 import com.vincent.baselibrary.util.ResourceUtil
 import com.vincent.baselibrary.widget.radius.RadiusSwitch
@@ -34,12 +36,11 @@ import com.vincent.baselibrary.widget.radius.RadiusSwitch
  * <p>版本号：1<p>
  *
  */
-open class RadiusViewDelegate<T>(
-    val view: View,
-    open var context: Context,
-    open val attrs: AttributeSet?
+open class RadiusViewDelegate<T> @JvmOverloads constructor(
+    open val view: View,
+    open val context: Context,
+    open val attrs: AttributeSet? = null
 ) where T : RadiusViewDelegate<T> {
-
 
 
     private val mBackground = GradientDrawable()
@@ -93,9 +94,11 @@ open class RadiusViewDelegate<T>(
     private var mOnSelectedChangeListener: OnSelectedChangeListener? = null
 
     init {
-
-            val mTypedArray: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.RadiusView)
-            initAttributes(mTypedArray)
+        EasyLog.DEFAULT.e(EasyFormatter.DEFAULT.format(view))
+//        EasyLog.DEFAULT.e(EasyFormatter.DEFAULT.format(context))
+        EasyLog.DEFAULT.e(EasyFormatter.DEFAULT.format(attrs))
+        val mTypedArray = context.obtainStyledAttributes(attrs, R.styleable.RadiusView)
+        initAttributes(mTypedArray)
 
         view.isSelected = mSelected
         setBackgroundPressedAlpha(mBackgroundPressedAlpha)
@@ -103,24 +106,24 @@ open class RadiusViewDelegate<T>(
             .setSelected(mSelected)
     }
 
-    open fun initAttributes(typedArray:TypedArray) {
-        mBackgroundColor = typedArray.getColor(R.styleable.RadiusView_rv_backgroundColor, Integer.MAX_VALUE)
+    open fun initAttributes(typedArray: TypedArray) {
+        mBackgroundColor = typedArray.getColor(R.styleable.RadiusView_rv_backgroundColor, Int.MAX_VALUE)
         mBackgroundPressedColor =
-            typedArray.getColor(R.styleable.RadiusView_rv_backgroundPressedColor, Integer.MAX_VALUE)
+            typedArray.getColor(R.styleable.RadiusView_rv_backgroundPressedColor, Int.MAX_VALUE)
         mBackgroundDisabledColor =
-            typedArray.getColor(R.styleable.RadiusView_rv_backgroundDisabledColor, Integer.MAX_VALUE)
+            typedArray.getColor(R.styleable.RadiusView_rv_backgroundDisabledColor, Int.MAX_VALUE)
         mBackgroundSelectedColor =
-            typedArray.getColor(R.styleable.RadiusView_rv_backgroundSelectedColor, Integer.MAX_VALUE)
+            typedArray.getColor(R.styleable.RadiusView_rv_backgroundSelectedColor, Int.MAX_VALUE)
         mBackgroundCheckedColor =
-            typedArray.getColor(R.styleable.RadiusView_rv_backgroundCheckedColor, Integer.MAX_VALUE)
+            typedArray.getColor(R.styleable.RadiusView_rv_backgroundCheckedColor, Int.MAX_VALUE)
         mBackgroundPressedAlpha =
             typedArray.getInteger(R.styleable.RadiusView_rv_backgroundPressedAlpha, mBackgroundPressedAlpha)
 
-        mStrokeColor = typedArray.getColor(R.styleable.RadiusView_rv_strokeColor, Integer.MAX_VALUE)
-        mStrokePressedColor = typedArray.getColor(R.styleable.RadiusView_rv_strokePressedColor, Integer.MAX_VALUE)
-        mStrokeDisabledColor = typedArray.getColor(R.styleable.RadiusView_rv_strokeDisabledColor, Integer.MAX_VALUE)
-        mStrokeSelectedColor = typedArray.getColor(R.styleable.RadiusView_rv_strokeSelectedColor, Integer.MAX_VALUE)
-        mStrokeCheckedColor = typedArray.getColor(R.styleable.RadiusView_rv_strokeCheckedColor, Integer.MAX_VALUE)
+        mStrokeColor = typedArray.getColor(R.styleable.RadiusView_rv_strokeColor, Int.MAX_VALUE)
+        mStrokePressedColor = typedArray.getColor(R.styleable.RadiusView_rv_strokePressedColor, Int.MAX_VALUE)
+        mStrokeDisabledColor = typedArray.getColor(R.styleable.RadiusView_rv_strokeDisabledColor, Int.MAX_VALUE)
+        mStrokeSelectedColor = typedArray.getColor(R.styleable.RadiusView_rv_strokeSelectedColor, Int.MAX_VALUE)
+        mStrokeCheckedColor = typedArray.getColor(R.styleable.RadiusView_rv_strokeCheckedColor, Int.MAX_VALUE)
         mStrokePressedAlpha =
             typedArray.getInteger(R.styleable.RadiusView_rv_strokePressedAlpha, mStrokePressedAlpha)
 
@@ -527,10 +530,10 @@ open class RadiusViewDelegate<T>(
         //获取view当前drawable--用于判断是否通过默认属性设置背景
         val mDrawable = view.background
         //判断是否使用自定义颜色值
-        val isSetBg = (mBackgroundColor != Integer.MAX_VALUE
-                || mBackgroundPressedColor != Integer.MAX_VALUE
-                || mBackgroundDisabledColor != Integer.MAX_VALUE
-                || mBackgroundSelectedColor != Integer.MAX_VALUE
+        val isSetBg = (mBackgroundColor != Int.MAX_VALUE
+                || mBackgroundPressedColor != Int.MAX_VALUE
+                || mBackgroundDisabledColor != Int.MAX_VALUE
+                || mBackgroundSelectedColor != Int.MAX_VALUE
                 || mStrokeWidth > 0 || mRadius > 0
                 || mTopLeftRadius > 0 || mTopLeftRadius > 0 || mBottomLeftRadius > 0 || mBottomRightRadius > 0)
 
@@ -542,7 +545,7 @@ open class RadiusViewDelegate<T>(
                 ColorStateList(
                     arrayOf(intArrayOf(mStatePressed), intArrayOf()),
                     intArrayOf(
-                        if (mRippleColor != Integer.MAX_VALUE) mRippleColor else getBackColor(
+                        if (mRippleColor != Int.MAX_VALUE) mRippleColor else getBackColor(
                             mBackgroundPressedColor
                         ), mRippleColor
                     )
@@ -560,18 +563,18 @@ open class RadiusViewDelegate<T>(
      */
     private fun getBackColor(source: Int): Int {
         var color = source
-        if (color != Integer.MAX_VALUE) {
+        if (color != Int.MAX_VALUE) {
             return color
         }
         if (view.isSelected()) {
             color = mBackgroundSelectedColor
         } else if (view is CompoundButton) {
-            if (view.isChecked) {
+            if ((view as CompoundButton).isChecked) {
                 color = mBackgroundCheckedColor
             }
         }
         color =
-            if (color != Integer.MAX_VALUE) color else if (mBackgroundColor == Integer.MAX_VALUE) Color.WHITE else mBackgroundColor
+            if (color != Int.MAX_VALUE) color else if (mBackgroundColor == Int.MAX_VALUE) Color.WHITE else mBackgroundColor
         return if (view.isPressed && !mRippleEnable) calculateColor(color, mBackgroundPressedAlpha) else color
     }
 
@@ -583,18 +586,18 @@ open class RadiusViewDelegate<T>(
      */
     private fun getStrokeColor(source: Int): Int {
         var color = source
-        if (color != Integer.MAX_VALUE) {
+        if (color != Int.MAX_VALUE) {
             return color
         }
         if (view.isSelected) {
             color = mStrokeSelectedColor
         } else if (view is CompoundButton) {
-            if (view.isChecked) {
+            if ((view as CompoundButton).isChecked) {
                 color = mStrokeCheckedColor
             }
         }
         color =
-            if (color != Integer.MAX_VALUE) color else if (mStrokeColor == Integer.MAX_VALUE) Color.TRANSPARENT else mStrokeColor
+            if (color != Int.MAX_VALUE) color else if (mStrokeColor == Int.MAX_VALUE) Color.TRANSPARENT else mStrokeColor
         return if (view.isPressed && !mRippleEnable) calculateColor(color, mStrokePressedAlpha) else color
     }
 
@@ -605,11 +608,11 @@ open class RadiusViewDelegate<T>(
      * @param isSetBg
      * @return
      */
-    private fun getContentDrawable(mDrawable: Drawable, isSetBg: Boolean): Drawable {
+    private fun getContentDrawable(mDrawable: Drawable?, isSetBg: Boolean): Drawable? {
         if (view is CompoundButton) {
             return if (!isSetBg)
                 mDrawable
-            else if (view.isChecked)
+            else if ((view as CompoundButton).isChecked)
                 mBackgroundChecked
             else if (view.isSelected)
                 mBackgroundSelected

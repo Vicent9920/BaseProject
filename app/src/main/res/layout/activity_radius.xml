@@ -6,39 +6,617 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:gravity="center"
         tools:context=".ui.RadiusActivity">
 
-    <RelativeLayout
+    <include
+            layout="@layout/app_toolbar"/>
+
+    <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_height="match_parent"
+            android:scrollbars="none">
 
-        <TextView
-                android:layout_width="wrap_content"
+        <LinearLayout
+                android:id="@+id/layout_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="这是测试示例"/>
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
+            
+            <com.vincent.baselibrary.widget.radius.RadiusTextView
+                    android:id="@+id/rtv_loginRadius"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:gravity="center"
+                    android:text="登录"
+                    app:rv_backgroundColor="@android:color/holo_red_dark"
+                    android:clickable="true"
+                    android:enabled="false"
+                    app:rv_rippleEnable="true"
+                    app:rv_backgroundDisabledColor="@color/colorLineGray"
+                    app:rv_textColor="@color/white"
+                    app:rv_textDisabledColor="@android:color/holo_red_dark">
 
-    </RelativeLayout>
+            </com.vincent.baselibrary.widget.radius.RadiusTextView>
 
-    <View android:layout_width="match_parent"
-          android:layout_height="@dimen/dp_10"
-          android:background="@color/blue"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_github"
+                    android:drawablePadding="40dp"
+                    android:text="Test"/>
 
-    <com.vincent.baselibrary.widget.radius.RadiusRelativeLayout
-            android:id="@+id/layout_radius"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-    android:gravity="center">
+            <com.vincent.baselibrary.widget.radius.RadiusTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="RadiusTextView with Drawable"
+                    app:rv_backgroundColor="@color/white"
+                    app:rv_leftDrawable="#fc4b51"
+                    app:rv_leftDrawableColorRadius="2.5dp"
+                    app:rv_leftDrawableHeight="20dp"
+                    app:rv_leftDrawableWidth="20dp"
+                    app:rv_leftSelectedDrawable="#ff0900"
+                    app:rv_rightDrawable="@drawable/ic_github"
+                    app:rv_selected="true"
+                    app:rv_textColor="#1a20d8"
+                    app:rv_textSelectedColor="#5526a6"/>
 
-        <com.vincent.baselibrary.widget.radius.RadiusTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="这是测试示例"
-                app:rv_backgroundColor="#556677"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="说明:以下所有展示的RadiusTextView、RadiusEditText、RadiusCheckBox等常用控件效果均通过xml属性控制并未设置shape文件背景"
+                    android:textColor="@color/black30"
+                    android:textSize="16dp"/>
 
-    </com.vincent.baselibrary.widget.radius.RadiusRelativeLayout>
+            <TextView
+                    android:id="@+id/tv_shapeRadius"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/shape_bg_radius"
+                    android:gravity="center"
+                    android:text="shape文件背景"/>
+
+            <com.vincent.baselibrary.widget.radius.RadiusTextView
+                    android:id="@+id/rtv_javaBg"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:text="java代码设置背景"/>
+
+            <com.vincent.baselibrary.widget.radius.RadiusTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:text="xml设置背景"
+                    app:rv_radius="@dimen/dp_radius"
+                    app:rv_strokeColor="@android:color/holo_purple"
+                    app:rv_strokeDashGap="@dimen/dp_dash_gap"
+                    app:rv_strokeDashWidth="@dimen/dp_dash_width"
+                    app:rv_strokeWidth="2dp"/>
+
+            <com.vincent.baselibrary.widget.radius.RadiusTextView
+                    android:id="@+id/rtv_selectRadius"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="@dimen/dp_margin"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:text="测试Select"
+                    app:rv_backgroundColor="@android:color/white"
+                    app:rv_backgroundDisabledColor="@android:color/holo_red_dark"
+                    app:rv_backgroundSelectedColor="@android:color/holo_purple"
+                    app:rv_radiusHalfHeightEnable="true"
+                    app:rv_rippleEnable="true"
+                    app:rv_strokeColor="@android:color/holo_purple"
+                    app:rv_strokeSelectedColor="@android:color/holo_red_dark"
+                    app:rv_strokeWidth="2dp"
+                    app:rv_textColor="@android:color/holo_purple"
+                    app:rv_textSelectedColor="@android:color/white"/>
+
+            <com.vincent.baselibrary.widget.radius.RadiusTextView
+                    android:id="@+id/rtv_tagChooseChannel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/dp_margin"
+                    android:paddingTop="6dp"
+                    android:paddingRight="@dimen/dp_margin"
+                    android:paddingBottom="6dp"
+                    android:text="频道一"
+                    android:textSize="16dp"
+                    app:rv_backgroundColor="@color/white"
+                    app:rv_backgroundPressedAlpha="102"
+                    app:rv_backgroundSelectedColor="@android:color/holo_purple"
+                    app:rv_radiusHalfHeightEnable="true"
+                    app:rv_rippleEnable="false"
+                    app:rv_selected="true"
+                    app:rv_strokeColor="@color/colorLineGray"
+                    app:rv_strokeSelectedColor="@color/colorPrimary"
+                    app:rv_strokeWidth="@dimen/dp_line_size"
+                    app:rv_textColor="@android:color/holo_purple"
+                    app:rv_textSelectedColor="@color/white"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                <com.vincent.baselibrary.widget.radius.RadiusTextView
+                        android:id="@+id/rtv_normal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="normal"
+                        app:rv_backgroundColor="@android:color/holo_blue_bright"
+                        app:rv_backgroundPressedColor="#383838"
+                        app:rv_strokeColor="#383838"
+                        app:rv_strokeWidth="1dp"
+                        app:rv_textColor="@android:color/white"
+                        app:rv_textDisabledColor="@android:color/holo_blue_bright"
+                        app:rv_textPressedColor="#ffffff"/>
+
+                <com.vincent.baselibrary.widget.radius.RadiusTextView
+                        android:id="@+id/rtv_disable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:elevation="10dp"
+                        android:enabled="true"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="disabled"
+                        app:rv_backgroundColor="@android:color/holo_blue_bright"
+                        app:rv_backgroundDisabledColor="@android:color/black"
+                        app:rv_backgroundPressedColor="#383838"
+                        app:rv_strokeColor="#383838"
+                        app:rv_strokeWidth="1dp"
+                        app:rv_textColor="@android:color/white"
+                        app:rv_textDisabledColor="@android:color/holo_blue_bright"
+                        app:rv_textPressedColor="#ffffff"/>
+            </LinearLayout>
+
+            <androidx.appcompat.widget.SwitchCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SwitchCompat"/>
+
+            <Switch
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="Switch+drawable文件"
+                    android:textOn="Switch+drawable文件"
+                    android:textOff="Switch+drawable文件"
+                    android:thumb="@drawable/selector_thumb"
+                    android:track="@drawable/selector_track"
+                    />
+
+            <com.vincent.baselibrary.widget.radius.RadiusSwitch
+                    android:id="@+id/radiusSwitch"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:checked="true"
+                    android:text="RadiusSwitch+xml属性"
+                    android:textOff=""
+                    android:textOn=""
+                    app:rv_thumbDrawable="@color/white"
+                    app:rv_thumbDrawableHeight="24dp"
+                    app:rv_thumbDrawableWidth="24dp"
+                    app:rv_thumbRadius="24dp"
+                    app:rv_thumbStrokeCheckedColor="#33da33"
+                    app:rv_thumbStrokeColor="#666666"
+                    app:rv_thumbStrokeWidth="1dp"
+                    app:rv_trackCheckedDrawable="#33da33"
+                    app:rv_trackDrawableHeight="24dp"
+                    app:rv_trackDrawableWidth="48dp"
+                    app:rv_trackRadius="30dp"
+                    app:rv_trackStrokeCheckedColor="#33da33"
+                    app:rv_trackStrokeColor="#BEBEBE"
+                    app:rv_trackStrokeWidth="2dp"/>
+
+            <com.vincent.baselibrary.widget.radius.RadiusSwitch
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:checked="true"
+                    android:textOn=""
+                    android:textOff=""
+                    android:text="默认属性颜色值来自colorAccent--微信样式"/>
+
+
+            <com.vincent.baselibrary.widget.radius.RadiusSwitch
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:text="支付宝样式"
+                    android:textOn=""
+                    android:textOff=""
+                    app:rv_thumbDrawable="@color/white"
+                    app:rv_thumbDrawableHeight="20dp"
+                    app:rv_thumbDrawableWidth="32dp"
+                    app:rv_thumbRadius="4dp"
+                    app:rv_thumbStrokeCheckedColor="#075fb7"
+                    app:rv_thumbStrokeColor="@android:color/darker_gray"
+                    app:rv_thumbStrokeWidth="2dp"
+
+                    app:rv_trackCheckedDrawable="#075fb7"
+                    app:rv_trackDrawable="@android:color/darker_gray"
+                    app:rv_trackDrawableHeight="20dp"
+                    app:rv_trackDrawableWidth="64dp"
+                    app:rv_trackRadius="2dp"
+                    app:rv_trackStrokeCheckedColor="#075fb7"
+                    app:rv_trackStrokeColor="@android:color/darker_gray"
+                    app:rv_trackStrokeWidth="2dp"/>
+
+            <com.vincent.baselibrary.widget.radius.RadiusSwitch
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:text="MIUI样式"
+                    android:textOn=""
+                    android:textOff=""
+                    app:rv_thumbCheckedDrawable="#075fb7"
+                    app:rv_thumbDrawable="#cacaca"
+                    app:rv_thumbDrawableHeight="19dp"
+                    app:rv_thumbDrawableWidth="20dp"
+                    app:rv_thumbRadius="20dp"
+                    app:rv_thumbStrokeCheckedColor="@android:color/transparent"
+                    app:rv_thumbStrokeColor="@android:color/transparent"
+                    app:rv_thumbStrokeWidth="6dp"
+                    app:rv_trackCheckedDrawable="@color/white"
+                    app:rv_trackDrawable="@color/white"
+                    app:rv_trackDrawableHeight="20dp"
+                    app:rv_trackDrawableWidth="40dp"
+                    app:rv_trackRadius="20dp"
+                    app:rv_trackStrokeCheckedColor="@android:color/darker_gray"
+                    app:rv_trackStrokeColor="@android:color/darker_gray"
+                    app:rv_trackStrokeWidth="0.5dp"/>
+
+            <com.vincent.baselibrary.widget.radius.RadiusTextView
+                    android:layout_width="100dp"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:text="rippleColor"
+                    android:textColor="@color/white"
+                    app:rv_backgroundColor="@android:color/holo_blue_light"
+                    app:rv_backgroundPressedColor="@android:color/holo_purple"
+                    app:rv_rippleColor="@android:color/holo_purple"/>
+
+            <com.vincent.baselibrary.widget.radius.RadiusTextView
+                    android:id="@+id/rtv_radiusHalfHeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:paddingLeft="18dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="18dp"
+                    android:paddingBottom="10dp"
+                    android:text="RadiusTextView Half Height"
+                    app:rv_backgroundColor="#ffffff"
+                    app:rv_backgroundPressedColor="#03A9F4"
+                    app:rv_radiusHalfHeightEnable="true"
+                    app:rv_strokeColor="#03A9F4"
+                    app:rv_strokePressedColor="#6D8FB0"
+                    app:rv_strokeWidth="1dp"
+                    app:rv_textColor="#03A9F4"
+                    app:rv_textPressedColor="#ffffff"/>
+
+            <com.vincent.baselibrary.widget.radius.RadiusEditText
+                    android:id="@+id/ret_radius"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="false"
+                    android:hint="RadiusEditText"
+                    android:paddingLeft="18dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="18dp"
+                    android:paddingBottom="10dp"
+                    android:textCursorDrawable="@null"
+                    app:rv_backgroundColor="@android:color/white"
+                    app:rv_radius="10dp"
+                    app:rv_strokeColor="#03A9F4"
+                    app:rv_strokeWidth="1dp"
+                    app:rv_textColor="#03A9F4"/>
+
+            <com.vincent.baselibrary.widget.radius.RadiusEditText
+                    android:id="@+id/ret_circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:hint="RadiusEditText"
+                    android:paddingLeft="18dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="18dp"
+                    android:paddingBottom="10dp"
+                    android:textCursorDrawable="@null"
+                    app:rv_backgroundColor="@android:color/white"
+                    app:rv_radius="10dp"
+                    app:rv_radiusHalfHeightEnable="true"
+                    app:rv_strokeColor="#03A9F4"
+                    app:rv_strokeWidth="1dp"
+                    app:rv_textColor="#03A9F4"/>
+
+            <com.vincent.baselibrary.widget.radius.RadiusTextView
+                    android:id="@+id/rtv_drawableRadius"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="12dp"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:text="RadiusTextView with Drawable"
+                    app:rv_backgroundColor="@color/white"
+                    app:rv_bottomDrawable="#b986f7"
+                    app:rv_bottomDrawableColorRadius="7.5dp"
+                    app:rv_bottomDrawableHeight="20dp"
+                    app:rv_bottomDrawableWidth="20dp"
+                    app:rv_bottomSelectedDrawable="#a100ff"
+                    app:rv_leftDrawable="#fc4b51"
+                    app:rv_leftDrawableColorRadius="2.5dp"
+                    app:rv_leftDrawableHeight="20dp"
+                    app:rv_leftDrawableWidth="20dp"
+                    app:rv_leftSelectedDrawable="#ff0900"
+                    app:rv_rightDrawable="@drawable/ic_cb_normal"
+                    app:rv_rightDrawableColorCircleEnable="true"
+                    app:rv_rightDrawableHeight="40dp"
+                    app:rv_rightDrawableWidth="40dp"
+                    app:rv_rightSelectedDrawable="#00ff08"
+                    app:rv_textColor="#1a20d8"
+                    app:rv_textSelectedColor="#5526a6"
+                    app:rv_topDrawable="#e2f56b"
+                    app:rv_topDrawableColorRadius="5dp"
+                    app:rv_topDrawableHeight="60dp"
+                    app:rv_topDrawableWidth="60dp"
+                    app:rv_topSelectedDrawable="#ddff00"/>
+
+
+            <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                <com.vincent.baselibrary.widget.radius.RadiusRadioButton
+                        android:id="@+id/radioTest_radius"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:paddingLeft="6dp"
+                        android:text="RadiusRadioButton with Drawable"
+                        app:rv_buttonCheckedDrawable="@drawable/ic_cb_selected"
+                        app:rv_buttonDrawableColorCircleEnable="true"
+                        app:rv_buttonDrawableHeight="60dp"
+                        app:rv_buttonDrawableWidth="60dp"
+                        app:rv_textCheckedColor="@android:color/holo_red_dark"/>
+
+                <com.vincent.baselibrary.widget.radius.RadiusRadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="RadiusRadioButton System"
+                        app:rv_buttonDrawableSystemEnable="true"
+                        app:rv_textCheckedColor="@android:color/holo_blue_dark"/>
+
+                <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="RadioButton System"/>
+            </RadioGroup>
+
+            <com.vincent.baselibrary.widget.radius.RadiusCheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RadiusCheckBox"
+                    app:rv_textCheckedColor="@android:color/holo_red_dark"
+                    app:rv_textColor="@android:color/holo_purple"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
+
+                <com.vincent.baselibrary.widget.radius.RadiusTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="2.5dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="topLeftRadius"
+                        android:textColor="@color/black"
+                        app:rv_rippleEnable="true"
+                        app:rv_strokeColor="@color/black"
+                        app:rv_strokeWidth="2dp"
+                        app:rv_topLeftRadius="10dp"/>
+
+                <com.vincent.baselibrary.widget.radius.RadiusTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2.5dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="topRightRadius"
+                        android:textColor="#ffffff"
+                        app:rv_backgroundColor="#F08A5D"
+                        app:rv_rippleEnable="true"
+                        app:rv_topRightRadius="10dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
+
+                <com.vincent.baselibrary.widget.radius.RadiusTextView
+                        android:id="@+id/rtv_testRadius"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="2.5dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="bottomLeftRadius"
+                        android:textColor="#ffffff"
+                        app:rv_backgroundColor="#4AA0D5"
+                        app:rv_backgroundPressedColor="#2b4250"
+                        app:rv_backgroundSelectedColor="#b54ad5"
+                        app:rv_bottomLeftRadius="10dp"
+                        app:rv_selected="true"
+                        app:rv_textPressedColor="@color/black"/>
+
+                <com.vincent.baselibrary.widget.radius.RadiusTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2.5dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="bottomRightRadius"
+                        android:textColor="#ffffff"
+                        app:rv_backgroundColor="#7A9EAF"
+                        app:rv_bottomRightRadius="10dp"/>
+            </LinearLayout>
+
+            <com.vincent.baselibrary.widget.radius.RadiusFrameLayout
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:padding="10dp"
+                    app:rv_backgroundColor="#009688"
+                    app:rv_radius="5dp">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="RadiusFrameLayout"
+                        android:textColor="#ffffff"/>
+            </com.vincent.baselibrary.widget.radius.RadiusFrameLayout>
+
+            <com.vincent.baselibrary.widget.radius.RadiusLinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingLeft="18dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="18dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="#ffffff"
+                    app:rv_backgroundColor="#E45171"
+                    app:rv_radius="5dp">
+
+                <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@mipmap/ic_launcher"
+                        android:textColor="#ffffff"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="RadiusLinearLayout"
+                        android:textColor="#ffffff"/>
+            </com.vincent.baselibrary.widget.radius.RadiusLinearLayout>
+
+            <com.vincent.baselibrary.widget.radius.RadiusRelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:paddingLeft="18dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="18dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="#ffffff"
+                    app:rv_backgroundColor="#655989"
+                    app:rv_radiusHalfHeightEnable="true">
+
+                <ImageView
+                        android:id="@+id/iv_portrait"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/ic_launcher"
+                        android:textColor="#ffffff"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/iv_portrait"
+                        android:text="RadiusRelativeLayout"
+                        android:textColor="#ffffff"/>
+            </com.vincent.baselibrary.widget.radius.RadiusRelativeLayout>
+
+            <com.vincent.baselibrary.widget.radius.RadiusLinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:textColor="#ffffff"
+                    app:rv_backgroundColor="#6D8FB0"
+                    app:rv_radius="5dp"
+                    app:rv_widthHeightEqualEnable="true">
+
+                <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@mipmap/ic_launcher"
+                        android:textColor="#ffffff"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Width=Height"
+                        android:textColor="#ffffff"
+                        android:textSize="10sp"/>
+            </com.vincent.baselibrary.widget.radius.RadiusLinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

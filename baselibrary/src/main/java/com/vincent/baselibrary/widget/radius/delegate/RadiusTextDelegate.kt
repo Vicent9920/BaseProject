@@ -14,6 +14,8 @@ import android.view.Gravity
 import android.view.View
 import android.widget.CompoundButton
 import android.widget.TextView
+import com.haoge.easyandroid.easy.EasyFormatter
+import com.haoge.easyandroid.easy.EasyLog
 import com.vincent.baselibrary.R
 import com.vincent.baselibrary.util.DrawableUtil
 import com.vincent.baselibrary.util.ResourceUtil
@@ -28,14 +30,15 @@ import com.vincent.baselibrary.util.ResourceUtil
  *
  */
 open class RadiusTextDelegate<T> constructor(
-     open var textView: TextView,
-    override var context: Context,
+     val textView: TextView,
+    context: Context,
     attrs: AttributeSet?
 ) :
     RadiusViewDelegate<T>(textView, context, attrs) where T:RadiusViewDelegate<T>{
 
 
     private var mTextColor: Int = 0
+
     private var mTextPressedColor: Int = 0
     private var mTextDisabledColor: Int = 0
     private var mTextSelectedColor: Int = 0
@@ -46,22 +49,22 @@ open class RadiusTextDelegate<T> constructor(
     private var mLeftDrawableColorCircleEnable: Boolean = false
     private var mLeftDrawableWidth: Int = 0
     private var mLeftDrawableHeight: Int = 0
-    private lateinit var mLeftDrawable: Drawable
-    private lateinit var mLeftPressedDrawable: Drawable
-    private lateinit var mLeftDisabledDrawable: Drawable
-    private lateinit var mLeftSelectedDrawable: Drawable
-    private lateinit var mLeftCheckedDrawable: Drawable
+    private  var mLeftDrawable: Drawable? = null
+    private  var mLeftPressedDrawable: Drawable? = null
+    private  var mLeftDisabledDrawable: Drawable? = null
+    private  var mLeftSelectedDrawable: Drawable? = null
+    private  var mLeftCheckedDrawable: Drawable? = null
 
     private var mTopDrawableSystemEnable: Boolean = false
     private var mTopDrawableColorRadius: Float = 0f
     private var mTopDrawableColorCircleEnable: Boolean = false
     private var mTopDrawableWidth: Int = 0
     private var mTopDrawableHeight: Int = 0
-    private lateinit var mTopDrawable: Drawable
-    private lateinit var mTopPressedDrawable: Drawable
-    private lateinit var mTopDisabledDrawable: Drawable
-    private lateinit var mTopSelectedDrawable: Drawable
-    private lateinit var mTopCheckedDrawable: Drawable
+    private  var mTopDrawable: Drawable? = null
+    private  var mTopPressedDrawable: Drawable? = null
+    private  var mTopDisabledDrawable: Drawable? = null
+    private  var mTopSelectedDrawable: Drawable? = null
+    private  var mTopCheckedDrawable: Drawable? = null
 
 
     private var mRightDrawableSystemEnable: Boolean = false
@@ -69,24 +72,29 @@ open class RadiusTextDelegate<T> constructor(
     private var mRightDrawableColorCircleEnable: Boolean = false
     private var mRightDrawableWidth: Int = 0
     private var mRightDrawableHeight: Int = 0
-    private lateinit var mRightDrawable: Drawable
-    private lateinit var mRightPressedDrawable: Drawable
-    private lateinit var mRightDisabledDrawable: Drawable
-    private lateinit var mRightSelectedDrawable: Drawable
-    private lateinit var mRightCheckedDrawable: Drawable
+    private  var mRightDrawable: Drawable? = null
+    private  var mRightPressedDrawable: Drawable? = null
+    private  var mRightDisabledDrawable: Drawable? = null
+    private  var mRightSelectedDrawable: Drawable? = null
+    private  var mRightCheckedDrawable: Drawable? = null
 
     private var mBottomDrawableSystemEnable: Boolean = false
     private var mBottomDrawableColorRadius: Float = 0f
     private var mBottomDrawableColorCircleEnable: Boolean = false
     private var mBottomDrawableWidth: Int = 0
     private var mBottomDrawableHeight: Int = 0
-    private lateinit var mBottomDrawable: Drawable
-    private lateinit var mBottomPressedDrawable: Drawable
-    private lateinit var mBottomDisabledDrawable: Drawable
-    private lateinit var mBottomSelectedDrawable: Drawable
-    private lateinit var mBottomCheckedDrawable: Drawable
+    private  var mBottomDrawable: Drawable? = null
+    private  var mBottomPressedDrawable: Drawable? = null
+    private  var mBottomDisabledDrawable: Drawable? = null
+    private  var mBottomSelectedDrawable: Drawable? = null
+    private  var mBottomCheckedDrawable: Drawable? = null
 
     init {
+
+            EasyLog.DEFAULT.e(EasyFormatter.DEFAULT.format(attrs))
+        if(mTextColor == Int.MAX_VALUE){
+            mTextColor = textView.textColors.defaultColor
+        }
         setTextSelector()
         if (!mLeftDrawableSystemEnable) {
             setTextDrawable(
@@ -116,12 +124,13 @@ open class RadiusTextDelegate<T> constructor(
     }
 
     override fun initAttributes(typedArray: TypedArray) {
-        mTextColor = typedArray.getColor(R.styleable.RadiusView_rv_textColor, Integer.MAX_VALUE)
-        mTextColor = if (mTextColor == Integer.MAX_VALUE) textView.textColors.defaultColor else mTextColor
-        mTextPressedColor = typedArray.getColor(R.styleable.RadiusView_rv_textPressedColor, Integer.MAX_VALUE)
-        mTextDisabledColor = typedArray.getColor(R.styleable.RadiusView_rv_textDisabledColor, Integer.MAX_VALUE)
-        mTextSelectedColor = typedArray.getColor(R.styleable.RadiusView_rv_textSelectedColor, Integer.MAX_VALUE)
-        mTextCheckedColor = typedArray.getColor(R.styleable.RadiusView_rv_textCheckedColor, Integer.MAX_VALUE)
+
+        mTextColor = typedArray.getColor(R.styleable.RadiusView_rv_textColor, Int.MAX_VALUE)
+
+        mTextPressedColor = typedArray.getColor(R.styleable.RadiusView_rv_textPressedColor, Int.MAX_VALUE)
+        mTextDisabledColor = typedArray.getColor(R.styleable.RadiusView_rv_textDisabledColor, Int.MAX_VALUE)
+        mTextSelectedColor = typedArray.getColor(R.styleable.RadiusView_rv_textSelectedColor, Int.MAX_VALUE)
+        mTextCheckedColor = typedArray.getColor(R.styleable.RadiusView_rv_textCheckedColor, Int.MAX_VALUE)
 
         mLeftDrawableSystemEnable = typedArray.getBoolean(R.styleable.RadiusView_rv_leftDrawableSystemEnable, false)
         mLeftDrawableColorRadius = typedArray.getDimension(R.styleable.RadiusView_rv_leftDrawableColorRadius, 0f)
@@ -706,19 +715,19 @@ open class RadiusTextDelegate<T> constructor(
 
     private fun getTextColor(source: Int): Int {
         var color = source
-        if (color != Integer.MAX_VALUE) {
+        if (color != Int.MAX_VALUE) {
             return color
         }
-        if (textView.isSelected) {
+        if (view.isSelected) {
             color = mTextSelectedColor
-        } else if (textView is CompoundButton) {
-            if ((textView as CompoundButton).isChecked) {
+        } else if (view is CompoundButton) {
+            if ((view as CompoundButton).isChecked) {
                 color = mTextCheckedColor
             }
         }
         color =
-            if (color != Integer.MAX_VALUE) color else if (mTextColor == Integer.MAX_VALUE) Color.WHITE else mTextColor
-        return if (textView.isPressed && !mRippleEnable) calculateColor(color, mBackgroundPressedAlpha) else color
+            if (color != Int.MAX_VALUE) color else if (mTextColor == Int.MAX_VALUE) Color.WHITE else mTextColor
+        return if (view.isPressed && !mRippleEnable) calculateColor(color, mBackgroundPressedAlpha) else color
     }
 
 
@@ -753,5 +762,8 @@ open class RadiusTextDelegate<T> constructor(
 
 }
 
-class RadiusTextDelegateImp(textView: TextView,context: Context,attrs: AttributeSet?):
-    RadiusTextDelegate<RadiusTextDelegateImp>(textView, context, attrs)
+class RadiusTextDelegateImp(view: TextView,context: Context,attrs: AttributeSet?):
+    RadiusTextDelegate<RadiusTextDelegateImp>(view, context, attrs){
+
+}
+

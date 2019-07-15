@@ -1,4 +1,5 @@
-@file:Suppress("unused", "UNCHECKED_CAST", "RtlHardcoded","NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+@file:Suppress("unused", "UNCHECKED_CAST", "RtlHardcoded", "NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+
 package com.vincent.baselibrary.widget.radius.delegate
 
 import android.content.Context
@@ -22,23 +23,23 @@ import com.vincent.baselibrary.util.ResourceUtil
  * <p>版本号：1<p>
  *
  */
-open class RadiusSwitchDelegate <T>(var switch: Switch,  context: Context, attrs: AttributeSet?) :
-    RadiusCompoundDelegate<T>(switch, context, attrs)where T: RadiusCompoundDelegate<T>{
+open class RadiusSwitchDelegate<T> constructor(val switch: Switch, context: Context, attrs: AttributeSet?) :
+    RadiusCompoundDelegate<T>(switch, context, attrs) where T : RadiusCompoundDelegate<T> {
 
 
-    private lateinit var mStateThumbDrawable: StateListDrawable
-    private lateinit var mStateTrackDrawable: StateListDrawable
+    private var mStateThumbDrawable: StateListDrawable? = null
+    private var mStateTrackDrawable: StateListDrawable? = null
 
     /**
      * 以下为xml对应属性解析
      */
     private var mThumbDrawableWidth: Int = 0
     private var mThumbDrawableHeight: Int = 0
-    private lateinit var mThumbDrawable: Drawable
-    private lateinit var mThumbPressedDrawable: Drawable
-    private lateinit var mThumbDisabledDrawable: Drawable
-    private lateinit var mThumbSelectedDrawable: Drawable
-    private lateinit var mThumbCheckedDrawable: Drawable
+    private var mThumbDrawable: Drawable? = null
+    private var mThumbPressedDrawable: Drawable? = null
+    private var mThumbDisabledDrawable: Drawable? = null
+    private var mThumbSelectedDrawable: Drawable? = null
+    private var mThumbCheckedDrawable: Drawable? = null
 
     private var mThumbStrokeColor: Int = 0
     private var mThumbStrokePressedColor: Int = 0
@@ -46,15 +47,15 @@ open class RadiusSwitchDelegate <T>(var switch: Switch,  context: Context, attrs
     private var mThumbStrokeSelectedColor: Int = 0
     private var mThumbStrokeCheckedColor: Int = 0
     private var mThumbStrokeWidth: Int = 0
-    private var mThumbRadius: Float = 0.toFloat()
+    private var mThumbRadius: Float = 0f
 
     private var mTrackDrawableWidth: Int = 0
     private var mTrackDrawableHeight: Int = 0
-    private lateinit var mTrackDrawable: Drawable
-    private lateinit var mTrackPressedDrawable: Drawable
-    private lateinit var mTrackDisabledDrawable: Drawable
-    private lateinit var mTrackSelectedDrawable: Drawable
-    private lateinit var mTrackCheckedDrawable: Drawable
+    private var mTrackDrawable: Drawable? = null
+    private var mTrackPressedDrawable: Drawable? = null
+    private var mTrackDisabledDrawable: Drawable? = null
+    private var mTrackSelectedDrawable: Drawable? = null
+    private var mTrackCheckedDrawable: Drawable? = null
 
     private var mTrackStrokeColor: Int = 0
     private var mTrackStrokePressedColor: Int = 0
@@ -62,16 +63,17 @@ open class RadiusSwitchDelegate <T>(var switch: Switch,  context: Context, attrs
     private var mTrackStrokeSelectedColor: Int = 0
     private var mTrackStrokeCheckedColor: Int = 0
     private var mTrackStrokeWidth: Int = 0
-    private var mTrackRadius: Float = 0.toFloat()
+    private var mTrackRadius: Float = 0f
     private var mColorAccent: Int = 0
     private var mColorDefault: Int = 0
 
     init {
-        mColorAccent = ResourceUtil.getAttrColor(context,R.attr.colorAccent)
+        mColorAccent = ResourceUtil.getAttrColor(context, R.attr.colorAccent)
         mColorDefault = Color.LTGRAY
     }
 
     override fun initAttributes(typedArray: TypedArray) {
+
         mThumbDrawableWidth =
             typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_thumbDrawableWidth, dp2px(24f))
         mThumbDrawableHeight =
@@ -449,118 +451,155 @@ open class RadiusSwitchDelegate <T>(var switch: Switch,  context: Context, attrs
 
         mStateThumbDrawable = StateListDrawable()
         mStateTrackDrawable = StateListDrawable()
-        mStateThumbDrawable.addState(
-            intArrayOf(mStateChecked),
-            getStateDrawable(
-                mThumbCheckedDrawable,
-                mThumbRadius,
-                mThumbDrawableWidth,
-                mThumbDrawableHeight,
-                mThumbStrokeWidth,
-                mThumbStrokeCheckedColor
+        mThumbCheckedDrawable?.let {
+            mStateThumbDrawable?.addState(
+                intArrayOf(mStateChecked),
+                getStateDrawable(
+                    it,
+                    mThumbRadius,
+                    mThumbDrawableWidth,
+                    mThumbDrawableHeight,
+                    mThumbStrokeWidth,
+                    mThumbStrokeCheckedColor
+                )
             )
-        )
-        mStateThumbDrawable.addState(
-            intArrayOf(mStateSelected),
-            getStateDrawable(
-                mThumbSelectedDrawable,
-                mThumbRadius,
-                mThumbDrawableWidth,
-                mThumbDrawableHeight,
-                mThumbStrokeWidth,
-                mThumbStrokeSelectedColor
+        }
+
+        mThumbSelectedDrawable?.let {
+            mStateThumbDrawable?.addState(
+                intArrayOf(mStateSelected),
+                getStateDrawable(
+                    it,
+                    mThumbRadius,
+                    mThumbDrawableWidth,
+                    mThumbDrawableHeight,
+                    mThumbStrokeWidth,
+                    mThumbStrokeSelectedColor
+                )
             )
-        )
-        mStateThumbDrawable.addState(
-            intArrayOf(mStatePressed),
-            getStateDrawable(
-                mThumbPressedDrawable,
-                mThumbRadius,
-                mThumbDrawableWidth,
-                mThumbDrawableHeight,
-                mThumbStrokeWidth,
-                mThumbStrokePressedColor
+        }
+        mThumbPressedDrawable?.let {
+            mStateThumbDrawable?.addState(
+                intArrayOf(mStatePressed),
+                getStateDrawable(
+                    it,
+                    mThumbRadius,
+                    mThumbDrawableWidth,
+                    mThumbDrawableHeight,
+                    mThumbStrokeWidth,
+                    mThumbStrokePressedColor
+                )
             )
-        )
-        mStateThumbDrawable.addState(
-            intArrayOf(mStateDisabled),
-            getStateDrawable(
-                mThumbDisabledDrawable,
-                mThumbRadius,
-                mThumbDrawableWidth,
-                mThumbDrawableHeight,
-                mThumbStrokeWidth,
-                mThumbStrokeDisabledColor
+        }
+        mThumbDisabledDrawable?.let {
+            mStateThumbDrawable?.addState(
+                intArrayOf(mStateDisabled),
+                getStateDrawable(
+                    it,
+                    mThumbRadius,
+                    mThumbDrawableWidth,
+                    mThumbDrawableHeight,
+                    mThumbStrokeWidth,
+                    mThumbStrokeDisabledColor
+                )
             )
-        )
-        mStateThumbDrawable.addState(
-            intArrayOf(),
-            getStateDrawable(
-                mThumbDrawable,
-                mThumbRadius,
-                mThumbDrawableWidth,
-                mThumbDrawableHeight,
-                mThumbStrokeWidth,
-                mThumbStrokeColor
+        }
+        mThumbDrawable?.let {
+            mStateThumbDrawable?.addState(
+                intArrayOf(),
+                getStateDrawable(
+                    it,
+                    mThumbRadius,
+                    mThumbDrawableWidth,
+                    mThumbDrawableHeight,
+                    mThumbStrokeWidth,
+                    mThumbStrokeColor
+                )
             )
-        )
+        }
+
 
         mTrackDrawableHeight = 0
-        mStateTrackDrawable.addState(
-            intArrayOf(mStateChecked),
-            getStateDrawable(
-                mTrackCheckedDrawable,
-                mTrackRadius,
-                mTrackDrawableWidth,
-                mTrackDrawableHeight,
-                mTrackStrokeWidth,
-                mTrackStrokeCheckedColor
+        mTrackCheckedDrawable?.let {
+            mStateTrackDrawable?.addState(
+                intArrayOf(mStateChecked),
+                getStateDrawable(
+                    it,
+                    mTrackRadius,
+                    mTrackDrawableWidth,
+                    mTrackDrawableHeight,
+                    mTrackStrokeWidth,
+                    mTrackStrokeCheckedColor
+                )
             )
-        )
-        mStateTrackDrawable.addState(
-            intArrayOf(mStateSelected),
-            getStateDrawable(
-                mTrackSelectedDrawable,
-                mTrackRadius,
-                mTrackDrawableWidth,
-                mTrackDrawableHeight,
-                mTrackStrokeWidth,
-                mTrackStrokeSelectedColor
+        }
+        mTrackSelectedDrawable?.let {
+            mStateTrackDrawable?.addState(
+                intArrayOf(mStateSelected),
+                getStateDrawable(
+                    it,
+                    mTrackRadius,
+                    mTrackDrawableWidth,
+                    mTrackDrawableHeight,
+                    mTrackStrokeWidth,
+                    mTrackStrokeSelectedColor
+                )
             )
-        )
-        mStateTrackDrawable.addState(
-            intArrayOf(mStatePressed),
-            getStateDrawable(
-                mTrackPressedDrawable,
-                mTrackRadius,
-                mTrackDrawableWidth,
-                mTrackDrawableHeight,
-                mTrackStrokeWidth,
-                mTrackStrokePressedColor
+        }
+        mTrackPressedDrawable?.let {
+            mStateTrackDrawable?.addState(
+                intArrayOf(mStatePressed),
+                getStateDrawable(
+                    it,
+                    mTrackRadius,
+                    mTrackDrawableWidth,
+                    mTrackDrawableHeight,
+                    mTrackStrokeWidth,
+                    mTrackStrokePressedColor
+                )
             )
-        )
-        mStateTrackDrawable.addState(
-            intArrayOf(mStateDisabled),
-            getStateDrawable(
-                mTrackDisabledDrawable,
-                mTrackRadius,
-                mTrackDrawableWidth,
-                mTrackDrawableHeight,
-                mTrackStrokeWidth,
-                mTrackStrokeDisabledColor
+        }
+
+        mTrackDisabledDrawable?.let {
+            mStateTrackDrawable?.addState(
+                intArrayOf(mStateDisabled),
+                getStateDrawable(
+                    it,
+                    mTrackRadius,
+                    mTrackDrawableWidth,
+                    mTrackDrawableHeight,
+                    mTrackStrokeWidth,
+                    mTrackStrokeDisabledColor
+                )
             )
-        )
-        mStateTrackDrawable.addState(
-            intArrayOf(),
-            getStateDrawable(
-                mTrackDrawable,
-                mTrackRadius,
-                mTrackDrawableWidth,
-                mTrackDrawableHeight,
-                mTrackStrokeWidth,
-                mTrackStrokeColor
+        }
+        mTrackDrawable?.let {
+            mStateTrackDrawable?.addState(
+                intArrayOf(),
+                getStateDrawable(
+                    it,
+                    mTrackRadius,
+                    mTrackDrawableWidth,
+                    mTrackDrawableHeight,
+                    mTrackStrokeWidth,
+                    mTrackStrokeColor
+                )
             )
-        )
+        }
+        mTrackDrawable?.let {
+            mStateTrackDrawable?.addState(
+                intArrayOf(),
+                getStateDrawable(
+                    it,
+                    mTrackRadius,
+                    mTrackDrawableWidth,
+                    mTrackDrawableHeight,
+                    mTrackStrokeWidth,
+                    mTrackStrokeColor
+                )
+            )
+        }
+
         switch.thumbDrawable = mStateThumbDrawable
         switch.trackDrawable = mStateTrackDrawable
     }
@@ -574,7 +613,7 @@ open class RadiusSwitchDelegate <T>(var switch: Switch,  context: Context, attrs
         strokeWidth: Int,
         strokeColor: Int
     ): Drawable? {
-        var drawable:Drawable? = source
+        var drawable: Drawable? = source
         drawable = getStateDrawable(drawable, radius, width, height)
         if (drawable is GradientDrawable) {
             val gradientDrawable = drawable
@@ -583,5 +622,6 @@ open class RadiusSwitchDelegate <T>(var switch: Switch,  context: Context, attrs
         return drawable
     }
 }
-class RadiusSwitchDelegateImp(switch: Switch, context: Context, attrs: AttributeSet?):
+
+class RadiusSwitchDelegateImp(switch: Switch, context: Context, attrs: AttributeSet?) :
     RadiusSwitchDelegate<RadiusSwitchDelegateImp>(switch, context, attrs)

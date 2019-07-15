@@ -2,7 +2,10 @@ package com.vincent.baselibrary.widget.radius
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.widget.TextView
+import com.haoge.easyandroid.easy.EasyFormatter
+import com.haoge.easyandroid.easy.EasyLog
 import com.vincent.baselibrary.widget.radius.delegate.RadiusTextDelegateImp
 import kotlin.math.max
 
@@ -17,6 +20,10 @@ import kotlin.math.max
 class RadiusTextView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : TextView(context, attrs) {
+
+    init {
+        EasyLog.DEFAULT.e(EasyFormatter.DEFAULT.format(attrs))
+    }
     val delegate: RadiusTextDelegateImp? = RadiusTextDelegateImp(this, context, attrs)
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

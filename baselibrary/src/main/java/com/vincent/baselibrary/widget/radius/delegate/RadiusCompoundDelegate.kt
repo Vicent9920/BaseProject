@@ -1,4 +1,5 @@
-@file:Suppress("unused", "UNCHECKED_CAST", "RtlHardcoded","NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+@file:Suppress("unused", "UNCHECKED_CAST", "RtlHardcoded", "NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+
 package com.vincent.baselibrary.widget.radius.delegate
 
 import android.content.Context
@@ -20,10 +21,10 @@ import com.vincent.baselibrary.util.DrawableUtil
  *
  */
 open class RadiusCompoundDelegate<T> constructor(
-    open var compoundButton: CompoundButton,
-    override var context: Context,
+    private val compoundButton: CompoundButton,
+    context: Context,
     attrs: AttributeSet?
-) : RadiusTextDelegate<T>(compoundButton, context, attrs) where T:RadiusTextDelegate<T>{
+) : RadiusTextDelegate<T>(compoundButton, context, attrs) where T : RadiusTextDelegate<T> {
 
     private lateinit var mButton: CompoundButton
     private var mStateButtonDrawable: StateListDrawable? = null
@@ -44,6 +45,7 @@ open class RadiusCompoundDelegate<T> constructor(
     }
 
     override fun initAttributes(typedArray: TypedArray) {
+
         mButtonDrawableSystemEnable =
             typedArray.getBoolean(R.styleable.RadiusView_rv_buttonDrawableSystemEnable, false)
         mButtonDrawableColorRadius =
@@ -59,7 +61,6 @@ open class RadiusCompoundDelegate<T> constructor(
         mButtonCheckedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_buttonCheckedDrawable)
         super.initAttributes(typedArray)
     }
-
 
 
     /**
@@ -90,7 +91,7 @@ open class RadiusCompoundDelegate<T> constructor(
      * @param buttonDrawableColorCircleEnable
      * @return
      */
-    fun setButtonDrawableColorCircleEnable(buttonDrawableColorCircleEnable: Boolean):T {
+    fun setButtonDrawableColorCircleEnable(buttonDrawableColorCircleEnable: Boolean): T {
         mButtonDrawableColorCircleEnable = buttonDrawableColorCircleEnable
         return back()
     }
@@ -122,7 +123,7 @@ open class RadiusCompoundDelegate<T> constructor(
      *
      * @param drawable
      */
-     fun setButtonDrawable(drawable: Drawable?): T {
+    fun setButtonDrawable(drawable: Drawable?): T {
         drawable?.let {
             mButtonDrawable = it
         }
@@ -251,5 +252,10 @@ open class RadiusCompoundDelegate<T> constructor(
     }
 
 }
-class RadiusCompoundDelegateImp( compoundButton: CompoundButton,context: Context,attrs: AttributeSet?):
+
+class RadiusCompoundDelegateImp  (
+    compoundButton: CompoundButton,
+    context: Context,
+    attrs: AttributeSet?
+) :
     RadiusCompoundDelegate<RadiusCompoundDelegateImp>(compoundButton, context, attrs)
