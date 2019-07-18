@@ -24,7 +24,7 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="10dp">
-            
+
             <com.vincent.baselibrary.widget.radius.RadiusTextView
                     android:id="@+id/rtv_loginRadius"
                     android:layout_width="match_parent"
@@ -201,20 +201,15 @@
                     android:layout_height="wrap_content"
                     android:checked="false"
                     android:text="Switch+drawable文件"
-                    android:textOn="Switch+drawable文件"
-                    android:textOff="Switch+drawable文件"
                     android:thumb="@drawable/selector_thumb"
                     android:track="@drawable/selector_track"
-                    />
-
+            />
             <com.vincent.baselibrary.widget.radius.RadiusSwitch
                     android:id="@+id/radiusSwitch"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:checked="true"
                     android:text="RadiusSwitch+xml属性"
-                    android:textOff=""
-                    android:textOn=""
                     app:rv_thumbDrawable="@color/white"
                     app:rv_thumbDrawableHeight="24dp"
                     app:rv_thumbDrawableWidth="24dp"
@@ -229,6 +224,7 @@
                     app:rv_trackStrokeCheckedColor="#33da33"
                     app:rv_trackStrokeColor="#BEBEBE"
                     app:rv_trackStrokeWidth="2dp"/>
+
 
             <com.vincent.baselibrary.widget.radius.RadiusSwitch
                     android:layout_width="match_parent"

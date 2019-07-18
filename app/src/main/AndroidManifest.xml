@@ -22,6 +22,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".ui.TestUiActivity">
+        </activity>
         <activity android:name=".ui.RadiusActivity">
         </activity>
         <activity

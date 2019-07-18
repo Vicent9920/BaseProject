@@ -1,4 +1,5 @@
-@file:Suppress("unused", "UNCHECKED_CAST", "RtlHardcoded","NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+@file:Suppress("unused", "UNCHECKED_CAST", "RtlHardcoded", "NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+
 package com.vincent.baselibrary.widget.radius.delegate
 
 import android.content.Context
@@ -14,8 +15,6 @@ import android.view.Gravity
 import android.view.View
 import android.widget.CompoundButton
 import android.widget.TextView
-import com.haoge.easyandroid.easy.EasyFormatter
-import com.haoge.easyandroid.easy.EasyLog
 import com.vincent.baselibrary.R
 import com.vincent.baselibrary.util.DrawableUtil
 import com.vincent.baselibrary.util.ResourceUtil
@@ -30,11 +29,11 @@ import com.vincent.baselibrary.util.ResourceUtil
  *
  */
 open class RadiusTextDelegate<T> constructor(
-     val textView: TextView,
+    private val textView: TextView,
     context: Context,
     attrs: AttributeSet?
 ) :
-    RadiusViewDelegate<T>(textView, context, attrs) where T:RadiusViewDelegate<T>{
+    RadiusViewDelegate<T>(textView, context, attrs) where T : RadiusViewDelegate<T> {
 
 
     private var mTextColor: Int = 0
@@ -49,22 +48,22 @@ open class RadiusTextDelegate<T> constructor(
     private var mLeftDrawableColorCircleEnable: Boolean = false
     private var mLeftDrawableWidth: Int = 0
     private var mLeftDrawableHeight: Int = 0
-    private  var mLeftDrawable: Drawable? = null
-    private  var mLeftPressedDrawable: Drawable? = null
-    private  var mLeftDisabledDrawable: Drawable? = null
-    private  var mLeftSelectedDrawable: Drawable? = null
-    private  var mLeftCheckedDrawable: Drawable? = null
+    private var mLeftDrawable: Drawable? = null
+    private var mLeftPressedDrawable: Drawable? = null
+    private var mLeftDisabledDrawable: Drawable? = null
+    private var mLeftSelectedDrawable: Drawable? = null
+    private var mLeftCheckedDrawable: Drawable? = null
 
     private var mTopDrawableSystemEnable: Boolean = false
     private var mTopDrawableColorRadius: Float = 0f
     private var mTopDrawableColorCircleEnable: Boolean = false
     private var mTopDrawableWidth: Int = 0
     private var mTopDrawableHeight: Int = 0
-    private  var mTopDrawable: Drawable? = null
-    private  var mTopPressedDrawable: Drawable? = null
-    private  var mTopDisabledDrawable: Drawable? = null
-    private  var mTopSelectedDrawable: Drawable? = null
-    private  var mTopCheckedDrawable: Drawable? = null
+    private var mTopDrawable: Drawable? = null
+    private var mTopPressedDrawable: Drawable? = null
+    private var mTopDisabledDrawable: Drawable? = null
+    private var mTopSelectedDrawable: Drawable? = null
+    private var mTopCheckedDrawable: Drawable? = null
 
 
     private var mRightDrawableSystemEnable: Boolean = false
@@ -72,27 +71,25 @@ open class RadiusTextDelegate<T> constructor(
     private var mRightDrawableColorCircleEnable: Boolean = false
     private var mRightDrawableWidth: Int = 0
     private var mRightDrawableHeight: Int = 0
-    private  var mRightDrawable: Drawable? = null
-    private  var mRightPressedDrawable: Drawable? = null
-    private  var mRightDisabledDrawable: Drawable? = null
-    private  var mRightSelectedDrawable: Drawable? = null
-    private  var mRightCheckedDrawable: Drawable? = null
+    private var mRightDrawable: Drawable? = null
+    private var mRightPressedDrawable: Drawable? = null
+    private var mRightDisabledDrawable: Drawable? = null
+    private var mRightSelectedDrawable: Drawable? = null
+    private var mRightCheckedDrawable: Drawable? = null
 
     private var mBottomDrawableSystemEnable: Boolean = false
     private var mBottomDrawableColorRadius: Float = 0f
     private var mBottomDrawableColorCircleEnable: Boolean = false
     private var mBottomDrawableWidth: Int = 0
     private var mBottomDrawableHeight: Int = 0
-    private  var mBottomDrawable: Drawable? = null
-    private  var mBottomPressedDrawable: Drawable? = null
-    private  var mBottomDisabledDrawable: Drawable? = null
-    private  var mBottomSelectedDrawable: Drawable? = null
-    private  var mBottomCheckedDrawable: Drawable? = null
+    private var mBottomDrawable: Drawable? = null
+    private var mBottomPressedDrawable: Drawable? = null
+    private var mBottomDisabledDrawable: Drawable? = null
+    private var mBottomSelectedDrawable: Drawable? = null
+    private var mBottomCheckedDrawable: Drawable? = null
 
     init {
-
-            EasyLog.DEFAULT.e(EasyFormatter.DEFAULT.format(attrs))
-        if(mTextColor == Int.MAX_VALUE){
+        if (mTextColor == Int.MAX_VALUE) {
             mTextColor = textView.textColors.defaultColor
         }
         setTextSelector()
@@ -183,7 +180,6 @@ open class RadiusTextDelegate<T> constructor(
         mBottomCheckedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_bottomCheckedDrawable)
         super.initAttributes(typedArray)
     }
-
 
 
     /**
@@ -278,7 +274,7 @@ open class RadiusTextDelegate<T> constructor(
      * @param drawable
      * @return
      */
-    fun setLeftDrawable(drawable: Drawable?): T{
+    fun setLeftDrawable(drawable: Drawable?): T {
         drawable?.let {
             mLeftDrawable = it
         }
@@ -377,7 +373,7 @@ open class RadiusTextDelegate<T> constructor(
         return back()
     }
 
-    fun setTopDrawable(resId: Int):T {
+    fun setTopDrawable(resId: Int): T {
         return setTopDrawable(getDrawable(resId))
     }
 
@@ -623,7 +619,7 @@ open class RadiusTextDelegate<T> constructor(
         var index = 0
         var width = mLeftDrawableWidth
         var height = mLeftDrawableHeight
-        var radius = if (mLeftDrawableColorCircleEnable)( width + height / 2).toFloat() else mLeftDrawableColorRadius
+        var radius = if (mLeftDrawableColorCircleEnable) (width + height / 2).toFloat() else mLeftDrawableColorRadius
         when (gravity) {
             Gravity.TOP -> {
                 index = 1
@@ -689,7 +685,7 @@ open class RadiusTextDelegate<T> constructor(
         if (drawable is ColorDrawable) {
             val colorDrawable = drawable as ColorDrawable?
             val gradientDrawable = GradientDrawable()
-            gradientDrawable.setColor(colorDrawable?.color ?:0)
+            gradientDrawable.setColor(colorDrawable?.color ?: 0)
             gradientDrawable.cornerRadius = radius
             gradientDrawable.setSize(width, height)
             drawable = gradientDrawable
@@ -762,8 +758,8 @@ open class RadiusTextDelegate<T> constructor(
 
 }
 
-class RadiusTextDelegateImp(view: TextView,context: Context,attrs: AttributeSet?):
-    RadiusTextDelegate<RadiusTextDelegateImp>(view, context, attrs){
+class RadiusTextDelegateImp(view: TextView, context: Context, attrs: AttributeSet?) :
+    RadiusTextDelegate<RadiusTextDelegateImp>(view, context, attrs) {
 
 }
 

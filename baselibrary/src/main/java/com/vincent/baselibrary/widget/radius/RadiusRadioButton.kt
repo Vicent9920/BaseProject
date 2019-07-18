@@ -14,11 +14,21 @@ import kotlin.math.max
  * <p>版本号：1<p>
  *
  */
-class RadiusRadioButton @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : RadioButton(context, attrs, defStyleAttr) {
+class RadiusRadioButton : RadioButton {
 
-    val delegate:RadiusCompoundDelegateImp? = RadiusCompoundDelegateImp(this, context, attrs)
+    var delegate: RadiusCompoundDelegateImp? = null
+
+    constructor(context: Context) : super(context) {
+        delegate = RadiusCompoundDelegateImp(this, context, null)
+    }
+
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
+        delegate = RadiusCompoundDelegateImp(this, context, attrs)
+    }
+
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+        delegate = RadiusCompoundDelegateImp(this, context, attrs)
+    }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         if (delegate?.getWidthHeightEqualEnable() == true && width > 0 && height > 0) {
@@ -33,7 +43,7 @@ class RadiusRadioButton @JvmOverloads constructor(
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
         super.onLayout(changed, left, top, right, bottom)
         if (delegate?.getRadiusHalfHeightEnable() == true) {
-            delegate.setRadius(height / 2f)
+            delegate?.setRadius(height / 2f)
         }
         delegate?.initShape()
     }

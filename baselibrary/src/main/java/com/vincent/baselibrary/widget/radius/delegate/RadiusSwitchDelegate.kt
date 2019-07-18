@@ -23,7 +23,7 @@ import com.vincent.baselibrary.util.ResourceUtil
  * <p>版本号：1<p>
  *
  */
-open class RadiusSwitchDelegate<T> constructor(val switch: Switch, context: Context, attrs: AttributeSet?) :
+open class RadiusSwitchDelegate<T> constructor(private val switch: Switch, context: Context, attrs: AttributeSet?) :
     RadiusCompoundDelegate<T>(switch, context, attrs) where T : RadiusCompoundDelegate<T> {
 
 
@@ -68,21 +68,22 @@ open class RadiusSwitchDelegate<T> constructor(val switch: Switch, context: Cont
     private var mColorDefault: Int = 0
 
     init {
-        mColorAccent = ResourceUtil.getAttrColor(context, R.attr.colorAccent)
-        mColorDefault = Color.LTGRAY
+        setSwitchDrawable()
     }
 
     override fun initAttributes(typedArray: TypedArray) {
 
+        mColorAccent = ResourceUtil.getAttrColor(context, R.attr.colorAccent)
+        mColorDefault = Color.LTGRAY
         mThumbDrawableWidth =
             typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_thumbDrawableWidth, dp2px(24f))
         mThumbDrawableHeight =
             typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_thumbDrawableHeight, dp2px(24f))
-        val thumbDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_thumbDrawable)
-        val thumbPressedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_thumbPressedDrawable)
-        val thumbDisabledDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_thumbDisabledDrawable)
-        val thumbSelectedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_thumbSelectedDrawable)
-        val thumbCheckedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_thumbCheckedDrawable)
+        mThumbDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_thumbDrawable)
+        mThumbPressedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_thumbPressedDrawable)
+        mThumbDisabledDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_thumbDisabledDrawable)
+        mThumbSelectedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_thumbSelectedDrawable)
+        mThumbCheckedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_thumbCheckedDrawable)
         mThumbStrokeColor = typedArray.getColor(R.styleable.RadiusView_rv_thumbStrokeColor, mColorDefault)
         mThumbStrokePressedColor =
             typedArray.getColor(R.styleable.RadiusView_rv_thumbStrokePressedColor, mThumbStrokeColor)
@@ -100,11 +101,11 @@ open class RadiusSwitchDelegate<T> constructor(val switch: Switch, context: Cont
             typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_trackDrawableWidth, dp2px(48f))
         mTrackDrawableHeight =
             typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_trackDrawableHeight, dp2px(24f))
-        val trackDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_trackDrawable)
-        val trackPressedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_trackPressedDrawable)
-        val trackDisabledDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_trackDisabledDrawable)
-        val trackSelectedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_trackSelectedDrawable)
-        val trackCheckedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_trackCheckedDrawable)
+        mTrackDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_trackDrawable)
+        mTrackPressedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_trackPressedDrawable)
+        mTrackDisabledDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_trackDisabledDrawable)
+        mTrackSelectedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_trackSelectedDrawable)
+        mTrackCheckedDrawable = typedArray.getDrawable(R.styleable.RadiusView_rv_trackCheckedDrawable)
         mTrackStrokeColor = typedArray.getColor(R.styleable.RadiusView_rv_trackStrokeColor, mColorDefault)
         mTrackStrokePressedColor =
             typedArray.getColor(R.styleable.RadiusView_rv_trackStrokePressedColor, mTrackStrokeColor)
@@ -117,18 +118,18 @@ open class RadiusSwitchDelegate<T> constructor(val switch: Switch, context: Cont
         mTrackStrokeWidth = typedArray.getDimensionPixelSize(R.styleable.RadiusView_rv_trackStrokeWidth, dp2px(2f))
         mTrackRadius = typedArray.getDimension(R.styleable.RadiusView_rv_trackRadius, 100f)
 
-        mThumbDrawable = thumbDrawable ?: ColorDrawable(Color.WHITE)
-        mThumbPressedDrawable = if (trackPressedDrawable == null) mThumbDrawable else thumbPressedDrawable
-        mThumbDisabledDrawable = thumbDisabledDrawable ?: mThumbDrawable
-        mThumbSelectedDrawable = thumbSelectedDrawable ?: mThumbDrawable
-        mThumbCheckedDrawable = thumbCheckedDrawable ?: mThumbDrawable
+        mThumbDrawable = if (mThumbDrawable == null) ColorDrawable(Color.WHITE) else mThumbDrawable
+        mThumbPressedDrawable = if (mTrackPressedDrawable == null) mThumbDrawable else mThumbPressedDrawable
+        mThumbDisabledDrawable = if (mThumbDisabledDrawable == null) mThumbDrawable else mThumbDisabledDrawable
+        mThumbSelectedDrawable = if (mThumbSelectedDrawable == null) mThumbDrawable else mThumbSelectedDrawable
+        mThumbCheckedDrawable = if (mThumbCheckedDrawable == null) mThumbDrawable else mThumbCheckedDrawable
 
-        mTrackDrawable = trackDrawable ?: ColorDrawable(mColorDefault)
-
-        mTrackPressedDrawable = trackPressedDrawable ?: mTrackDrawable
-        mTrackDisabledDrawable = trackDisabledDrawable ?: mTrackDrawable
-        mTrackSelectedDrawable = trackSelectedDrawable ?: mTrackDrawable
-        mTrackCheckedDrawable = trackCheckedDrawable ?: ColorDrawable(mColorAccent)
+        mTrackDrawable = if (mTrackDrawable == null) ColorDrawable(mColorDefault) else mTrackDrawable
+        mTrackPressedDrawable = if (mTrackPressedDrawable == null) mTrackDrawable else mTrackPressedDrawable
+        mTrackDisabledDrawable = if (mTrackDisabledDrawable == null) mTrackDrawable else mTrackDisabledDrawable
+        mTrackSelectedDrawable = if (mTrackSelectedDrawable == null) mTrackDrawable else mTrackSelectedDrawable
+        mTrackCheckedDrawable =
+            if (mTrackCheckedDrawable == null) ColorDrawable(mColorAccent) else mTrackCheckedDrawable
         super.initAttributes(typedArray)
     }
 

@@ -253,7 +253,7 @@ open class RadiusCompoundDelegate<T> constructor(
 
 }
 
-class RadiusCompoundDelegateImp  (
+class RadiusCompoundDelegateImp(
     compoundButton: CompoundButton,
     context: Context,
     attrs: AttributeSet?

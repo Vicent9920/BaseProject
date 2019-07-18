@@ -1,5 +1,7 @@
 package com.vincent.baseproject
 
+import android.graphics.Color
+import android.util.Log
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
 
@@ -17,8 +19,21 @@ import org.junit.Assert.*
 class ExampleInstrumentedTest {
     @Test
     fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("com.vincent.baseproject", appContext.packageName)
+        val color = calculateColor(0xffffff,10)
+        Log.e("TAG","最终颜色$color")
+    }
+
+    fun calculateColor(color: Int, alpha: Int): Int {
+        if (alpha == 0) {
+            return color
+        }
+        val a = 1 - alpha / 255f
+        var red = color shr 16 and 0xff
+        var green = color shr 8 and 0xff
+        var blue = color and 0xff
+        println(red)
+        println(green)
+        println(blue)
+        return Color.argb(alpha,red,green,blue)
     }
 }

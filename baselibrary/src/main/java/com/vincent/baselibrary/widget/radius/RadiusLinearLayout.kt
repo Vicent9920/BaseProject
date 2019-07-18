@@ -14,12 +14,24 @@ import kotlin.math.max
  * <p>版本号：1<p>
  *
  */
-class RadiusLinearLayout @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : LinearLayout(context, attrs, defStyleAttr) {
-    val delegate:RadiusViewDelegateImp? = RadiusViewDelegateImp(this, context, attrs)
+class RadiusLinearLayout : LinearLayout {
+
+    var delegate: RadiusViewDelegateImp? = null
+
+    constructor(context: Context) : super(context) {
+        delegate = RadiusViewDelegateImp(this, context, null)
+    }
+
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
+        delegate = RadiusViewDelegateImp(this, context, attrs)
+    }
+
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+        delegate = RadiusViewDelegateImp(this, context, attrs)
+    }
+
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        if (delegate?.getWidthHeightEqualEnable()==true && width > 0 && height > 0) {
+        if (delegate?.getWidthHeightEqualEnable() == true && width > 0 && height > 0) {
             val max = max(width, height)
             val measureSpec = MeasureSpec.makeMeasureSpec(max, MeasureSpec.EXACTLY)
             super.onMeasure(measureSpec, measureSpec)
@@ -31,7 +43,7 @@ class RadiusLinearLayout @JvmOverloads constructor(
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
         super.onLayout(changed, l, t, r, b)
         if (delegate?.getRadiusHalfHeightEnable() == true) {
-            delegate.setRadius(height / 2f)
+            delegate?.setRadius(height / 2f)
         }
         delegate?.initShape()
     }

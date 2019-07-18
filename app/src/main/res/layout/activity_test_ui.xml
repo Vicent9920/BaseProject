@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.TestUiActivity">
+
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="36dp">
+
+        <LinearLayout
+                android:id="@+id/layout_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
+            <com.vincent.baselibrary.widget.radius.RadiusTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="xml设置背景"
+                    app:rv_radius="@dimen/dp_radius"
+                    app:rv_strokeColor="@android:color/holo_purple"
+                    app:rv_strokeDashGap="@dimen/dp_dash_gap"
+                    app:rv_strokeDashWidth="@dimen/dp_dash_width"
+                    app:rv_strokeWidth="2dp"
+                    android:visibility="visible"/>
+
+            <com.vincent.baselibrary.widget.radius.RadiusSwitch
+                    android:id="@+id/radiusSwitch"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:checked="true"
+                    android:text="RadiusSwitch+xml属性"
+                    app:rv_thumbDrawable="@color/white"
+                    app:rv_thumbDrawableHeight="24dp"
+                    app:rv_thumbDrawableWidth="24dp"
+                    app:rv_thumbRadius="24dp"
+                    app:rv_thumbStrokeCheckedColor="#33da33"
+                    app:rv_thumbStrokeColor="#666666"
+                    app:rv_thumbStrokeWidth="1dp"
+                    app:rv_trackCheckedDrawable="#33da33"
+                    app:rv_trackDrawableHeight="24dp"
+                    app:rv_trackDrawableWidth="48dp"
+                    app:rv_trackRadius="30dp"
+                    app:rv_trackStrokeCheckedColor="#33da33"
+                    app:rv_trackStrokeColor="#BEBEBE"
+                    app:rv_trackStrokeWidth="2dp"
+                    android:visibility="visible"/>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

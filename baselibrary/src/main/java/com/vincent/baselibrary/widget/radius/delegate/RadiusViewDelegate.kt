@@ -18,11 +18,10 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.RippleDrawable
+import android.graphics.drawable.StateListDrawable
 import android.util.AttributeSet
 import android.view.View
 import android.widget.CompoundButton
-import com.haoge.easyandroid.easy.EasyFormatter
-import com.haoge.easyandroid.easy.EasyLog
 import com.vincent.baselibrary.R
 import com.vincent.baselibrary.util.ResourceUtil
 import com.vincent.baselibrary.widget.radius.RadiusSwitch
@@ -30,16 +29,16 @@ import com.vincent.baselibrary.widget.radius.RadiusSwitch
 
 /**
  * <p>文件描述：<p>
- * <p>@author 烤鱼<p>
- * <p>@date 2019/7/10 0010 <p>
- * <p>@update 2019/7/10 0010<p>
- * <p>版本号：1<p>
+ * <p>author 烤鱼<p>
+ * <p>date 2019/7/10 0010 <p>
+ * <p>update 2019/7/10 0010<p>
+ * <p>版本号：1.0<p>
  *
  */
 open class RadiusViewDelegate<T> @JvmOverloads constructor(
-    open val view: View,
-    open val context: Context,
-    open val attrs: AttributeSet? = null
+    val view: View,
+    val context: Context,
+    val attrs: AttributeSet? = null
 ) where T : RadiusViewDelegate<T> {
 
 
@@ -94,9 +93,6 @@ open class RadiusViewDelegate<T> @JvmOverloads constructor(
     private var mOnSelectedChangeListener: OnSelectedChangeListener? = null
 
     init {
-        EasyLog.DEFAULT.e(EasyFormatter.DEFAULT.format(view))
-//        EasyLog.DEFAULT.e(EasyFormatter.DEFAULT.format(context))
-        EasyLog.DEFAULT.e(EasyFormatter.DEFAULT.format(attrs))
         val mTypedArray = context.obtainStyledAttributes(attrs, R.styleable.RadiusView)
         initAttributes(mTypedArray)
 
@@ -146,7 +142,7 @@ open class RadiusViewDelegate<T> @JvmOverloads constructor(
         )
         mRippleEnable = typedArray.getBoolean(
             R.styleable.RadiusView_rv_rippleEnable,
-            view.isClickable && !(view is RadiusSwitch)
+            view.isClickable && view !is RadiusSwitch
         )
         mSelected = typedArray.getBoolean(R.styleable.RadiusView_rv_selected, false)
         mEnterFadeDuration = typedArray.getInteger(R.styleable.RadiusView_rv_enterFadeDuration, 0)
@@ -216,7 +212,6 @@ open class RadiusViewDelegate<T> @JvmOverloads constructor(
 
     /**
      * 背景色按下状态透明度(0-255默认102 仅当未设置backgroundPressedColor有效)
-     *
      * @param source
      * @return
      */
@@ -552,7 +547,25 @@ open class RadiusViewDelegate<T> @JvmOverloads constructor(
                 ), getContentDrawable(mDrawable, isSetBg), null
             )
             view.background = rippleDrawable
+        } else {
+            if (!isSetBg) {
+                return
+            }
+            setDrawable(mBackgroundPressed, mBackgroundPressedColor, mStrokePressedColor)
+            setDrawable(mBackgroundDisabled, mBackgroundDisabledColor, mStrokeDisabledColor)
+            val mStateDrawable = StateListDrawable()
+            mStateDrawable.setEnterFadeDuration(mEnterFadeDuration)
+            mStateDrawable.setExitFadeDuration(mExitFadeDuration)
+
+            mStateDrawable.addState(intArrayOf(mStatePressed), mBackgroundPressed)
+            mStateDrawable.addState(intArrayOf(mStateSelected), mBackgroundSelected)
+            mStateDrawable.addState(intArrayOf(mStateChecked), mBackgroundChecked)
+            mStateDrawable.addState(intArrayOf(mStateDisabled), mBackgroundDisabled)
+            //默认状态--放置在最后否则其它状态不生效
+            mStateDrawable.addState(intArrayOf(), mBackground)
+            view.background = mStateDrawable
         }
+
     }
 
     /**
@@ -569,7 +582,7 @@ open class RadiusViewDelegate<T> @JvmOverloads constructor(
         if (view.isSelected()) {
             color = mBackgroundSelectedColor
         } else if (view is CompoundButton) {
-            if ((view as CompoundButton).isChecked) {
+            if (view.isChecked) {
                 color = mBackgroundCheckedColor
             }
         }
@@ -592,7 +605,7 @@ open class RadiusViewDelegate<T> @JvmOverloads constructor(
         if (view.isSelected) {
             color = mStrokeSelectedColor
         } else if (view is CompoundButton) {
-            if ((view as CompoundButton).isChecked) {
+            if (view.isChecked) {
                 color = mStrokeCheckedColor
             }
         }
@@ -612,7 +625,7 @@ open class RadiusViewDelegate<T> @JvmOverloads constructor(
         if (view is CompoundButton) {
             return if (!isSetBg)
                 mDrawable
-            else if ((view as CompoundButton).isChecked)
+            else if (view.isChecked)
                 mBackgroundChecked
             else if (view.isSelected)
                 mBackgroundSelected
@@ -635,17 +648,11 @@ open class RadiusViewDelegate<T> @JvmOverloads constructor(
      * @return 最终的状态栏颜色
      */
     internal fun calculateColor(color: Int, alpha: Int): Int {
-        if (alpha == 0) {
-            return color
-        }
-        val a = 1 - alpha / 255f
-        var red = color shr 16 and 0xff
-        var green = color shr 8 and 0xff
-        var blue = color and 0xff
-        red = (red * a + 0.5).toInt()
-        green = (green * a + 0.5).toInt()
-        blue = (blue * a + 0.5).toInt()
-        return 0xff shl 24 or (red shl 16) or (green shl 8) or blue
+        val red = color shr 16 and 0xff
+        val green = color shr 8 and 0xff
+        val blue = color and 0xff
+
+        return alpha shl 24 or (red shl 16) or (green shl 8) or blue
     }
 
 

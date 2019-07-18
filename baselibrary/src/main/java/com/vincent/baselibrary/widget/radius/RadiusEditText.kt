@@ -14,15 +14,25 @@ import kotlin.math.max
  * <p>版本号：1<p>
  *
  */
-class RadiusEditText @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : EditText(context, attrs, defStyleAttr) {
+class RadiusEditText : EditText {
 
     /**
      * 是否设置完成光标标识
      */
     private var mSelectionEndDone: Boolean = false
-    val delegate:RadiusEditTextDelegateImp? = RadiusEditTextDelegateImp(this, context, attrs)
+    var delegate: RadiusEditTextDelegateImp? = null
+
+    constructor(context: Context) : super(context) {
+        delegate = RadiusEditTextDelegateImp(this, context, null)
+    }
+
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
+        delegate = RadiusEditTextDelegateImp(this, context, attrs)
+    }
+
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+        delegate = RadiusEditTextDelegateImp(this, context, attrs)
+    }
 
     override fun setText(text: CharSequence?, type: BufferType?) {
         super.setText(text, type)
@@ -33,7 +43,7 @@ class RadiusEditText @JvmOverloads constructor(
         if (mSelectionEndDone) return
 
         setSelection(text.length)
-        mSelectionEndDone = delegate?.isSelectionEndOnceEnable()?:true
+        mSelectionEndDone = delegate?.isSelectionEndOnceEnable() ?: true
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -50,7 +60,7 @@ class RadiusEditText @JvmOverloads constructor(
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
         super.onLayout(changed, left, top, right, bottom)
         if (delegate?.getRadiusHalfHeightEnable() == true) {
-            delegate.setRadius(height / 2f)
+            delegate?.setRadius(height / 2f)
         }
         delegate?.initShape()
     }

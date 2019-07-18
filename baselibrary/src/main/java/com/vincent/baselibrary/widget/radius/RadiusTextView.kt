@@ -2,10 +2,7 @@ package com.vincent.baselibrary.widget.radius
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.widget.TextView
-import com.haoge.easyandroid.easy.EasyFormatter
-import com.haoge.easyandroid.easy.EasyLog
 import com.vincent.baselibrary.widget.radius.delegate.RadiusTextDelegateImp
 import kotlin.math.max
 
@@ -17,14 +14,21 @@ import kotlin.math.max
  * <p>版本号：1<p>
  *
  */
-class RadiusTextView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : TextView(context, attrs) {
+class RadiusTextView : TextView {
 
-    init {
-        EasyLog.DEFAULT.e(EasyFormatter.DEFAULT.format(attrs))
+    var delegate: RadiusTextDelegateImp? = null
+
+    constructor(context: Context) : super(context) {
+        delegate = RadiusTextDelegateImp(this, context, null)
     }
-    val delegate: RadiusTextDelegateImp? = RadiusTextDelegateImp(this, context, attrs)
+
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
+        delegate = RadiusTextDelegateImp(this, context, attrs)
+    }
+
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+        delegate = RadiusTextDelegateImp(this, context, attrs)
+    }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         if (delegate?.getWidthHeightEqualEnable() == true && width > 0 && height > 0) {
@@ -39,7 +43,7 @@ class RadiusTextView @JvmOverloads constructor(
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
         super.onLayout(changed, left, top, right, bottom)
         if (delegate?.getRadiusHalfHeightEnable() == true) {
-            delegate.setRadius(height / 2f)
+            delegate?.setRadius(height / 2f)
         }
         delegate?.initShape()
     }

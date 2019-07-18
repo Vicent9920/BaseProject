@@ -137,6 +137,7 @@ dependencies {
     api "androidx.lifecycle:lifecycle-extensions:$rootProject.ext.lifecycle_version"
 
     implementation 'com.github.Vicent9920:DialogLibrary:1.0.3'
+    implementation 'com.github.AriesHoo.UIWidget:widget-core:3.2.15'
 //    compile project(path: ':dialoglibrary')
     implementation project(':baselibrary')
     implementation project(':citypicker')

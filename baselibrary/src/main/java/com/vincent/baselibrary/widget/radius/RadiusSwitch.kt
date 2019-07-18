@@ -15,27 +15,36 @@ import kotlin.math.max
  * <p>版本号：1<p>
  *
  */
-class RadiusSwitch @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : Switch(context, attrs, defStyleAttr) {
+class RadiusSwitch : Switch {
+    var delegate: RadiusSwitchDelegateImp? = null
 
-    val delegate: RadiusSwitchDelegateImp? = RadiusSwitchDelegateImp(this, context, attrs)
+    constructor(context: Context) : super(context) {
+        delegate = RadiusSwitchDelegateImp(this, context, null)
+    }
+
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
+        delegate = RadiusSwitchDelegateImp(this, context, attrs)
+    }
+
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+        delegate = RadiusSwitchDelegateImp(this, context, attrs)
+    }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+//        showText = false
         if (delegate?.getWidthHeightEqualEnable() == true && width > 0 && height > 0) {
             val max = max(width, height)
             val measureSpec = MeasureSpec.makeMeasureSpec(max, MeasureSpec.EXACTLY)
             super.onMeasure(measureSpec, measureSpec)
-        }else{
+        } else {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         }
-
     }
 
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
         super.onLayout(changed, left, top, right, bottom)
         if (delegate?.getRadiusHalfHeightEnable() == true) {
-            delegate.setRadius(height / 2f)
+            delegate?.setRadius(height / 2f)
         }
         delegate?.initShape()
     }
@@ -44,5 +53,4 @@ class RadiusSwitch @JvmOverloads constructor(
         super.setSelected(selected)
         delegate?.setSelected(selected)
     }
-
 }

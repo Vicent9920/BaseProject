@@ -1,4 +1,5 @@
-@file:Suppress("unused", "UNCHECKED_CAST", "RtlHardcoded","NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+@file:Suppress("unused", "UNCHECKED_CAST", "RtlHardcoded", "NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+
 package com.vincent.baselibrary.widget.radius.delegate
 
 import android.content.Context
@@ -15,8 +16,8 @@ import com.vincent.baselibrary.R
  * <p>版本号：1<p>
  *
  */
-open class RadiusEditTextDelegate<T>  constructor(editText: EditText, context: Context, attrs: AttributeSet?) :
-    RadiusTextDelegate<T>(editText, context, attrs) where T:RadiusTextDelegate<T>{
+open class RadiusEditTextDelegate<T> constructor(editText: EditText, context: Context, attrs: AttributeSet?) :
+    RadiusTextDelegate<T>(editText, context, attrs) where T : RadiusTextDelegate<T> {
 
     private var mSelectionEndEnable: Boolean = false
     private var mSelectionEndOnceEnable: Boolean = false
@@ -26,7 +27,6 @@ open class RadiusEditTextDelegate<T>  constructor(editText: EditText, context: C
         mSelectionEndOnceEnable = typedArray.getBoolean(R.styleable.RadiusView_rv_selectionEndOnceEnable, false)
         super.initAttributes(typedArray)
     }
-
 
 
     fun isSelectionEndEnable(): Boolean {
@@ -59,5 +59,6 @@ open class RadiusEditTextDelegate<T>  constructor(editText: EditText, context: C
         return back()
     }
 }
+
 class RadiusEditTextDelegateImp(editText: EditText, context: Context, attrs: AttributeSet?) :
     RadiusEditTextDelegate<RadiusEditTextDelegateImp>(editText, context, attrs)
