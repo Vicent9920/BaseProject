@@ -38,8 +38,6 @@ dependencies {
 // EventBus
     api "org.greenrobot:eventbus:$rootProject.ext.eventbus"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    // Easy 工具类
-    implementation "com.github.yjfnypeu:EasyAndroid:1.2.5"
 }
 repositories {
     mavenCentral()

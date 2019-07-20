@@ -23,7 +23,7 @@ import com.vincent.baselibrary.util.ResourceUtil
  * <p>版本号：1<p>
  *
  */
-open class RadiusSwitchDelegate<T> constructor(private val switch: Switch, context: Context, attrs: AttributeSet?) :
+open class RadiusSwitchDelegate<out T> constructor(private val switch: Switch, context: Context, attrs: AttributeSet?) :
     RadiusCompoundDelegate<T>(switch, context, attrs) where T : RadiusCompoundDelegate<T> {
 
 

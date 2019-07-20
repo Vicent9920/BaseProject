@@ -22,7 +22,7 @@ class RadiusSwitch : Switch {
         delegate = RadiusSwitchDelegateImp(this, context, null)
     }
 
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs,0) {
         delegate = RadiusSwitchDelegateImp(this, context, attrs)
     }
 

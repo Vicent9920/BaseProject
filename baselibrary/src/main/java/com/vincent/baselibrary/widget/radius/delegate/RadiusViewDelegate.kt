@@ -35,7 +35,7 @@ import com.vincent.baselibrary.widget.radius.RadiusSwitch
  * <p>版本号：1.0<p>
  *
  */
-open class RadiusViewDelegate<T> @JvmOverloads constructor(
+open class RadiusViewDelegate<out T> @JvmOverloads constructor(
     val view: View,
     val context: Context,
     val attrs: AttributeSet? = null
@@ -151,7 +151,7 @@ open class RadiusViewDelegate<T> @JvmOverloads constructor(
 
     }
 
-    open fun back(): T {
+    fun back(): T {
         return this as T
     }
 

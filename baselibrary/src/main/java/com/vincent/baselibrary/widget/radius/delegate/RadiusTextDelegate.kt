@@ -28,9 +28,9 @@ import com.vincent.baselibrary.util.ResourceUtil
  * <p>版本号：1<p>
  *
  */
-open class RadiusTextDelegate<T> constructor(
+open class RadiusTextDelegate<out T> constructor(
     private val textView: TextView,
-    context: Context,
+     context: Context,
     attrs: AttributeSet?
 ) :
     RadiusViewDelegate<T>(textView, context, attrs) where T : RadiusViewDelegate<T> {
@@ -717,7 +717,7 @@ open class RadiusTextDelegate<T> constructor(
         if (view.isSelected) {
             color = mTextSelectedColor
         } else if (view is CompoundButton) {
-            if ((view as CompoundButton).isChecked) {
+            if (view.isChecked) {
                 color = mTextCheckedColor
             }
         }

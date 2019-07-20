@@ -1,6 +1,7 @@
 package com.vincent.baseproject
 
 import android.graphics.Color
+import android.util.AttributeSet
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -31,3 +32,4 @@ class ExampleUnitTest {
         return Color.argb(alpha,red,green,blue)
     }
 }
+

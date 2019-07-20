@@ -24,7 +24,7 @@ private const val STATE_SWITCH_OFF2 = 2
 private const val STATE_SWITCH_ON = 3
 private const val STATE_SWITCH_ON2 = 4
 
-class SwitchButton(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : View(context, attrs, defStyleAttr) {
+class SwitchButton @JvmOverloads constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : View(context, attrs, defStyleAttr) {
     // 是否显示按钮阴影
     var isShadow = false
     // 是否选中

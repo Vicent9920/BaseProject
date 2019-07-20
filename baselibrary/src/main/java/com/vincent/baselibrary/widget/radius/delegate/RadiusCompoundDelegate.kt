@@ -20,7 +20,7 @@ import com.vincent.baselibrary.util.DrawableUtil
  * <p>版本号：1<p>
  *
  */
-open class RadiusCompoundDelegate<T> constructor(
+open class RadiusCompoundDelegate<out T> constructor(
     private val compoundButton: CompoundButton,
     context: Context,
     attrs: AttributeSet?
