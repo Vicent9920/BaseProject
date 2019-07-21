@@ -26,7 +26,6 @@ open class RadiusCompoundDelegate<out T> constructor(
     attrs: AttributeSet?
 ) : RadiusTextDelegate<T>(compoundButton, context, attrs) where T : RadiusTextDelegate<T> {
 
-    private lateinit var mButton: CompoundButton
     private var mStateButtonDrawable: StateListDrawable? = null
 
     private var mButtonDrawableSystemEnable: Boolean = false
@@ -209,7 +208,7 @@ open class RadiusCompoundDelegate<out T> constructor(
      * 设置CompoundButton的setButtonDrawable属性
      */
     private fun setButtonDrawable() {
-        mButton = compoundButton
+
         if (mButtonDrawableSystemEnable) {
             return
         }
@@ -219,7 +218,7 @@ open class RadiusCompoundDelegate<out T> constructor(
             && mButtonSelectedDrawable == null
             && mButtonCheckedDrawable == null
         ) {
-            mButton.buttonDrawable = null
+            compoundButton.buttonDrawable = null
             return
         }
         val radius = if (mButtonDrawableColorCircleEnable)
@@ -248,7 +247,7 @@ open class RadiusCompoundDelegate<out T> constructor(
             getStateDrawable(mButtonDrawable, radius, mButtonDrawableWidth, mButtonDrawableHeight)
         )
         DrawableUtil.setDrawableWidthHeight(mStateButtonDrawable, mButtonDrawableWidth, mButtonDrawableHeight)
-        mButton.buttonDrawable = mStateButtonDrawable
+        compoundButton.buttonDrawable = mStateButtonDrawable
     }
 
 }

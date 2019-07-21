@@ -17,6 +17,7 @@ import com.haoge.easyandroid.easy.EasyActivityResult
 import com.haoge.easyandroid.easy.EasyToast
 import com.vincent.baselibrary.base.BaseLazyFragment
 import com.vincent.baseproject.R
+import com.vincent.baseproject.common.BaseUiFragment
 import com.vincent.baseproject.ui.*
 import com.vincent.baseproject.ui.login.LoginActivity
 import com.vincent.baseproject.ui.login.RegisterActivity
@@ -27,21 +28,8 @@ import com.zhouwei.mzbanner.holder.MZViewHolder
 import kotlinx.android.synthetic.main.home_fragment_d.*
 
 
-class HomeFragmentD : BaseLazyFragment() {
-    open val toastCustom by lazy {
-        // 创建自定义的Toast.
-        val layout = LayoutInflater.from(context).inflate(com.vincent.baselibrary.R.layout.toast_custom_layout, null)
-        EasyToast.newBuilder(layout, com.vincent.baselibrary.R.id.toast_tv)
-            .setGravity(Gravity.CENTER, 0, 0)
-            .build()
-    }
-    fun toast(resString: Int) {
-        toastCustom.show(resString)
-    }
+class HomeFragmentD : BaseUiFragment() {
 
-    fun toast(s: String) {
-        toastCustom.show(s)
-    }
 
     private var statusAlpha = 0
     override fun getLayoutId() = R.layout.home_fragment_d

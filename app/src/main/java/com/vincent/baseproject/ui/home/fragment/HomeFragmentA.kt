@@ -3,15 +3,13 @@ package com.vincent.baseproject.ui.home.fragment
 import android.Manifest
 import android.content.Intent
 import android.os.Handler
-import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.haoge.easyandroid.easy.EasyActivityResult
 import com.haoge.easyandroid.easy.EasyPermissions
 import com.haoge.easyandroid.easy.EasyToast
-import com.vincent.baselibrary.base.BaseLazyFragment
 import com.vincent.baseproject.R
+import com.vincent.baseproject.common.BaseUiFragment
 import com.vincent.baseproject.ui.ScannerActivity
 import com.vincent.baseproject.widget.XCollapsingToolbarLayout
 import com.zaaach.citypicker.CityPicker
@@ -30,22 +28,9 @@ import kotlinx.android.synthetic.main.home_fragment_a.*
  * QQ：3332168769
  * 备注：滑动到指定距离头部区域改变
  */
-class HomeFragmentA : BaseLazyFragment() {
-    open val toastCustom by lazy {
-        // 创建自定义的Toast.
-        val layout = LayoutInflater.from(context).inflate(com.vincent.baselibrary.R.layout.toast_custom_layout, null)
-        EasyToast.newBuilder(layout, com.vincent.baselibrary.R.id.toast_tv)
-            .setGravity(Gravity.CENTER, 0, 0)
-            .build()
-    }
-    fun toast(resString: Int) {
-        toastCustom.show(resString)
-    }
+class HomeFragmentA : BaseUiFragment() {
 
-    fun toast(s: String) {
-        toastCustom.show(s)
-    }
-    override fun getLayoutId() = com.vincent.baseproject.R.layout.home_fragment_a
+    override fun getLayoutId() = R.layout.home_fragment_a
 
     override fun initView() {
         setTitleBar(top_toolbar)

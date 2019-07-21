@@ -18,6 +18,7 @@ import com.orhanobut.hawk.Hawk
 import com.vincent.baselibrary.base.BaseLazyFragment
 import com.vincent.baselibrary.helper.SettingUtil
 import com.vincent.baseproject.R
+import com.vincent.baseproject.common.BaseUiFragment
 import com.vincent.baseproject.common.Contsant
 import com.vincent.baseproject.ui.city_picker.CityPickerActivity
 import kotlinx.android.synthetic.main.app_toolbar.*
@@ -27,21 +28,8 @@ import kotlinx.android.synthetic.main.home_fragment_c.*
  * A simple [Fragment] subclass.
  *
  */
-class HomeFragmentC : BaseLazyFragment() {
-    open val toastCustom by lazy {
-        // 创建自定义的Toast.
-        val layout = LayoutInflater.from(context).inflate(com.vincent.baselibrary.R.layout.toast_custom_layout, null)
-        EasyToast.newBuilder(layout, com.vincent.baselibrary.R.id.toast_tv)
-            .setGravity(Gravity.CENTER, 0, 0)
-            .build()
-    }
-    fun toast(resString: Int) {
-        toastCustom.show(resString)
-    }
+class HomeFragmentC : BaseUiFragment() {
 
-    fun toast(s: String) {
-        toastCustom.show(s)
-    }
     override fun getLayoutId() = R.layout.home_fragment_c
 
     override fun initView() {

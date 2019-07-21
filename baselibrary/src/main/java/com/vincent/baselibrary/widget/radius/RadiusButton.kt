@@ -2,32 +2,32 @@ package com.vincent.baselibrary.widget.radius
 
 import android.content.Context
 import android.util.AttributeSet
-import android.widget.Switch
-import com.vincent.baselibrary.widget.radius.delegate.RadiusSwitchDelegateImp
+import androidx.appcompat.widget.AppCompatButton
+import com.vincent.baselibrary.widget.radius.delegate.RadiusTextDelegateImp
 import kotlin.math.max
-
 
 /**
  * <p>文件描述：<p>
- * <p>author 烤鱼<p>
- * <p>date 2019/7/10 0010 <p>
- * <p>update 2019/7/10 0010<p>
+ * <p>@author 烤鱼<p>
+ * <p>@date 2019/7/21 0021 <p>
+ * <p>@update 2019/7/21 0021<p>
  * <p>版本号：1<p>
  *
  */
-class RadiusSwitch : Switch {
-    var delegate: RadiusSwitchDelegateImp? = null
+class RadiusButton:AppCompatButton {
+
+    var delegate: RadiusTextDelegateImp? = null
 
     constructor(context: Context) : super(context) {
-        delegate = RadiusSwitchDelegateImp(this, context, null)
+        delegate = RadiusTextDelegateImp(this, context, null)
     }
 
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs,0) {
-        delegate = RadiusSwitchDelegateImp(this, context, attrs)
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
+        delegate = RadiusTextDelegateImp(this, context, attrs)
     }
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
-        delegate = RadiusSwitchDelegateImp(this, context, attrs)
+        delegate = RadiusTextDelegateImp(this, context, attrs)
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -35,9 +35,9 @@ class RadiusSwitch : Switch {
             val max = max(width, height)
             val measureSpec = MeasureSpec.makeMeasureSpec(max, MeasureSpec.EXACTLY)
             super.onMeasure(measureSpec, measureSpec)
-        } else {
-            super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+            return
         }
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
     }
 
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
@@ -52,4 +52,15 @@ class RadiusSwitch : Switch {
         super.setSelected(selected)
         delegate?.setSelected(selected)
     }
+
+    override fun setEnabled(enabled: Boolean) {
+        super.setEnabled(enabled)
+        delegate?.initShape()
+    }
+
+    override fun setPressed(pressed: Boolean) {
+        super.setPressed(pressed)
+        delegate?.initShape()
+    }
+
 }

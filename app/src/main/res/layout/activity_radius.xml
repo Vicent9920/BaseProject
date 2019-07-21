@@ -226,6 +226,8 @@
                     app:rv_trackStrokeWidth="2dp"/>
 
 
+
+
             <com.vincent.baselibrary.widget.radius.RadiusSwitch
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -241,8 +243,6 @@
                     android:layout_height="wrap_content"
                     android:minHeight="48dp"
                     android:text="支付宝样式"
-                    android:textOn=""
-                    android:textOff=""
                     app:rv_thumbDrawable="@color/white"
                     app:rv_thumbDrawableHeight="20dp"
                     app:rv_thumbDrawableWidth="32dp"
@@ -250,7 +250,6 @@
                     app:rv_thumbStrokeCheckedColor="#075fb7"
                     app:rv_thumbStrokeColor="@android:color/darker_gray"
                     app:rv_thumbStrokeWidth="2dp"
-
                     app:rv_trackCheckedDrawable="#075fb7"
                     app:rv_trackDrawable="@android:color/darker_gray"
                     app:rv_trackDrawableHeight="20dp"
@@ -265,8 +264,6 @@
                     android:layout_height="wrap_content"
                     android:minHeight="48dp"
                     android:text="MIUI样式"
-                    android:textOn=""
-                    android:textOff=""
                     app:rv_thumbCheckedDrawable="#075fb7"
                     app:rv_thumbDrawable="#cacaca"
                     app:rv_thumbDrawableHeight="19dp"
